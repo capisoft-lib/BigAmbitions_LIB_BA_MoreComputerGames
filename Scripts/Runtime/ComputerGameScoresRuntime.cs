@@ -46,6 +46,7 @@ namespace Capisoft.Lib.BaComputerGames
             try {
                 var setup = _playing.GetValue(null) as VideoGameSetup;
                 var game = setup == null ? null : _gameField.GetValue(setup);
+                if (game is NativeGameBridge bridge) game = bridge.ActiveNativeGame;
                 if (game == null || game is UnityEngine.Object unity && unity == null || !_menu.DeclaringType.IsInstanceOfType(game)) { Reset(); return; }
                 if (!ReferenceEquals(game, _game)) { Reset(); _game = game; }
                 var result = _tracker.Observe((bool)_menu.GetValue(game), (int)_lives.GetValue(game), (int)_score.GetValue(game),

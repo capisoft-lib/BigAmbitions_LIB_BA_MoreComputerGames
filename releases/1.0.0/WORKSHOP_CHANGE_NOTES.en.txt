@@ -1,0 +1,8 @@
+MCG 1.0.0
+- Game catalog on the native computer monitor; game resources load after selection.
+- Up/Down and Enter to choose and play, Backspace to return, Tab to leave. Escape keeps native pause.
+- Unified local records for vanilla and mod games, with reliable managed JSON serialization and protection for existing files.
+- Public API signatures, mod ID, assembly name and record schema preserved from 0.2.0.
+- Updated game-author documentation, compatible-game links and English examples.
+- Shared leaderboard under consideration; not available yet and no release date confirmed.
+Requires separate LIB BA Unified UI 1.0.2+. See the repository verification report for test coverage and remaining native-game checks.

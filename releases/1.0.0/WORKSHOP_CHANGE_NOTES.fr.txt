@@ -1,0 +1,8 @@
+MCG 1.0.0
+- Catalogue sur le moniteur natif de l'ordinateur ; ressources des jeux chargées après sélection.
+- Haut/Bas et Entrée pour choisir et jouer, Retour arrière pour revenir, Tab pour quitter. Échap conserve la pause native.
+- Records locaux unifiés pour les jeux vanilla et moddés, avec sérialisation JSON managée fiable et protection des fichiers existants.
+- Signatures publiques de l'API, identifiant du mod, nom de l'assembly et schéma des records conservés depuis la 0.2.0.
+- Documentation développeur, liens vers les jeux compatibles et exemples en anglais mis à jour.
+- Leaderboard partagé envisagé ; pas encore disponible et aucune date confirmée.
+Nécessite LIB BA Unified UI 1.0.2+ séparément. Le rapport de vérification du dépôt détaille les tests et les essais natifs restant à effectuer.

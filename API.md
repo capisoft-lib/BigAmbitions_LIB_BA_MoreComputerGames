@@ -1,6 +1,6 @@
 # Créer un jeu avec More Computer Games (MCG)
 
-Namespace public : **Capisoft.Lib.BaComputerGames**. Assembly : **LIB_BaComputerGames.dll**. API preview **0.2.0**, compatible avec les signatures de la 0.1.0.
+Namespace public : **Capisoft.Lib.BaComputerGames**. Assembly : **LIB_BaComputerGames.dll**. API **1.0.0**, avec les signatures publiques de la 0.2.0 conservées. Le nom de l'assembly, l'identifiant technique du mod et le schéma des records restent inchangés.
 
 ## Contrats
 
@@ -82,20 +82,20 @@ Un seul identifiant lowercase avec un namespace, par exemple **mystudio:my-game*
 ## Cycle de vie et règles Unity
 
 1. La classe de mod décrit le jeu. Son constructeur, sa propriété Definition et le constructeur du loader doivent rester légers : pas d'objets Unity, pas de lecture de gros fichiers.
-2. Le joueur choisit le jeu dans le catalogue et rejoint l'ordinateur.
-3. Le loader éventuel est appelé sur le thread Unity. La caméra native n'est pas basculée pendant ce chargement.
+2. Le joueur rejoint l'ordinateur ; le lanceur MCG affiche le catalogue sur le moniteur. Aucune ressource de jeu n'est encore chargée.
+3. Après validation par Entrée, le loader éventuel est appelé sur le thread Unity. Un écran de chargement reste visible dans le moniteur pendant cette opération.
 4. La bibliothèque crée un GameObject enfant du conteneur natif et appelle la factory. Celle-ci doit attacher un MonoBehaviour implémentant IComputerGame à ce GameObject précis.
 5. Initialize reçoit le contexte ; Camera doit ensuite fournir une caméra valide. OnInitialize est la bonne place pour créer la scène du mini-jeu.
 6. La bibliothèque configure la résolution et la musique, puis appelle Tick. ComputerGameBehaviour distribue vers OnTick. Le frame utilise un delta non mis à l'échelle, plafonné à 0,25 seconde, et s'interrompt quand l'application perd le focus ou que les options sont visibles.
 7. À la sortie : Shutdown/OnShutdown, arrêt des callbacks propres au jeu, puis Dispose des ressources. La hiérarchie Addressables est libérée par l'hôte.
 
-Les contrôles standard sont espace/clic pour l'action principale et R pour redémarrer. Les premières entrées sont neutralisées brièvement pour ne pas réutiliser le clic de sélection. Échap reste géré par Big Ambitions.
+Les contrôles standard sont espace/clic pour l'action principale et R pour redémarrer. Les premières entrées sont neutralisées brièvement pour ne pas réutiliser l'entrée de sélection. **Échap reste le menu pause natif de Big Ambitions**, sans interception par MCG. **Retour arrière est réservé au lanceur** : il ferme le jeu courant et revient au menu, ou annule le chargement. **Tab sans modificateur quitte l'ordinateur**, sauf si un contrôle natif a le focus ; les raccourcis MCG et les Tick sont suspendus pendant le menu pause ou les options. Les flèches et Entrée sont réservées au menu uniquement ; elles restent disponibles dans le gameplay.
 
 Parenter tous les objets de gameplay à la racine fournie, avec positions locales. Le conteneur natif peut être très loin de l'origine du monde. Ne pas créer de caméra plein écran indépendante, ne pas remplacer la scène de Big Ambitions, son EventSystem ou son état global, et ne pas modifier Time.timeScale. Pour une UI de jeu, utiliser un Canvas WorldSpace/ScreenSpaceCamera adapté au moniteur, pas ScreenSpaceOverlay. Le monde doit être isolé par les couches et le cullingMask de la caméra.
 
 Ne pas utiliser Update pour le gameplay : il contournerait la pause des contrôles gérée par la bibliothèque. Libérer abonnements, coroutines et ressources propres dans OnShutdown. Les ressources Unity indépendantes de la hiérarchie doivent avoir un propriétaire explicite.
 
-Une fermeture abandonne la manche active sans fabriquer de score. Context.RequestExit ferme la session ; le driver natif termine l'activité lors de sa prochaine mise à jour. Toutes les API de registre, de contexte et les opérations Unity se font sur le thread principal.
+Une fermeture abandonne la manche active sans fabriquer de score. Context.RequestExit ferme la session de ce jeu ; le lanceur revient au menu lors de sa prochaine mise à jour, sans terminer l'activité native sur l'ordinateur. Le jeu sera recréé au prochain lancement. Toutes les API de registre, de contexte et les opérations Unity se font sur le thread principal. Les signatures publiques restent compatibles : les mods de jeu existants n'ont pas besoin de se réenregistrer autrement.
 
 Avec IComputerGame directement, implémenter Camera, Initialize, Tick, SetScreenResolution, SetMusicState et Shutdown. Le composant reste un MonoBehaviour ; conserver soi-même le contexte reçu et rendre Shutdown idempotent. ComputerGameBehaviour convient à la plupart des nouveaux jeux.
 
@@ -164,7 +164,7 @@ Un adaptateur peut s'abonner à ComputerGames.RoundCompleted. ComputerGameResult
 
 Le signal est local, sans identité Steam, sans réseau et sans mécanisme anti-triche. Un classement doit ajouter sa propre politique de consentement, ses règles et sa validation. Les erreurs d'un abonné n'empêchent pas les autres abonnés de recevoir le résultat ; elles sont remontées via ComputerGames.Error.
 
-### Records locaux unifiés (0.2.0)
+### Records locaux unifiés (depuis 0.2.0)
 
 MCG traite le record **avant** de diffuser RoundCompleted. Aucune sauvegarde supplémentaire n'est nécessaire dans un jeu qui appelle déjà BeginRound / CompleteRound, comme FlappyAmbition. Quitter, décharger ou abandonner une manche ne produit aucun résultat. Un score égal ou inférieur au record produit toujours RoundCompleted, mais aucune écriture du fichier.
 

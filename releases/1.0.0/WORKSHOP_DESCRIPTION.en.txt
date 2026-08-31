@@ -1,0 +1,34 @@
+[h1]More Computer Games (MCG) 1.0.0[/h1]
+Give your in-game computer more ways to distract you from building an empire. MCG is a shared library for mini-games in Big Ambitions.
+
+[h2]One computer, more games[/h2]
+[list]
+[*]Open the game catalog directly on the computer monitor with the native Play Video Games action.
+[*]Keep the original Brick Breaker and add compatible game mods separately.
+[*]Load each game's resources only when you choose to play it.
+[*]Save local high scores for vanilla and mod games through the same system.
+[/list]
+
+[h2]Controls[/h2]
+[b]Up/Down[/b]: select a game. [b]Enter[/b]: play.
+[b]Backspace[/b]: return to the catalog or cancel loading.
+[b]Tab[/b]: leave the computer. [b]Escape[/b]: native pause menu, unchanged.
+MCG shortcuts are inactive while the pause menu or options are open. Tab respects native UI focus.
+
+[h2]Requirements[/h2]
+Target: Big Ambitions 1.0 Build 3670 on Windows.
+Requires [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3790426259]LIB BA Unified UI 1.0.2 or later[/url], installed and enabled separately.
+Enable MCG as well. Restart Big Ambitions after installing or updating mods.
+
+[h2]Compatible games and developers[/h2]
+[url=https://github.com/capisoft-lib/BigAmbitions_MCG_FlappyAmbitions]FlappyAmbitions[/url], [url=https://github.com/capisoft-lib/BigAmbitions_MCG_Snacke]Snacke[/url] and [url=https://github.com/capisoft-lib/BigAmbitions_MCG_AmbitionsInvaders]Ambitions Invaders[/url] are separate MCG game mods. They are not included or downloaded automatically.
+Want to add your own game? MCG provides registration, loading, session and round-completion APIs. See the [url=https://github.com/capisoft-lib/BigAmbitions_LIB_BA_MoreComputerGames]source repository and documentation[/url].
+
+[h2]Local records and roadmap[/h2]
+Only a better score from a completed round replaces a record. Records are separated by Steam profile, game and rules; abandoned rounds do not count. ComputerGameHighScore is not required.
+We plan to explore adding a shared leaderboard soon. It is not available yet and has no confirmed release date. Scores remain local, with no uploads or extra account.
+
+[h2]Validation[/h2]
+Build and isolated tests are documented in the repository. Native gameplay and compatibility smoke tests remain to be completed. The English example images are isolated monitor renders.
+
+If you enjoy MCG, you can [url=https://buymeacoffee.com/capitaine]buy the developer a coffee[/url]. Someone has to stay productive while you play.

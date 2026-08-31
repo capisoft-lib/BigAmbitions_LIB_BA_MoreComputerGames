@@ -9,6 +9,7 @@
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="../../Scripts/Runtime/ComputerGamesCatalog.cs" Link="Runtime/ComputerGamesCatalog.cs" />
     <Compile Include="../../Scripts/Api/ComputerGameDefinition.cs" Link="Api/ComputerGameDefinition.cs" />
     <Compile Include="../../Scripts/Api/ComputerGameContext.cs" Link="Api/ComputerGameContext.cs" />
     <Compile Include="../../Scripts/Api/ComputerGames.cs" Link="Api/ComputerGames.cs" />

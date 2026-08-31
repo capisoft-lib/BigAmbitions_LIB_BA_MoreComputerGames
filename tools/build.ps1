@@ -85,6 +85,13 @@ if ($LASTEXITCODE -ne 0) { throw 'MCG compilation failed; private build files re
 
 $built = [Mono.Cecil.AssemblyDefinition]::ReadAssembly($dll)
 try {
+    $manifestVersion = [regex]::Match([IO.File]::ReadAllText((Join-Path $repo 'ModManifest.asset')), '(?m)^\s{2}Version:\s*(\d+\.\d+\.\d+)\s*$').Groups[1].Value
+    $apiVersion = $built.MainModule.GetType('Capisoft.Lib.BaComputerGames.ComputerGames').Fields | Where-Object Name -eq 'ApiVersion'
+    if (!$manifestVersion -or $apiVersion.Constant -ne $manifestVersion -or $built.Name.Version -ne [version]($manifestVersion + '.0')) { throw 'Manifest, API and assembly versions must agree.' }
+    foreach ($attributeName in @('System.Reflection.AssemblyFileVersionAttribute','System.Reflection.AssemblyInformationalVersionAttribute')) {
+        $attribute = $built.CustomAttributes | Where-Object { $_.AttributeType.FullName -eq $attributeName }
+        if (!$attribute -or $attribute.ConstructorArguments[0].Value -ne $manifestVersion) { throw 'DLL release metadata must match the manifest.' }
+    }
     $assemblyRefs = @($built.MainModule.AssemblyReferences.Name)
     if ($assemblyRefs -contains 'netstandard' -or $assemblyRefs -notcontains 'mscorlib') { throw 'Wrong player runtime profile.' }
     if ($assemblyRefs -contains 'FlappyAmbition' -or $assemblyRefs -contains 'ComputerGameHighScore') { throw 'MCG must remain independent of game/leaderboard mods.' }
@@ -110,7 +117,7 @@ foreach ($text in $decodedViews) {
         }
     }
 }
-foreach ($name in @('README.md','API.md','REQUIRED_MODS.md','VERIFICATION.md','LICENSE','ModManifest.asset','Thumbnail.jpg')) {
+foreach ($name in @('README.md','API.md','REQUIRED_MODS.md','VERIFICATION.md','CHANGELOG.md','LICENSE','ModManifest.asset','Thumbnail.jpg')) {
     Copy-Item -LiteralPath (Join-Path $repo $name) -Destination (Join-Path $package $name)
 }
 foreach ($folder in @('Locales','docs')) {
@@ -119,6 +126,11 @@ foreach ($folder in @('Locales','docs')) {
     foreach ($file in Get-ChildItem -LiteralPath (Join-Path $repo $folder) -File | Where-Object Extension -in @('.json','.md')) {
         Copy-Item -LiteralPath $file.FullName -Destination (Join-Path $target $file.Name)
     }
+}
+foreach ($file in Get-ChildItem -LiteralPath (Join-Path $repo 'releases') -File -Recurse | Where-Object Extension -in @('.md','.txt')) {
+    $target = Join-Path $package $file.FullName.Substring($repo.Length + 1)
+    New-Item -ItemType Directory -Force -Path (Split-Path $target -Parent) | Out-Null
+    Copy-Item -LiteralPath $file.FullName -Destination $target
 }
 if (@(Get-ChildItem -LiteralPath $package -Recurse -Filter '*.dll').Count -ne 1) { throw 'Package contains dependency DLLs.' }
 if (@(Get-ChildItem -LiteralPath $package -Recurse -File | Where-Object Extension -in @('.pdb','.mdb','.rsp','.log')).Count) { throw 'Package contains private build artifacts.' }

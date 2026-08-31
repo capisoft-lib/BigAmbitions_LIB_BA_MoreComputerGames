@@ -9,6 +9,8 @@ using PlayerActivity;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
+using UnityEngine.Audio;
+using Capisoft.Lib.BaUnifiedUI.Core;
 
 namespace Capisoft.Lib.BaComputerGames
 {
@@ -24,7 +26,7 @@ namespace Capisoft.Lib.BaComputerGames
         private VideoGameSetup _setup;
         private TrackedGameReference _reference;
         private CancellationTokenSource _selection;
-        private ComputerGamesCatalog _catalog;
+        private ComputerGameRegistration _launcherRegistration;
         private float _nextSearch;
         private int _selectionVersion;
         private bool _stopped;
@@ -41,9 +43,8 @@ namespace Capisoft.Lib.BaComputerGames
         private void LateUpdate()
         {
             if (_stopped) return;
-            if (!GameManager.IsInitialized || GameManager.isCitySceneBeingUnloaded) { CancelSelection(); CloseSession(); RestorePlayAction(); _catalog?.Hide(); return; }
+            if (!GameManager.IsInitialized || GameManager.isCitySceneBeingUnloaded) { CancelSelection(); CloseSession(); RestorePlayAction(); return; }
             if (_session != null && (!OwnsActiveSession(_session) || _reference != null && _reference.Failed)) CloseSession();
-            _catalog?.Tick();
             if (_overlay == null && Time.unscaledTime >= _nextSearch)
             {
                 _nextSearch = Time.unscaledTime + 1;
@@ -65,59 +66,58 @@ namespace Capisoft.Lib.BaComputerGames
             // Only replace the native computer action, never its label or a neighbouring activity.
             // The catalog still contains Brick Breaker when no additional game mod is enabled.
             if (playButton == null) { RestorePlayAction(); return; }
-            _playAction.Bind(playButton, OpenCatalog);
+            _playAction.Bind(playButton, OpenLauncher);
         }
-        private void OpenCatalog()
+        private void OpenLauncher()
         {
             var computer = _computer;
             if (_stopped || computer == null || _overlay == null || !_overlay.gameObject.activeInHierarchy ||
                 _overlay.linkedController != computer || !_overlay.ShouldShow(computer) || !PlayerActivityUI.CanStartActivity()) return;
             CancelSelection();
-            if (_catalog == null) _catalog = new ComputerGamesCatalog(CancelSelection);
-            _catalog.Show(id => Select(computer, id));
-            InstanceBehavior<OverlayManager>.Instance.HideDetailedOverlay(); RestorePlayAction();
-        }
-        private void Select(ComputerController computer, string id)
-        {
-            CancelSelection();
-            if (_stopped || computer == null || !PlayerActivityUI.CanStartActivity()) { _catalog.Hide(); return; }
             var cancellation = _selection = new CancellationTokenSource();
             var token = cancellation.Token;
             int version = _selectionVersion;
-            _catalog.Loading();
-            // Metadata only until the player actually reaches the selected computer.
-            computer.MoveTowardsEntity(() => StartAtComputer(computer, id, token, version));
+            InstanceBehavior<OverlayManager>.Instance.HideDetailedOverlay(); RestorePlayAction();
+            BaUiFocus.ReleaseForMovement();
+            // No catalog popup or gameplay loads while the player is walking.
+            computer.MoveTowardsEntity(() => StartAtComputer(computer, token, version));
         }
-        private async void StartAtComputer(ComputerController computer, string id, CancellationToken token, int version)
+        private void StartAtComputer(ComputerController computer, CancellationToken token, int version)
         {
-            ComputerGameSession prepared = null;
             try
             {
                 token.ThrowIfCancellationRequested();
                 if (_stopped || computer == null || GameManager.isCitySceneBeingUnloaded || VideoGameSetup.IsAnyVideoGamePlaying())
-                { if (version == _selectionVersion) _catalog?.Hide(); return; }
-                if (id == null) { _catalog.Hide(); computer.StartVideoGame(); return; }
-                prepared = await ComputerGames.PrepareAsync(id, token);
-                token.ThrowIfCancellationRequested();
-                if (_stopped || computer == null || GameManager.isCitySceneBeingUnloaded || VideoGameSetup.IsAnyVideoGamePlaying())
-                { if (version == _selectionVersion) _catalog?.Hide(); return; }
+                    return;
                 _setup = computer.GetComponentInChildren<VideoGameSetup>(true);
                 if (_setup == null) throw new InvalidOperationException("No VideoGameSetup on this computer.");
-                _session = prepared; prepared = null;
-                _reference = new TrackedGameReference(_session.AddressKey);
                 var original = (AssetReferenceGameObject)PrefabField.GetValue(_setup);
-                try { PrefabField.SetValue(_setup, _reference); _catalog.Hide(); computer.StartVideoGame(); }
+                var definition = new ComputerGameDefinition("mcg:launcher", "More Computer Games", "", ComputerGames.ApiVersion, root =>
+                {
+                    var launcher = root.AddComponent<ComputerGameLauncher>();
+                    launcher.Configure(original.RuntimeKey, GetNativeMixer, CanLeaveComputer); return launcher;
+                });
+                _launcherRegistration = new ComputerGameRegistration("LIB_BaComputerGames", "", definition);
+                _session = new ComputerGameSession(_launcherRegistration, null);
+                ComputerGames.Sessions.Add(_session.AddressKey, _session);
+                _reference = new TrackedGameReference(_session.AddressKey);
+                try { PrefabField.SetValue(_setup, _reference); computer.StartVideoGame(); }
                 finally { if (_setup != null) PrefabField.SetValue(_setup, original); }
             }
             catch (OperationCanceledException) { }
             catch (Exception error)
             {
                 ComputerGames.Report(error);
-                // A loader from an abandoned selection must not close a newer game or reopen its old UI.
-                if (!_stopped && version == _selectionVersion) { CloseSession(); _catalog?.Failed(); }
+                if (!_stopped && version == _selectionVersion) CloseSession();
             }
-            finally { prepared?.Dispose(); }
         }
+        private static bool CanLeaveComputer() => !UI.MiniMenu.MiniMenu.IsOpen &&
+            !Scenes.MainMenu.Options.IsVisible && !GameManager.isCitySceneBeingUnloaded &&
+            !GameManager.ShouldBlockKeyboardShortcuts();
+        private static AudioMixerGroup GetNativeMixer() => BuildingManager.IsInsideBuilding &&
+            !InstanceBehavior<BuildingManager>.Instance.building.IsHamptonsHouse()
+                ? InstanceBehavior<GlobalReferences>.Instance.indoorMixerGroup
+                : InstanceBehavior<GlobalReferences>.Instance.foleyMixerGroup;
         private void CancelSelection()
         {
             _selectionVersion++;
@@ -137,7 +137,11 @@ namespace Capisoft.Lib.BaComputerGames
                 if (setup != null && PlayingField.GetValue(null) as VideoGameSetup == setup) VideoGameSetup.RequestFinish();
             }
             catch (Exception error) { ComputerGames.Report(error); }
-            finally { session?.Dispose(); reference?.ReleaseWhenSafe(); }
+            finally
+            {
+                session?.Dispose(); reference?.ReleaseWhenSafe();
+                _launcherRegistration?.Dispose(); _launcherRegistration = null;
+            }
         }
         private void RestorePlayAction()
         {
@@ -146,7 +150,7 @@ namespace Capisoft.Lib.BaComputerGames
         internal void Shutdown()
         {
             if (_stopped) return; _stopped = true;
-            CancelSelection(); CloseSession(); RestorePlayAction(); _catalog?.Dispose(); _catalog = null;
+            CancelSelection(); CloseSession(); RestorePlayAction();
         }
         private void OnDestroy() { Shutdown(); }
     }

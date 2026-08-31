@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using Capisoft.Lib.BaComputerGames;
 
-// Shared fixture: .NET runs the state/storage cases; Unity runs the same cases with real JsonUtility.
+// Shared fixture: both .NET and Unity run the actual managed JSON persistence code.
 public static class RecordsHarness
 {
     public static void Run(Action<bool, string> check, string directory)
@@ -77,6 +77,25 @@ public static class RecordsHarness
             check(rejected && File.ReadAllText(future).Contains("99"), "Records: unknown schema remains untouched");
             rejected = false; try { new ComputerGameRecordStore(path, "different-profile", () => true); } catch { rejected = true; }
             check(rejected && File.ReadAllText(path) == beforeSwitch, "Records: file profile mismatch is rejected without reset");
+            string legacy = Path.Combine(directory, "legacy-header.json");
+            string header = "{\n    \"schemaVersion\": 1,\n    \"profileId\": \"profile\"\n}";
+            File.WriteAllText(legacy, header);
+            var recovered = new ComputerGameRecordStore(legacy, "profile", () => true);
+            check(!recovered.TryGet(definition.Id, definition.Ruleset, false, out _) && File.ReadAllText(legacy) == header,
+                "Records: known header-only legacy file opens without fabricating or rewriting scores");
+            recovered.Record(Result(definition.Id, definition.Ruleset, 35));
+            var recoveredReload = new ComputerGameRecordStore(legacy, "profile", () => true);
+            check(recoveredReload.TryGet(definition.Id, definition.Ruleset, false, out restored) && restored.Score == 35 && File.ReadAllText(legacy + ".bak") == header,
+                "Records: first real completion repairs legacy storage and preserves original bytes in backup");
+            foreach (var incomplete in new[] {
+                "{\"schemaVersion\":1,\"profileId\":\"profile\",\"records\":null}",
+                "{\"schemaVersion\":1,\"profileId\":\"profile\",\"otherScores\":[999]}",
+                "{\"schemaVersion\":1,\"profileId\":\"other-profile\"}"
+            }) {
+                string invalid = Path.Combine(directory, "incomplete.json"); File.WriteAllText(invalid, incomplete);
+                rejected = false; try { new ComputerGameRecordStore(invalid, "profile", () => true); } catch { rejected = true; }
+                check(rejected && File.ReadAllText(invalid) == incomplete, "Records: unknown/incomplete/cross-profile data is never treated as a legacy empty header");
+            }
             string blocked = Path.Combine(directory, "blocked.json"); Directory.CreateDirectory(blocked);
             ComputerGames.RecordStore = new ComputerGameRecordStore(blocked, "profile", () => true);
             var beforeFailure = rounds;

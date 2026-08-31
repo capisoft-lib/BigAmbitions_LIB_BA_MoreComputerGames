@@ -74,6 +74,7 @@ namespace Capisoft.Lib.BaComputerGames
         private IComputerGame _game;
         private bool _created;
         private float _acceptInputAt;
+        internal IVideoGame ActiveNativeGame => (_game as ComputerGameLauncher)?.NativeGame;
 
         public Camera GetCamera()
         {

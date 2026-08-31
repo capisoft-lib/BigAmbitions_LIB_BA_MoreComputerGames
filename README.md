@@ -1,10 +1,12 @@
-# LIB BA More Computer Games — preview 0.2.0
+# LIB BA More Computer Games — 1.0.0
 
 A shared library for adding mini-games to the computers inside Big Ambitions.
 
 ![More Computer Games promotional artwork](Thumbnail.jpg)
 
 **This repository contains MCG only.** FlappyAmbition is a separate mod: its sources, assets, tests and binaries are not included. The original brick-breaker game remains available without installing any additional games.
+
+**Version 1.0.0** brings the arcade menu onto the computer monitor, loads each game only when selected and keeps local high scores for vanilla and mod games. Read the release notes in [English](releases/1.0.0/RELEASE_NOTES.en.md) or [French](releases/1.0.0/RELEASE_NOTES.fr.md), or browse the [changelog](CHANGELOG.md).
 
 ## Documentation
 
@@ -21,11 +23,13 @@ The Steam thumbnail is **Thumbnail.jpg**. The original PNG and generation prompt
 
 ## What MCG provides
 
-When MCG is active, the computer's native video-game action opens the game catalog. No extra button is added: the original button's text, position and availability conditions are preserved. The original brick-breaker remains in the list even without additional game mods, and the time-passing action is unchanged. Disabling MCG restores the original play action.
+When MCG is active, the computer's native video-game action takes the player to the computer and opens an arcade menu on its monitor. Use **Up/Down** to select a game and **Enter** to launch it. **Backspace** returns to the menu or cancels loading; **Tab** leaves the computer. **Escape** keeps Big Ambitions' native pause menu. MCG shortcuts do not act while that menu or the options are open; Tab also respects native UI focus. No external catalog window or extra computer button is added. The original brick-breaker remains available without additional game mods, and the time-passing action is unchanged. Disabling MCG restores the original play action.
 
 Game authors provide a description, gameplay and an optional resource loader. MCG handles the catalog, monitor integration, standard controls and session cleanup.
 
 MCG also saves local high scores for the original brick-breaker and added games through the same round-completion event. Only a strictly higher score replaces a record. Records are separated by Steam profile, game and rules, shared across saves and stored outside ModsLocal. No additional online account or sharing is required. Abandoned rounds do not count.
+
+Record files use managed JSON serialization and are read back before an atomic write. If an earlier MCG build produced a file containing only the schema and profile header, recording resumes without inventing missing scores; the next new record preserves that original file as a backup. Other unreadable, unsupported or cross-profile files remain protected.
 
 See [API.md](API.md) for the interfaces, a minimal example and AssetBundle loading.
 
@@ -38,12 +42,16 @@ See [API.md](API.md) for the interfaces, a minimal example and AssetBundle loadi
 
 Additional games must be installed separately. MCG does not include or automatically download them; FlappyAmbitions is not required to install, build or use this library.
 
+## Roadmap
+
+- **Leaderboard** — We plan to explore adding a shared leaderboard soon, so players can compare high scores. This feature is not available yet, and there is no confirmed release date. For now, high scores remain local.
+
 ## Loading lifecycle
 
 - On city load: register game metadata and read the small local-record file; no gameplay objects or bundles are preloaded.
-- After selection and arrival at the computer: load optional game resources.
-- During native game instantiation: create the gameplay and its camera.
-- On session closure, game removal or library unload: stop gameplay and release resources.
+- At the computer: instantiate the lightweight menu; show installed games and local best scores.
+- After selection on the monitor: show loading, then load that game's optional resources and create its gameplay/camera. The native activity and monitor remain open.
+- On return to the menu, session closure, game removal or library unload: stop gameplay and release resources. Cancelled loads release their resources when they complete.
 - DLLs stay loaded in the process, as with other Unity mods. This mechanism does not unload assemblies.
 
 Games can register before or after the library becomes active. A namespaced identifier such as **mystudio:my-game** must be unique in the catalog; duplicates are explicitly rejected. Each registration owns a token that removes only its own game and sessions.
@@ -52,7 +60,9 @@ Games can register before or after the library becomes active. A namespaced iden
 
 Target: **Big Ambitions 1.0 Build 3670 / Unity 2022.3.62f2**, with **LIB_BaUnifiedUI 1.0.2+** installed separately. Do not bundle MCG or BAUI DLLs inside individual game mods. Add the dependencies to Steam Required Items when publishing.
 
-This preview is not published on the Workshop and does not yet have a Steam item ID. API 0.2.0 is experimental. Mod loading remains under the official SDK: MCG does not scan the disk for DLLs, download code or use a network service.
+MCG 1.0.0 preserves the public API signatures used by the 0.2.0 game mods. The library's namespace, assembly name, technical mod ID and record-file schema are unchanged. Mod loading remains under the official SDK: MCG does not scan the disk for DLLs, download code or use a network service.
+
+The [1.0.0 release folder](releases/1.0.0/) includes English and French release notes and Steam descriptions. Workshop publication and its Required Items are separate steps; no MCG Workshop item link is supplied here yet. Preparing these files or pushing the source repository does not publish the mod on Steam.
 
 ## Build and verification
 

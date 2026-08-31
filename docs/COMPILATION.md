@@ -10,7 +10,7 @@ Installer le SDK .NET 8, puis lancer depuis la racine du dépôt :
 dotnet run --project tools/Tests~/MCG.Tests.csproj -c Release
 ```
 
-Ces tests utilisent les sources réelles du registre, du cycle de manche et du stockage. Les types Unity sont substitués pour ce test .NET ; la sérialisation réelle Unity est une vérification distincte. Les fichiers de test sont créés dans un répertoire temporaire unique, jamais dans les sauvegardes du joueur. Le dossier `Tests~` est ignoré par l'import Unity.
+Ces tests utilisent les sources réelles du registre, du cycle de manche et du stockage, avec le sérialiseur JSON managé de MCG. Les types Unity sont substitués pour ce test .NET ; le chargement dynamique de la DLL dans un Player Unity est une vérification distincte. Les fichiers de test sont créés dans un répertoire temporaire unique, jamais dans les sauvegardes du joueur. Le dossier `Tests~` est ignoré par l'import Unity.
 
 ## Build Player Windows autonome
 
@@ -41,7 +41,7 @@ artifacts/build-<identifiant>/
 └── private-build.rsp          # Ne jamais publier : chemins de compilation locaux.
 ```
 
-Le répertoire `artifacts` entier est ignoré par Git. Le paquet contient uniquement la DLL MCG, les locales, le manifest, la vignette, la licence et la documentation. Aucune DLL BAUI/Unity/Big Ambitions, PDB, log ou réponse de compilateur n'y est copiée. Le build désactive les symboles et remplace les chemins source par un préfixe neutre.
+Le répertoire `artifacts` entier est ignoré par Git. Le paquet contient uniquement la DLL MCG, les locales, le manifest, la vignette, la licence, le changelog, les textes de release et la documentation. Aucune DLL BAUI/Unity/Big Ambitions, PDB, log ou réponse de compilateur n'y est copiée. Le build désactive les symboles, remplace les chemins source par un préfixe neutre et vérifie la cohérence des versions du manifest, de l'API et de la DLL.
 
 **Ce script n'installe, ne lance et ne publie rien.** Pour installer manuellement le sous-dossier du paquet, suivre [UTILISATION.md](UTILISATION.md). Ne jamais partager le dossier de build parent.
 

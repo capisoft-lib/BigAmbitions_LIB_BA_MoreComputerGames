@@ -1,6 +1,7 @@
 // Registry/ownership tests only. Presentation is checked by the real Unity player harness.
 namespace UnityEngine
 {
+    public static class Debug { public static void LogWarning(object value) => System.Console.WriteLine(value); }
     public static class JsonUtility
     {
         private static readonly System.Text.Json.JsonSerializerOptions Options = new() { IncludeFields = true };

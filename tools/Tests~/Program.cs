@@ -18,6 +18,18 @@ static class Program
         using var second = ComputerGames.Register("beta-mod", "/beta", Def("test:beta"));
         Check(ComputerGames.Catalog.Count == 2 && !ComputerGames.IsHostActive, "Registration works before host loads");
         Check(GameObject.Components == 0, "Registration creates no gameplay components");
+        var menu = new ComputerGamesCatalog(); menu.Refresh();
+        Check(menu.Count == 3 && menu.Selected.Id == ComputerGames.VanillaBrickBreakerId, "Monitor menu includes vanilla before registered games");
+        menu.Move(-1); Check(menu.Selected.Id == "test:beta", "Up from first game wraps to last");
+        menu.Move(1); Check(menu.SelectedIndex == 0, "Down from last game wraps to first");
+        menu.Move(1);
+        using (var inserted = ComputerGames.Register("extra", "", Def("test:aardvark")))
+        {
+            menu.Refresh(); Check(menu.Selected.Id == "test:alpha", "Registry insert preserves highlighted game by id");
+            menu.Move(-1); Check(menu.Selected.Id == "test:aardvark", "New game becomes selectable");
+        }
+        menu.Refresh(); Check(menu.Selected.Id == ComputerGames.VanillaBrickBreakerId, "Removing selected game returns highlight to vanilla");
+        Check(GameObject.Components == 0 && ComputerGames.Sessions.Count == 0, "Menu refresh and navigation never instantiate or prepare games");
         var snapshot = ComputerGames.Catalog;
         Check(ReferenceEquals(snapshot, ComputerGames.Catalog), "Catalog polling does not allocate each frame");
         await Reject<InvalidOperationException>(() => ComputerGames.PrepareAsync("test:alpha"), "Disabled host rejects launch");

@@ -1,4 +1,4 @@
-# Verification — MCG preview 0.2.0
+# Verification — MCG 1.0.0
 
 The source repository contains the MCG library only. FlappyAmbition and the external Unity integration fixtures are not included. Compilation, isolated tests and actual Big Ambitions gameplay are separate levels of evidence.
 
@@ -6,22 +6,49 @@ The source repository contains the MCG library only. FlappyAmbition and the exte
 
 Verified on 2026-08-31:
 
-- `dotnet run --project tools/Tests~/MCG.Tests.csproj -c Release`: **77 assertions passed** against the actual registry, session, round and record-store sources. Unity types and JSON serialization are substituted in this .NET test executable.
+- `dotnet run --project tools/Tests~/MCG.Tests.csproj -c Release`: **89 assertions passed** against the actual registry, monitor catalog, session, round and record-store sources. Unity presentation types are substituted; record JSON uses the actual managed serializer.
 - Coverage includes registration without creating gameplay objects, duplicate ownership, lazy resource loading, cancellation, release after cancellation, session closure, display-scope lifecycle and subscriber failures.
+- Monitor-catalog checks cover vanilla availability, Up/Down wraparound, selection preservation when registrations change, removal of the selected game and navigation without preparing any session.
 - Record checks cover real temporary-file reload, 64-bit scores, atomic backup, strictly greater comparison, event ordering, write failures, corrupt/future/profile-mismatched files, rules separation and abandoned rounds. Vanilla round-state tests cover pending points on the last life and replay uniqueness.
 - `tools/build.ps1` successfully compiles and packages MCG alone against Big Ambitions 1.0 Build 3670, Unity 2022.3.62f2 (`7670c08855a9`) and a separate BAUI 1.0.2 assembly. The build does not launch the game or modify an installation.
 - The package contains one DLL, belonging to MCG. The output uses the game's Mono `mscorlib` profile and has no assembly reference to FlappyAmbition or ComputerGameHighScore. The builder rejects PDB references, embedded debug symbols, known private build paths and private build artifacts in the package.
 
 See [the build guide](docs/COMPILATION.md) to reproduce these checks with your own dependencies. Generated compiler responses, references, test outputs and logs are private build material and are deliberately excluded from Git.
 
+## Version 1.0.0 package checks
+
+The manifest, public API version, DLL file/product metadata and assembly version agree on 1.0.0 (assembly identity 1.0.0.0). The 141 public type/member signatures from the installed 0.2.0 library are preserved. The final DLL resolves 193 type references and 432 member references against the installed game and separate BAUI dependency. All 60 MCG type/member references used by the installed FlappyAmbition, Snake (Snacke) and AmbitionsInvaders assemblies resolve against it; this is binary API validation, not a gameplay test of those mods.
+
+The 1.0.0 DLL also passes the 15 dynamic-record checks described below, across separate write/read Unity Player processes. The launcher was rerun with the 1.0.0 API sources and passes 77 checks; the repository suite passes 89. The package includes the changelog and eight English/French release and Workshop text files. Source, existing Git history and package scans found no secrets; compiler checks found no private machine paths or debug symbols in the DLL.
+
 ## Earlier external integration checks
 
 Before extraction into this repository, an isolated Unity player harness exercised actual AssetBundle loading/unloading, cancellation/reload, Addressables session ownership, Unity button-event replacement/restoration and session-owned display-profile copies. The 28 record/native-round cases also passed with real Unity `JsonUtility`. External game fixtures exercised the consumer lifecycle and camera rendering.
 
-Those fixtures are not shipped here, so the 77-check command above does not reproduce that Unity coverage. Historical fixture results do not establish that the native Big Ambitions computer UI works in a live game.
+Those fixtures are not shipped here, so the 89-check command above does not reproduce that Unity coverage. Historical fixture results do not establish that the native Big Ambitions computer UI works in a live game.
 
-## Remaining runtime validation
+## Native-monitor launcher checks
 
-**The native computer catalog, walking/loading/cancel interactions, HDRP monitor, vanilla score capture and coexistence with other computer mods still need an in-game smoke test. No native-game or visual catalog validation is claimed.**
+The separate catalog popup has been replaced by a menu rendered inside the computer monitor. An isolated Unity 2022.3.62f2 harness using the exact production launcher, provider, loader and API sources passes **77 assertions**, with inspected English camera renders at 960×540, 1280×720, 800×600 and 1920×1080.
 
-The compiler checks references, not native UI behavior or future game-version compatibility. This repository publication does not perform a new ModsLocal deployment, modify a player's saves, or publish a Steam Workshop item.
+Coverage includes metadata-only opening, navigation/paging, loading before construction, cancelled and overlapping loads, retry after failure, mod removal, native-prefab cancellation, camera/RenderTexture handoff, music preference, display-effect ownership and cleanup. Existing FlappyAmbition gameplay sources run unchanged through the launcher. Mod rounds still update the common local record store; menu navigation and abandoned loads emit no fake results.
+
+Tab exits the computer from the menu, a game or loading; the tests cover all three states, denied exit when the native shortcut guard is active, and repeated cleanup without fabricated scores. Backspace returns to the catalog. Escape remains the native pause shortcut and is neither consumed nor reset by MCG. MCG input and Tick are suspended while the native pause menu or options are open. English examples show the updated control hints.
+
+The native prefab fixture implements the real `IVideoGame` interface and is instantiated through real Addressables. It verifies native-game hosting and score-adapter unwrapping, but does not execute the proprietary Brick Breaker gameplay. Its real round capture still requires a native-game check. Input tests invoke the menu's input handler; they are not physical keyboard automation in Big Ambitions. These external fixtures are not included in the 89-check command.
+
+English examples are available under `release-assets/screenshots/` in the source repository. They are direct isolated monitor renders, not screenshots of a running Big Ambitions city. They contain no workstation paths or user-save information; Flappy remains a separate mod.
+
+## External-mod record persistence correction — 2026-08-31
+
+The user's missing-record failure was reproduced with the installed release DLL loaded by `Assembly.Load(byte[])` in an isolated Unity 2022.3.62f2 Mono Player. Unity `JsonUtility` wrote the document header but omitted its list of mod-defined record objects. Reload then rejected that incomplete file. Earlier tests compiled the record types into the Player and therefore missed this external-assembly case.
+
+The store now uses `DataContractJsonSerializer`, verifies every serialized field before touching disk and keeps atomic replacement with backup. Only the exact known legacy header is accepted as an empty history; its first subsequent record preserves the original bytes in `.bak`. Unknown/incomplete/cross-profile data still fails closed. Scores absent from the original and backup cannot be reconstructed.
+
+The corrected release DLL passes 15 checks in two separate Unity Player processes: completed record write/reload, independent games/rules, 64-bit values, strict improvement, old-file backup, legacy recovery and invalid-file protection. The original DLL reproducer passes two checks confirming the failure. The serializer, XML and core runtime assemblies in that Player are byte-identical to the installed game's libraries. An additional 120-check isolated Ambitions Invaders run passes with the corrected API source. These are external fixtures, not native game/save interaction.
+
+## Native runtime boundary
+
+**Native walking, physical keyboard/exit interactions, HDRP monitor rendering, real vanilla score capture and coexistence with other computer mods still need an in-game smoke test. Isolated rendered validation does not replace that test.**
+
+The compiler checks references, not native UI behavior or future game-version compatibility. Building or publishing this source repository does not automatically install a ModsLocal package, modify a player's saves or publish a Steam Workshop item. Installation and its file comparisons are separate steps.

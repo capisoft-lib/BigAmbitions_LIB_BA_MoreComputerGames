@@ -1,4 +1,4 @@
-# Installer et utiliser MCG
+# Installer et utiliser MCG 1.0.0
 
 ## Prérequis
 
@@ -33,6 +33,8 @@ ModsLocal/
     ├── API.md
     ├── REQUIRED_MODS.md
     ├── VERIFICATION.md
+    ├── CHANGELOG.md
+    ├── releases/
     ├── LICENSE
     └── docs/
 ```
@@ -45,9 +47,12 @@ Ne pas ajouter de copie de BAUI dans ce dossier. Une installation Workshop de BA
 
 1. Relancer Big Ambitions et vérifier l'état actif des mods requis.
 2. Charger une partie et sélectionner un ordinateur utilisable.
-3. Cliquer sur **Jouer aux jeux vidéo**, puis choisir un jeu dans le catalogue.
+3. Cliquer sur **Jouer aux jeux vidéo** : le personnage rejoint l'ordinateur et le menu MCG apparaît sur son moniteur.
+4. Utiliser **↑ / ↓** pour sélectionner un jeu, puis **Entrée** pour le charger et jouer. Le casse-briques est toujours proposé, et le record local du jeu sélectionné est affiché.
 
-MCG laisse le personnage rejoindre l'ordinateur avant de préparer les ressources du jeu choisi. Les contrôles habituels sont clic/espace pour l'action principale, R pour recommencer si le jeu le prévoit, et Échap pour quitter. Chaque jeu décrit ses règles. Les jeux supplémentaires s'installent séparément, sans copier MCG ou BAUI dans leur dossier.
+Les ressources ne sont préparées qu'après validation du choix sur le moniteur. **Retour arrière** annule un chargement ou revient au menu depuis un jeu, sans quitter l'ordinateur. **Tab** quitte l'ordinateur depuis le menu, un chargement ou un jeu. **Échap** conserve le menu pause natif de Big Ambitions ; MCG ne consomme pas cette touche. Les raccourcis MCG sont inactifs pendant le menu pause ou les options, et Tab conserve sa navigation native lorsqu'un contrôle UI a le focus. Un chargement échoué laisse le menu accessible ; Entrée permet de réessayer.
+
+Les contrôles habituels des jeux restent clic/espace pour l'action principale et R pour recommencer si le jeu le prévoit. Chaque jeu décrit ses règles. Les jeux supplémentaires s'installent séparément, sans copier MCG ou BAUI dans leur dossier. Le menu n'est pas une fenêtre BAUI : c'est une image de mini-jeu rendue dans l'écran natif ; BAUI reste la dépendance de gestion du focus lors de l'action sur l'ordinateur.
 
 ## Records locaux
 

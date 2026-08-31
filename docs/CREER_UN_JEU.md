@@ -83,4 +83,6 @@ Un loader personnalisé implémente `IComputerGameLoader` et retourne un `Comput
 
 Tester inscription/retrait, chargement, pause, victoire/défaite, redémarrage, abandon et réouverture. Une fin peut améliorer le record ; un abandon ne le modifie pas. Tester aussi la dépendance absente et l'annulation du chargement sans bloquer le jeu hôte.
 
+Le lanceur s'affiche sur le moniteur de l'ordinateur : ↑/↓ et Entrée choisissent le jeu. Retour arrière est réservé à MCG pour revenir au menu ou annuler un chargement ; Tab quitte l'ordinateur. `Context.RequestExit()` ferme le jeu et revient au menu. Échap conserve le menu pause natif, sans interception par MCG. Les jeux doivent laisser Tab/Retour arrière à l'hôte et indiquer « ESC: pause », pas « ESC: quitter ». Vérifier plusieurs lancements successifs, et libérer chaque session sans conserver de caméra ou d'assets d'une partie précédente.
+
 Distribuer uniquement le paquet du nouveau jeu. MCG et BAUI restent des dépendances séparées. Déclarer les Required Items Steam lorsque les éléments concernés sont publiés. Aucune version de FlappyAmbition n'est nécessaire.

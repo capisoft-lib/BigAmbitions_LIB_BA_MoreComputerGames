@@ -24,14 +24,15 @@ namespace Capisoft.Lib.BaComputerGames
             ComputerGames.Error += LogError;
             ComputerGames.Translator = Text;
             ComputerGames.BeginDisplaySession = NativeScreenEffects.BeginSession;
-            ComputerGames.InputAllowed = () => !Scenes.MainMenu.Options.IsVisible && !GameManager.isCitySceneBeingUnloaded;
+            ComputerGames.InputAllowed = () => !UI.MiniMenu.MiniMenu.IsOpen &&
+                !Scenes.MainMenu.Options.IsVisible && !GameManager.isCitySceneBeingUnloaded;
             _provider = new ComputerGameProvider(); _locator = _provider.CreateLocator();
             Addressables.ResourceManager.ResourceProviders.Add(_provider); Addressables.AddResourceLocator(_locator);
             _driver = new GameObject("BaComputerGames_Driver").AddComponent<ComputerGamesDriver>();
             _scores = _driver.gameObject.AddComponent<ComputerGameScoresRuntime>(); _scores.Initialize();
             ComputerGames.SessionAllowed = _driver.OwnsActiveSession;
             ComputerGames.ActivateHost();
-            Debug.Log("[BaComputerGames] Catalog ready; no gameplay objects or asset bundles preloaded.");
+            Debug.Log("[BaComputerGames] MCG " + ComputerGames.ApiVersion + " ready; no gameplay objects or asset bundles preloaded.");
             return Task.CompletedTask;
         }
         public Task OnUnloadAsync()

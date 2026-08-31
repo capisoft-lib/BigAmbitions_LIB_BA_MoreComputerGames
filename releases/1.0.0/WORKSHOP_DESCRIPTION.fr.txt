@@ -1,0 +1,34 @@
+[h1]More Computer Games (MCG) 1.0.0[/h1]
+Donnez à votre ordinateur de nouvelles façons de vous distraire de votre empire. MCG est une bibliothèque commune pour les mini-jeux de Big Ambitions.
+
+[h2]Un ordinateur, plusieurs jeux[/h2]
+[list]
+[*]Ouvrez le catalogue directement sur le moniteur avec l'action native Jouer aux jeux vidéo.
+[*]Gardez le casse-briques original et ajoutez séparément des mods de jeux compatibles.
+[*]Chargez les ressources de chaque jeu uniquement lorsque vous choisissez d'y jouer.
+[*]Conservez les meilleurs scores locaux des jeux vanilla et moddés dans un même système.
+[/list]
+
+[h2]Commandes[/h2]
+[b]Haut/Bas[/b] : choisir un jeu. [b]Entrée[/b] : jouer.
+[b]Retour arrière[/b] : revenir au catalogue ou annuler le chargement.
+[b]Tab[/b] : quitter l'ordinateur. [b]Échap[/b] : menu pause natif, inchangé.
+Les raccourcis MCG sont inactifs pendant le menu pause ou les options. Tab respecte le focus de l'interface native.
+
+[h2]Prérequis[/h2]
+Cible : Big Ambitions 1.0 Build 3670 sous Windows.
+Nécessite [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3790426259]LIB BA Unified UI 1.0.2 ou ultérieure[/url], installée et activée séparément.
+Activez aussi MCG. Redémarrez Big Ambitions après l'installation ou la mise à jour des mods.
+
+[h2]Jeux compatibles et développeurs[/h2]
+[url=https://github.com/capisoft-lib/BigAmbitions_MCG_FlappyAmbitions]FlappyAmbitions[/url], [url=https://github.com/capisoft-lib/BigAmbitions_MCG_Snacke]Snacke[/url] et [url=https://github.com/capisoft-lib/BigAmbitions_MCG_AmbitionsInvaders]Ambitions Invaders[/url] sont des mods de jeux MCG séparés. Ils ne sont ni inclus ni téléchargés automatiquement.
+Vous souhaitez ajouter votre jeu ? MCG fournit des API d'enregistrement, de chargement, de session et de fin de manche. Consultez le [url=https://github.com/capisoft-lib/BigAmbitions_LIB_BA_MoreComputerGames]dépôt des sources et la documentation[/url].
+
+[h2]Records locaux et roadmap[/h2]
+Seul un meilleur score de manche terminée remplace un record. Les records sont séparés par profil Steam, jeu et règles ; une manche abandonnée ne compte pas. ComputerGameHighScore n'est pas nécessaire.
+Nous envisageons d'ajouter prochainement un leaderboard partagé. Il n'est pas encore disponible et aucune date n'est confirmée. Les scores restent locaux, sans envoi en ligne ni compte supplémentaire.
+
+[h2]Validation[/h2]
+La compilation et les tests isolés sont documentés dans le dépôt. Les essais en partie réelle et de coexistence restent à réaliser. Les images d'exemple en anglais sont des rendus isolés du moniteur.
+
+Si MCG vous plaît, vous pouvez [url=https://buymeacoffee.com/capitaine]offrir un café au développeur[/url]. Il faut bien que quelqu'un reste productif pendant que vous jouez.
