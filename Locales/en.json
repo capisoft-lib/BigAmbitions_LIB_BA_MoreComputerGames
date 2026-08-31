@@ -13,5 +13,6 @@
   "bacg_library": "YOUR GAMES",
   "bacg_details": "SELECTED GAME",
   "bacg_best": "BEST",
-  "bacg_retry": "ENTER to retry, BACKSPACE for the menu."
+  "bacg_retry": "ENTER to retry, BACKSPACE for the menu.",
+  "bacg_return_menu": "Return to menu [Backspace]"
 }

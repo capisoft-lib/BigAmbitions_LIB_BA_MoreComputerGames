@@ -13,5 +13,6 @@
   "bacg_library": "JOCURILE TALE",
   "bacg_details": "JOCUL SELECTAT",
   "bacg_best": "RECORD",
-  "bacg_retry": "ENTER: reîncearcă. BACKSPACE: meniu."
+  "bacg_retry": "ENTER: reîncearcă. BACKSPACE: meniu.",
+  "bacg_return_menu": "Înapoi la meniu [Backspace]"
 }

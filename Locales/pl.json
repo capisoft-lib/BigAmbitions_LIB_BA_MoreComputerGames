@@ -13,5 +13,6 @@
   "bacg_library": "TWOJE GRY",
   "bacg_details": "WYBRANA GRA",
   "bacg_best": "REKORD",
-  "bacg_retry": "ENTER: ponów. BACKSPACE: menu."
+  "bacg_retry": "ENTER: ponów. BACKSPACE: menu.",
+  "bacg_return_menu": "Powrót do menu [Backspace]"
 }

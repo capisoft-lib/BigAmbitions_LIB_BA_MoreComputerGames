@@ -13,5 +13,6 @@
   "bacg_library": "JÁTÉKAID",
   "bacg_details": "KIVÁLASZTOTT JÁTÉK",
   "bacg_best": "REKORD",
-  "bacg_retry": "ENTER: újrapróbálás. BACKSPACE: menü."
+  "bacg_retry": "ENTER: újrapróbálás. BACKSPACE: menü.",
+  "bacg_return_menu": "Vissza a menübe [Backspace]"
 }

@@ -45,6 +45,8 @@ Ne pas ajouter de DLL de dépendance dans ce dossier. Conserver les bibliothèqu
 
 ## Jouer
 
+Pendant un jeu ou un chargement, le bouton **Retour au menu [Backspace]** apparaît à côté de **Quitter** dans le panneau natif sous le moniteur. Il revient au catalogue MCG ou annule le chargement sans quitter l'ordinateur. Le libellé est traduit dans les 22 langues ; le bouton est masqué dans le catalogue et ne répond pas lorsque le menu pause ou les options bloquent l'interface. Quitter une manche inachevée ne crée pas de score.
+
 L'interface MCG suit la langue choisie dans Big Ambitions et couvre ses **22 langues sélectionnables**, dont le portugais brésilien (`pt`), le chinois simplifié (`zh-cn`) et traditionnel (`zh-tw`). Les jeux supplémentaires fournissent leurs propres traductions de gameplay. L'en-tête « Jeu sélectionné » est actualisé avec les autres libellés si la langue change pendant que le menu du moniteur reste ouvert.
 
 1. Relancer Big Ambitions et vérifier l'état actif des mods requis.

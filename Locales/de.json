@@ -13,5 +13,6 @@
   "bacg_library": "DEINE SPIELE",
   "bacg_details": "AUSGEWÄHLTES SPIEL",
   "bacg_best": "REKORD",
-  "bacg_retry": "ENTER: erneut versuchen. BACKSPACE: Menü."
+  "bacg_retry": "ENTER: erneut versuchen. BACKSPACE: Menü.",
+  "bacg_return_menu": "Zurück zum Menü [Backspace]"
 }

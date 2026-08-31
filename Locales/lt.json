@@ -13,5 +13,6 @@
   "bacg_library": "JŪSŲ ŽAIDIMAI",
   "bacg_details": "PASIRINKTAS ŽAIDIMAS",
   "bacg_best": "REKORDAS",
-  "bacg_retry": "ENTER: bandyti dar kartą. BACKSPACE: meniu."
+  "bacg_retry": "ENTER: bandyti dar kartą. BACKSPACE: meniu.",
+  "bacg_return_menu": "Grįžti į meniu [Backspace]"
 }

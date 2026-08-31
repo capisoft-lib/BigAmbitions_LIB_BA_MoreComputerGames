@@ -13,5 +13,6 @@
   "bacg_library": "내 게임",
   "bacg_details": "선택한 게임",
   "bacg_best": "최고 기록",
-  "bacg_retry": "ENTER: 다시 시도. BACKSPACE: 메뉴."
+  "bacg_retry": "ENTER: 다시 시도. BACKSPACE: 메뉴.",
+  "bacg_return_menu": "메뉴로 돌아가기 [Backspace]"
 }

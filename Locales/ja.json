@@ -13,5 +13,6 @@
   "bacg_library": "ゲーム一覧",
   "bacg_details": "選択中のゲーム",
   "bacg_best": "ハイスコア",
-  "bacg_retry": "ENTER：再試行。BACKSPACE：メニュー。"
+  "bacg_retry": "ENTER：再試行。BACKSPACE：メニュー。",
+  "bacg_return_menu": "メニューに戻る [Backspace]"
 }

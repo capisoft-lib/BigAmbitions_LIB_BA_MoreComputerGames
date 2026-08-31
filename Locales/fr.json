@@ -13,5 +13,6 @@
   "bacg_library": "VOS JEUX",
   "bacg_details": "JEU SÉLECTIONNÉ",
   "bacg_best": "RECORD",
-  "bacg_retry": "ENTRÉE : réessayer. RETOUR ARRIÈRE : menu."
+  "bacg_retry": "ENTRÉE : réessayer. RETOUR ARRIÈRE : menu.",
+  "bacg_return_menu": "Retour au menu [Backspace]"
 }

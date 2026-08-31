@@ -13,5 +13,6 @@
   "bacg_library": "JOUW SPELLEN",
   "bacg_details": "GESELECTEERD SPEL",
   "bacg_best": "RECORD",
-  "bacg_retry": "ENTER: opnieuw proberen. BACKSPACE: menu."
+  "bacg_retry": "ENTER: opnieuw proberen. BACKSPACE: menu.",
+  "bacg_return_menu": "Terug naar het menu [Backspace]"
 }

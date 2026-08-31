@@ -13,5 +13,6 @@
   "bacg_library": "你的遊戲",
   "bacg_details": "已選遊戲",
   "bacg_best": "最高分",
-  "bacg_retry": "ENTER：重試。BACKSPACE：返回選單。"
+  "bacg_retry": "ENTER：重試。BACKSPACE：返回選單。",
+  "bacg_return_menu": "返回選單 [Backspace]"
 }

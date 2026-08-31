@@ -13,5 +13,6 @@
   "bacg_library": "DINE SPIL",
   "bacg_details": "VALGT SPIL",
   "bacg_best": "REKORD",
-  "bacg_retry": "ENTER: prøv igen. BACKSPACE: menu."
+  "bacg_retry": "ENTER: prøv igen. BACKSPACE: menu.",
+  "bacg_return_menu": "Tilbage til menuen [Backspace]"
 }

@@ -13,5 +13,6 @@
   "bacg_library": "VAŠE HRY",
   "bacg_details": "VYBRANÁ HRA",
   "bacg_best": "REKORD",
-  "bacg_retry": "ENTER: zkusit znovu. BACKSPACE: menu."
+  "bacg_retry": "ENTER: zkusit znovu. BACKSPACE: menu.",
+  "bacg_return_menu": "Zpět do nabídky [Backspace]"
 }

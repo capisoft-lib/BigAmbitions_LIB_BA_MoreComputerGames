@@ -13,5 +13,6 @@
   "bacg_library": "ВАШИ ИГРЫ",
   "bacg_details": "ВЫБРАННАЯ ИГРА",
   "bacg_best": "РЕКОРД",
-  "bacg_retry": "ENTER: повторить. BACKSPACE: меню."
+  "bacg_retry": "ENTER: повторить. BACKSPACE: меню.",
+  "bacg_return_menu": "Вернуться в меню [Backspace]"
 }

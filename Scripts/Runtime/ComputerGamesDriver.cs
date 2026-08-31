@@ -20,6 +20,8 @@ namespace Capisoft.Lib.BaComputerGames
         private static readonly FieldInfo ButtonsField = typeof(CustomizableButtonsOverlay).GetField("_buttons", BindingFlags.NonPublic | BindingFlags.Instance);
         private CustomizableButtonsOverlay _overlay;
         private readonly ButtonActionOverride _playAction = new ButtonActionOverride();
+        private ComputerReturnButton _returnButton;
+        private bool _returnButtonFailed;
         private ComputerController _computer;
         private ComputerGameSession _session;
         private VideoGameSetup _setup;
@@ -44,6 +46,7 @@ namespace Capisoft.Lib.BaComputerGames
             if (_stopped) return;
             if (!GameManager.IsInitialized || GameManager.isCitySceneBeingUnloaded) { CancelSelection(); CloseSession(); RestorePlayAction(); return; }
             if (_session != null && (!OwnsActiveSession(_session) || _reference != null && _reference.Failed)) CloseSession();
+            UpdateReturnButton();
             if (_overlay == null && Time.unscaledTime >= _nextSearch)
             {
                 _nextSearch = Time.unscaledTime + 1;
@@ -112,6 +115,36 @@ namespace Capisoft.Lib.BaComputerGames
         private static bool CanLeaveComputer() => !UI.MiniMenu.MiniMenu.IsOpen &&
             !Scenes.MainMenu.Options.IsVisible && !GameManager.isCitySceneBeingUnloaded &&
             !GameManager.ShouldBlockKeyboardShortcuts();
+        private bool CanReturnToMenu() => !_stopped && _session != null && OwnsActiveSession(_session) &&
+            _session.Instance is ComputerGameLauncher launcher && launcher.State != ComputerLauncherState.Menu &&
+            launcher.State != ComputerLauncherState.Closed && Application.isFocused &&
+            (ComputerGames.InputAllowed == null || ComputerGames.InputAllowed());
+        private void UpdateReturnButton()
+        {
+            if (_returnButtonFailed || _session == null || !OwnsActiveSession(_session) ||
+                !(_session.Instance is ComputerGameLauncher launcher)) return;
+            bool visible = launcher.State != ComputerLauncherState.Menu && launcher.State != ComputerLauncherState.Closed;
+            var leave = InstanceBehavior<UI.UIs>.Instance?.playerHUD?.itemPanelUI?.leaveButton;
+            if (leave == null) { _returnButton?.Dispose(); _returnButton = null; return; }
+            try
+            {
+                if (_returnButton != null && !_returnButton.Uses(leave)) { _returnButton.Dispose(); _returnButton = null; }
+                if (_returnButton == null && visible)
+                    _returnButton = new ComputerReturnButton(leave, () => launcher.HandleInput(0, false, true), CanReturnToMenu,
+                        button =>
+                        {
+                            // The clone gets its own translated label; native Leave remains untouched.
+                            foreach (var localizer in button.GetComponentsInChildren<TextLocalizationComponent>(true))
+                                localizer.SetData(default(LanguageChangeEventDataHolder));
+                        });
+                _returnButton?.Refresh(visible);
+            }
+            catch (Exception error)
+            {
+                _returnButton?.Dispose(); _returnButton = null; _returnButtonFailed = true;
+                ComputerGames.Report(error); // Backspace still works if the native panel changes.
+            }
+        }
         private static AudioMixerGroup GetNativeMixer() => BuildingManager.IsInsideBuilding &&
             !InstanceBehavior<BuildingManager>.Instance.building.IsHamptonsHouse()
                 ? InstanceBehavior<GlobalReferences>.Instance.indoorMixerGroup
@@ -126,6 +159,7 @@ namespace Capisoft.Lib.BaComputerGames
         }
         private void CloseSession()
         {
+            _returnButton?.Dispose(); _returnButton = null; _returnButtonFailed = false;
             var session = _session; _session = null;
             var setup = _setup; _setup = null;
             var reference = _reference; _reference = null;

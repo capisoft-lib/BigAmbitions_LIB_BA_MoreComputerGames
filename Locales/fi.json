@@ -13,5 +13,6 @@
   "bacg_library": "OMAT PELISI",
   "bacg_details": "VALITTU PELI",
   "bacg_best": "ENNÄTYS",
-  "bacg_retry": "ENTER: yritä uudelleen. BACKSPACE: valikko."
+  "bacg_retry": "ENTER: yritä uudelleen. BACKSPACE: valikko.",
+  "bacg_return_menu": "Takaisin valikkoon [Backspace]"
 }

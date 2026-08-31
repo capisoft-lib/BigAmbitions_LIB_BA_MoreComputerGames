@@ -13,5 +13,6 @@
   "bacg_library": "ΤΑ ΠΑΙΧΝΙΔΙΑ ΣΟΥ",
   "bacg_details": "ΕΠΙΛΕΓΜΕΝΟ ΠΑΙΧΝΙΔΙ",
   "bacg_best": "ΡΕΚΟΡ",
-  "bacg_retry": "ENTER: νέα προσπάθεια. BACKSPACE: μενού."
+  "bacg_retry": "ENTER: νέα προσπάθεια. BACKSPACE: μενού.",
+  "bacg_return_menu": "Επιστροφή στο μενού [Backspace]"
 }

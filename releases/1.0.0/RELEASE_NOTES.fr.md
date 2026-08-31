@@ -4,6 +4,8 @@ MCG transforme l'ordinateur du jeu en point d'accès commun aux mini-jeux. L'act
 
 ## Contenu de cette version
 
+- Un bouton traduit **Retour au menu [Backspace]**, à côté de **Quitter** dans le panneau natif sous le moniteur, disponible pendant un jeu, un chargement ou une erreur de lancement.
+
 - L'interface MCG traduite dans les **22 langues sélectionnables du jeu**, selon la langue choisie dans Big Ambitions. Chaque mod de jeu fournit ses propres traductions de gameplay.
 - Un menu sur le moniteur : **Haut/Bas** sélectionne, **Entrée** lance le jeu, **Retour arrière** revient au catalogue ou annule un chargement, et **Tab** quitte l'ordinateur. **Échap** conserve le menu pause natif de Big Ambitions.
 - Les ressources d'un jeu ne sont chargées qu'après sa sélection. MCG gère le chargement, l'annulation, la nouvelle tentative, le passage entre caméras et la libération de chaque session.

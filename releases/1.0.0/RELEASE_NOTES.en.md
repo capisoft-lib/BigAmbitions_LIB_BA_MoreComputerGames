@@ -4,6 +4,8 @@ MCG turns the in-game computer into a shared home for mini-games. Use the native
 
 ## What's included
 
+- A translated **Return to menu [Backspace]** button beside **Leave** in the native panel below the monitor, available during gameplay, loading or a launch error.
+
 - MCG interface translations for all **22 selectable game languages**, following the language chosen in Big Ambitions. Individual game mods provide their own gameplay translations.
 - A monitor-based game menu: **Up/Down** selects, **Enter** plays, **Backspace** returns to the catalog or cancels loading, and **Tab** leaves the computer. **Escape** keeps Big Ambitions' native pause menu.
 - Game resources load only after selection. MCG handles loading, cancellation, retry, camera handoff and session cleanup.

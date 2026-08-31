@@ -26,7 +26,7 @@ The 1.0.0 DLL also passes the 15 dynamic-record checks described below, across s
 
 ## Language coverage and rendering
 
-MCG provides 15 translation keys in each of the game's 22 selectable languages: **330 localized values** in total. The existing English/French JSON and Unity metadata are byte-for-byte unchanged. The native codes include `pt` for Brazilian Portuguese and `zh-cn` / `zh-tw` for Simplified/Traditional Chinese. Game names remain their own titles; separate game mods are responsible for their gameplay translations.
+MCG provides 16 translation keys in each of the game's 22 selectable languages: **352 localized values** in total, including the native-panel return button. Existing translation values and locale Unity metadata are preserved. The native codes include `pt` for Brazilian Portuguese and `zh-cn` / `zh-tw` for Simplified/Traditional Chinese. Game names remain their own titles; separate game mods are responsible for their gameplay translations.
 
 An isolated Unity 2022.3.62f2 probe loaded the actual locale JSON files and production menu view, then checked menu, loading and error states in every language: **66 states passed**, with no missing glyphs or detected text overflow on the validation machine. Representative Latin, Greek, Cyrillic, Japanese, Korean and Chinese renders were inspected at 960×540. The probe reproduced a stale selected-game heading when changing language while the menu remained open; that heading now refreshes with the other labels.
 
@@ -39,6 +39,8 @@ Before extraction into this repository, an isolated Unity player harness exercis
 Those fixtures are not shipped here, so the 114-check command above does not reproduce that Unity coverage. Historical fixture results do not establish that the native Big Ambitions computer UI works in a live game.
 
 ## Native-monitor launcher checks
+
+The native-panel **Return to menu [Backspace]** button is covered by an expanded isolated Unity run: **168 assertions pass**, including the earlier 77 launcher checks. The added checks cover pending-load cancellation and late asset disposal, mod/native/error returns, blocked clicks, persistent native Leave-listener isolation, abandoned rounds, pointer raycasting, horizontal/manual layout and cleanup. All 22 translated button labels fit beside Leave with no missing glyphs in the fixture; representative English, French, Cyrillic and Asian renders were inspected. The fixture uses a representative native-style panel with private test fonts; production clones the actual native Leave button and keeps its font/style. No fonts are shipped with MCG. A restarted native-game smoke remains required for the new button.
 
 The separate catalog popup has been replaced by a menu rendered inside the computer monitor. An isolated Unity 2022.3.62f2 harness using the exact production launcher, provider, loader and API sources passes **77 assertions**, with inspected English camera renders at 960×540, 1280×720, 800×600 and 1920×1080.
 

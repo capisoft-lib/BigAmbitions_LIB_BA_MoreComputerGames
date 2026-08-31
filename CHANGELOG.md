@@ -2,6 +2,8 @@
 
 ## 1.0.0 — 2026-08-31
 
+- Add a translated Return to menu [Backspace] button beside Leave in the native computer panel. It uses the same return/cancellation path as Backspace and leaves the native Leave action unchanged.
+
 - Translate the MCG interface into all 22 selectable game languages, preserving existing English/French strings. Refresh the selected-game heading when changing language while the monitor menu is open.
 - Validate locale coverage against the native language index during builds, with key/UTF-8/placeholder/metadata checks in the repository test suite.
 - Remove the obsolete external UI-library dependency. MCG builds and runs with the game's native computer integration and Unity UI, without another mod library.

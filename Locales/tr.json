@@ -13,5 +13,6 @@
   "bacg_library": "OYUNLARIN",
   "bacg_details": "SEÇİLİ OYUN",
   "bacg_best": "REKOR",
-  "bacg_retry": "ENTER: yeniden dene. BACKSPACE: menü."
+  "bacg_retry": "ENTER: yeniden dene. BACKSPACE: menü.",
+  "bacg_return_menu": "Menüye dön [Backspace]"
 }

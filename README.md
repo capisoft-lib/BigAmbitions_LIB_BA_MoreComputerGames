@@ -27,6 +27,8 @@ When MCG is active, the computer's native video-game action takes the player to 
 
 Game authors provide a description, gameplay and an optional resource loader. MCG handles the catalog, monitor integration, standard controls and session cleanup.
 
+During a game or loading, **Return to menu [Backspace]** also appears beside **Leave** in the native panel below the monitor. It returns to the MCG catalog or cancels loading without leaving the computer. The label follows the game's language; the button is hidden in the catalog and respects pause/options and UI input blocking. It uses the native button style and requires no additional UI library.
+
 MCG also saves local high scores for the original brick-breaker and added games through the same round-completion event. Only a strictly higher score replaces a record. Records are separated by Steam profile, game and rules, shared across saves and stored outside ModsLocal. No additional online account or sharing is required. Abandoned rounds do not count.
 
 Record files use managed JSON serialization and are read back before an atomic write. If an earlier MCG build produced a file containing only the schema and profile header, recording resumes without inventing missing scores; the next new record preserves that original file as a backup. Other unreadable, unsupported or cross-profile files remain protected.

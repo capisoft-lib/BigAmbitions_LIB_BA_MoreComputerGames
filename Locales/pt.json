@@ -13,5 +13,6 @@
   "bacg_library": "SEUS JOGOS",
   "bacg_details": "JOGO SELECIONADO",
   "bacg_best": "RECORDE",
-  "bacg_retry": "ENTER: tentar novamente. BACKSPACE: menu."
+  "bacg_retry": "ENTER: tentar novamente. BACKSPACE: menu.",
+  "bacg_return_menu": "Voltar ao menu [Backspace]"
 }
