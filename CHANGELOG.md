@@ -2,6 +2,7 @@
 
 ## 1.0.0 — 2026-08-31
 
+- Remove the obsolete external UI-library dependency. MCG builds and runs with the game's native computer integration and Unity UI, without another mod library.
 - Open the game catalog directly on the computer monitor through the native Play Video Games action.
 - Select with Up/Down and Enter; return to the catalog with Backspace and leave the computer with Tab. Escape keeps the native pause menu.
 - Load game resources only after selection, with cancellation, retry and cleanup when leaving or switching games.

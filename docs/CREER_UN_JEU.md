@@ -4,9 +4,9 @@ Le jeu est un **mod séparé** qui dépend de MCG. Aucun fork de la bibliothèqu
 
 ## 1. Préparer son mod
 
-Utiliser le [SDK Big Ambitions](https://github.com/hovgaardgames/bigambitions) et Unity **2022.3.62f2**. Créer un dossier de mod distinct, son manifest, son asmdef et sa classe d'entrée. Donner de nouveaux GUID Unity aux assets du nouveau mod ; conserver ceux de MCG et BAUI.
+Utiliser le [SDK Big Ambitions](https://github.com/hovgaardgames/bigambitions) et Unity **2022.3.62f2**. Créer un dossier de mod distinct, son manifest, son asmdef et sa classe d'entrée. Donner de nouveaux GUID Unity aux assets du nouveau mod ; conserver ceux de MCG.
 
-Dans l'asmdef du jeu, référencer **LIB_BaComputerGames** ou son GUID existant. Si `overrideReferences` est activé, conserver **BigAmbitions.ModAPI.dll** pour les attributs d'entrée du SDK. Ne pas incorporer les DLL de MCG, BAUI ou Big Ambitions au paquet distribué.
+Dans l'asmdef du jeu, référencer **LIB_BaComputerGames** ou son GUID existant. Si `overrideReferences` est activé, conserver **BigAmbitions.ModAPI.dll** pour les attributs d'entrée du SDK. Ne pas incorporer les DLL de MCG ou Big Ambitions au paquet distribué.
 
 ## 2. Enregistrer automatiquement le jeu
 
@@ -85,4 +85,4 @@ Tester inscription/retrait, chargement, pause, victoire/défaite, redémarrage, 
 
 Le lanceur s'affiche sur le moniteur de l'ordinateur : ↑/↓ et Entrée choisissent le jeu. Retour arrière est réservé à MCG pour revenir au menu ou annuler un chargement ; Tab quitte l'ordinateur. `Context.RequestExit()` ferme le jeu et revient au menu. Échap conserve le menu pause natif, sans interception par MCG. Les jeux doivent laisser Tab/Retour arrière à l'hôte et indiquer « ESC: pause », pas « ESC: quitter ». Vérifier plusieurs lancements successifs, et libérer chaque session sans conserver de caméra ou d'assets d'une partie précédente.
 
-Distribuer uniquement le paquet du nouveau jeu. MCG et BAUI restent des dépendances séparées. Déclarer les Required Items Steam lorsque les éléments concernés sont publiés. Aucune version de FlappyAmbition n'est nécessaire.
+Distribuer uniquement le paquet du nouveau jeu. MCG reste une dépendance séparée et ne nécessite aucune autre bibliothèque de mod. Déclarer MCG dans les Required Items Steam lorsque son élément est publié. Aucune version de FlappyAmbition n'est nécessaire.

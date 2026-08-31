@@ -3,10 +3,9 @@
 ## Prérequis
 
 - Big Ambitions pour Windows ; cible actuelle : **1.0 Build 3670**.
-- **LIB BA Unified UI 1.0.2+**, installé comme un mod séparé : [dépendance Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3790426259).
 - Un paquet MCG compilé. Le dépôt GitHub contient les sources ; suivre [COMPILATION.md](COMPILATION.md) si aucun paquet de release n'est disponible.
 
-MCG fonctionne sans jeu supplémentaire grâce au casse-briques vanilla. FlappyAmbition n'est pas inclus et ComputerGameHighScore n'est pas nécessaire.
+MCG ne nécessite aucune autre bibliothèque de mod et fonctionne sans jeu supplémentaire grâce au casse-briques vanilla. FlappyAmbition n'est pas inclus et ComputerGameHighScore n'est pas nécessaire.
 
 ## Installation locale Windows
 
@@ -41,7 +40,7 @@ ModsLocal/
 
 **Ne pas renommer la DLL** : les jeux compatibles référencent l'assembly `LIB_BaComputerGames`, même si son dossier d'installation porte un autre nom.
 
-Ne pas ajouter de copie de BAUI dans ce dossier. Une installation Workshop de BAUI peut rester dans son répertoire Steam. Déplacer une ancienne installation `ModsLocal/LIB_BaComputerGames` hors de ModsLocal avant d'installer la nouvelle pour éviter deux copies. Retirer le prototype ComputerArcade si son jeu existe déjà sous forme de mod séparé.
+Ne pas ajouter de DLL de dépendance dans ce dossier. Conserver les bibliothèques dont les autres mods ont besoin dans leurs installations séparées. Déplacer une ancienne installation `ModsLocal/LIB_BaComputerGames` hors de ModsLocal avant d'installer la nouvelle pour éviter deux copies. Retirer le prototype ComputerArcade si son jeu existe déjà sous forme de mod séparé.
 
 ## Jouer
 
@@ -52,7 +51,7 @@ Ne pas ajouter de copie de BAUI dans ce dossier. Une installation Workshop de BA
 
 Les ressources ne sont préparées qu'après validation du choix sur le moniteur. **Retour arrière** annule un chargement ou revient au menu depuis un jeu, sans quitter l'ordinateur. **Tab** quitte l'ordinateur depuis le menu, un chargement ou un jeu. **Échap** conserve le menu pause natif de Big Ambitions ; MCG ne consomme pas cette touche. Les raccourcis MCG sont inactifs pendant le menu pause ou les options, et Tab conserve sa navigation native lorsqu'un contrôle UI a le focus. Un chargement échoué laisse le menu accessible ; Entrée permet de réessayer.
 
-Les contrôles habituels des jeux restent clic/espace pour l'action principale et R pour recommencer si le jeu le prévoit. Chaque jeu décrit ses règles. Les jeux supplémentaires s'installent séparément, sans copier MCG ou BAUI dans leur dossier. Le menu n'est pas une fenêtre BAUI : c'est une image de mini-jeu rendue dans l'écran natif ; BAUI reste la dépendance de gestion du focus lors de l'action sur l'ordinateur.
+Les contrôles habituels des jeux restent clic/espace pour l'action principale et R pour recommencer si le jeu le prévoit. Chaque jeu décrit ses règles. Les jeux supplémentaires s'installent séparément, sans copier MCG dans leur dossier. Le menu est une image de mini-jeu rendue dans l'écran natif, avec Unity UI. La fermeture du panneau d'action natif et les contrôles de raccourcis du jeu restent en place ; MCG n'efface pas globalement le focus des autres interfaces.
 
 ## Records locaux
 
@@ -76,9 +75,9 @@ Un fichier corrompu ou incompatible est préservé et signalé dans le log. Ne p
 
 | Symptôme | Vérification |
 | --- | --- |
-| Le bouton lance directement le casse-briques | MCG et BAUI sont-ils chargés ? Le jeu a-t-il été relancé ? Reste-t-il un doublon ? |
+| Le bouton lance directement le casse-briques | MCG est-il chargé ? Le jeu a-t-il été relancé ? Reste-t-il un doublon ? |
 | Un jeu manque | Son mod distinct doit être installé et enregistré ; MCG ne recherche pas d'exécutables sur disque. |
-| Erreur de chargement de classe ou méthode | Vérifier les versions du jeu, de BAUI et de MCG ; partager uniquement un extrait de log anonymisé. |
+| Erreur de chargement de classe ou méthode | Vérifier les versions du jeu et de MCG ; partager uniquement un extrait de log anonymisé. |
 | Le record ne change pas | Terminer une manche et dépasser le record du même jeu/ruleset/profil. |
 | Stockage indisponible | Vérifier les droits d'écriture et l'avertissement MCG ; conserver le fichier d'origine. |
 

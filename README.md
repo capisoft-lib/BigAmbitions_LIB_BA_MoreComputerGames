@@ -58,7 +58,7 @@ Games can register before or after the library becomes active. A namespaced iden
 
 ## Dependencies and distribution
 
-Target: **Big Ambitions 1.0 Build 3670 / Unity 2022.3.62f2**, with **LIB_BaUnifiedUI 1.0.2+** installed separately. Do not bundle MCG or BAUI DLLs inside individual game mods. Add the dependencies to Steam Required Items when publishing.
+Target: **Big Ambitions 1.0 Build 3670 / Unity 2022.3.62f2**. **MCG requires no other mod library.** The monitor menu uses the game's native computer integration and Unity UI. Individual game mods must reference MCG as a separate dependency, never bundle its DLL, and declare MCG in Steam Required Items when publishing.
 
 MCG 1.0.0 preserves the public API signatures used by the 0.2.0 game mods. The library's namespace, assembly name, technical mod ID and record-file schema are unchanged. Mod loading remains under the official SDK: MCG does not scan the disk for DLLs, download code or use a network service.
 
@@ -72,7 +72,7 @@ From the repository root, with the .NET 8 SDK installed:
 dotnet run --project tools/Tests~/MCG.Tests.csproj -c Release
 ```
 
-The [build guide](docs/COMPILATION.md) explains how to build MCG alone using your own Big Ambitions, Unity and BAUI installations. Proprietary dependencies and generated binaries are not tracked in Git. GitHub's "Code" ZIP contains sources, not a ready-to-play mod package.
+The [build guide](docs/COMPILATION.md) explains how to build MCG alone using only your own Big Ambitions and Unity installations. Proprietary dependencies and generated binaries are not tracked in Git. GitHub's "Code" ZIP contains sources, not a ready-to-play mod package.
 
 The included tests do not launch Big Ambitions or touch its saves. Earlier Unity checks using external game fixtures are documented separately in [VERIFICATION.md](VERIFICATION.md); those fixtures are not included in this repository. Native computer UI and in-game compatibility checks are still pending, as described there. The build script does not install or publish anything.
 

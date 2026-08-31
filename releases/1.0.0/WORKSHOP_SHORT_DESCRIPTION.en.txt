@@ -1,1 +1,1 @@
-MCG 1.0.0 adds a game catalog to your computer monitor, loads compatible mini-games on demand and saves local records. Requires LIB BA Unified UI 1.0.2+. Additional games are separate mods.
+MCG 1.0.0 adds a game catalog to your computer monitor, loads compatible mini-games on demand and saves local records. No other mod library required. Additional games are separate mods.

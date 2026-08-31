@@ -1,1 +1,1 @@
-MCG 1.0.0 ajoute un catalogue sur le moniteur, charge les mini-jeux compatibles à la demande et sauvegarde les records locaux. Nécessite LIB BA Unified UI 1.0.2+. Les jeux supplémentaires sont des mods séparés.
+MCG 1.0.0 ajoute un catalogue sur le moniteur, charge les mini-jeux compatibles à la demande et sauvegarde les records locaux. Aucune autre bibliothèque de mod requise. Les jeux supplémentaires sont des mods séparés.

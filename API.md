@@ -19,7 +19,7 @@ Namespace public : **Capisoft.Lib.BaComputerGames**. Assembly : **LIB_BaComputer
 
 ## Exemple minimal
 
-Dans un mod SDK distinct, référencer LIB_BaComputerGames par son nom d'assembly ou son GUID dans l'asmdef. Conserver BigAmbitions.ModAPI comme référence précompilée pour les attributs du SDK. Ne pas référencer les classes internes du jeu ou BAUI depuis le gameplay. Voir aussi le [guide développeur](docs/CREER_UN_JEU.md).
+Dans un mod SDK distinct, référencer LIB_BaComputerGames par son nom d'assembly ou son GUID dans l'asmdef. Conserver BigAmbitions.ModAPI comme référence précompilée pour les attributs du SDK. Utiliser l'API MCG pour l'intégration à l'ordinateur ; aucune bibliothèque de mod supplémentaire n'est requise par MCG. Voir aussi le [guide développeur](docs/CREER_UN_JEU.md).
 
 ~~~csharp
 using BAModAPI;

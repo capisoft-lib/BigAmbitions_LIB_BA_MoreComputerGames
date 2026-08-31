@@ -12,7 +12,7 @@ MCG turns the in-game computer into a shared home for mini-games. Use the native
 
 ## Requirements and installation
 
-Target: **Big Ambitions 1.0 Build 3670 on Windows**, Unity 2022.3.62f2 / Mono. Install **LIB BA Unified UI 1.0.2+** separately and enable both libraries. Close the game before replacing the MCG package in `ModsLocal/LIB_BA_MoreComputerGames`, then restart it.
+Target: **Big Ambitions 1.0 Build 3670 on Windows**, Unity 2022.3.62f2 / Mono. **MCG requires no other mod library.** Enable MCG in the mod list. Close the game before replacing its package in `ModsLocal/LIB_BA_MoreComputerGames`, then restart it.
 
 MCG contains no additional game mod or bundled dependency DLL. [FlappyAmbitions](https://github.com/capisoft-lib/BigAmbitions_MCG_FlappyAmbitions), [Snacke](https://github.com/capisoft-lib/BigAmbitions_MCG_Snacke) and [Ambitions Invaders](https://github.com/capisoft-lib/BigAmbitions_MCG_AmbitionsInvaders) are separate examples. ComputerGameHighScore is not required. Existing local record files are not deleted by the installation.
 

@@ -10,7 +10,6 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 using UnityEngine.Audio;
-using Capisoft.Lib.BaUnifiedUI.Core;
 
 namespace Capisoft.Lib.BaComputerGames
 {
@@ -78,7 +77,6 @@ namespace Capisoft.Lib.BaComputerGames
             var token = cancellation.Token;
             int version = _selectionVersion;
             InstanceBehavior<OverlayManager>.Instance.HideDetailedOverlay(); RestorePlayAction();
-            BaUiFocus.ReleaseForMovement();
             // No catalog popup or gameplay loads while the player is walking.
             computer.MoveTowardsEntity(() => StartAtComputer(computer, token, version));
         }

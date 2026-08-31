@@ -17,8 +17,8 @@ Les raccourcis MCG sont inactifs pendant le menu pause ou les options. Tab respe
 
 [h2]Prérequis[/h2]
 Cible : Big Ambitions 1.0 Build 3670 sous Windows.
-Nécessite [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3790426259]LIB BA Unified UI 1.0.2 ou ultérieure[/url], installée et activée séparément.
-Activez aussi MCG. Redémarrez Big Ambitions après l'installation ou la mise à jour des mods.
+MCG ne nécessite aucune autre bibliothèque de mod. Activez MCG dans la liste des mods.
+Redémarrez Big Ambitions après l'installation ou la mise à jour des mods.
 
 [h2]Jeux compatibles et développeurs[/h2]
 [url=https://github.com/capisoft-lib/BigAmbitions_MCG_FlappyAmbitions]FlappyAmbitions[/url], [url=https://github.com/capisoft-lib/BigAmbitions_MCG_Snacke]Snacke[/url] et [url=https://github.com/capisoft-lib/BigAmbitions_MCG_AmbitionsInvaders]Ambitions Invaders[/url] sont des mods de jeux MCG séparés. Ils ne sont ni inclus ni téléchargés automatiquement.

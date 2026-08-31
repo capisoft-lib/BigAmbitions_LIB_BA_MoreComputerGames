@@ -5,4 +5,4 @@ MCG 1.0.0
 - Public API signatures, mod ID, assembly name and record schema preserved from 0.2.0.
 - Updated game-author documentation, compatible-game links and English examples.
 - Shared leaderboard under consideration; not available yet and no release date confirmed.
-Requires separate LIB BA Unified UI 1.0.2+. See the repository verification report for test coverage and remaining native-game checks.
+No other mod library required. See the repository verification report for test coverage and remaining native-game checks.

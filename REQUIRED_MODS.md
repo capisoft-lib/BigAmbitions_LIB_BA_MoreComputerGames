@@ -1,8 +1,7 @@
 # Required mods
 
-- LIB_BaUnifiedUI 1.0.2 or later, installed separately.
-- Steam Workshop BAUI item: https://steamcommunity.com/sharedfiles/filedetails/?id=3790426259
+MCG 1.0.0 requires no other mod library. It uses the Big Ambitions native computer integration and the Unity runtime supplied with the game.
 
-Add BAUI to Steam Required Items when publishing this library. The 1.0.0 release texts do not configure those items or publish to Steam.
-Do not ship LIB_BaUnifiedUI.dll inside LIB_BaComputerGames.
-The documentation records the required minimum; it is not an automatic dependency installer.
+There is no additional mod to add to MCG's Steam Required Items. Compatible game mods must declare MCG as their own separate dependency; they must not include its DLL in their packages.
+
+This statement does not change Steam Workshop settings or install/uninstall anything. Other mods may have their own independent requirements.

@@ -26,7 +26,6 @@
     "Unity.ugui",
     "Unity.Addressables",
     "Unity.ResourceManager",
-    "GUID:f1e2d3c4b5a6478890ab1c2d3e4f5a6b",
     "Unity.RenderPipelines.Core.Runtime"
   ],
   "name": "LIB_BaComputerGames",

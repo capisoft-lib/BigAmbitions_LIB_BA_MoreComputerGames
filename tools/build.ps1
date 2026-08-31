@@ -1,15 +1,13 @@
-# Build MCG only. Dependencies are supplied by the caller and are never packaged.
+# Build MCG only with the caller's game and Unity installations.
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)][string]$GameDirectory,
-    [Parameter(Mandatory = $true)][string]$UnityEditorPath,
-    [Parameter(Mandatory = $true)][string]$BauiDll
+    [Parameter(Mandatory = $true)][string]$UnityEditorPath
 )
 $ErrorActionPreference = 'Stop'
 $repo = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 $game = (Resolve-Path -LiteralPath $GameDirectory).Path
 $editor = (Resolve-Path -LiteralPath $UnityEditorPath).Path
-$baui = (Resolve-Path -LiteralPath $BauiDll).Path
 $editorData = Join-Path (Split-Path $editor -Parent) 'Data'
 $managed = Join-Path $game 'Big Ambitions_Data/Managed'
 foreach ($binary in @($editor, (Join-Path $game 'UnityPlayer.dll'))) {
@@ -25,15 +23,6 @@ $compiler = Join-Path $editorData 'DotNetSdkRoslyn/csc.dll'
 $cecil = Join-Path $editorData 'il2cpp/build/deploy/Mono.Cecil.dll'
 foreach ($tool in @($dotnet, $compiler, $cecil)) { if (!(Test-Path -LiteralPath $tool)) { throw 'Matching Unity compiler tools are missing.' } }
 if (!('Mono.Cecil.AssemblyDefinition' -as [type])) { Add-Type -LiteralPath $cecil }
-$dependency = [Mono.Cecil.AssemblyDefinition]::ReadAssembly($baui)
-try {
-    if ($dependency.Name.Name -ne 'LIB_BaUnifiedUI') { throw 'BauiDll must be the standalone LIB_BaUnifiedUI assembly.' }
-    if ($dependency.MainModule.AssemblyReferences.Name -contains 'netstandard') { throw 'BAUI must be built for the game Mono player profile.' }
-    $versionType = $dependency.MainModule.GetType('Capisoft.Lib.BaUnifiedUI.Core.BaUiVersion')
-    $versionField = $versionType.Fields | Where-Object Name -eq 'Version'
-    if (!$versionField -or [version]$versionField.Constant -lt [version]'1.0.2') { throw 'BAUI 1.0.2 or later is required.' }
-}
-finally { $dependency.Dispose() }
 
 # Unique output per invocation: no recursive deletion or implicit installation.
 $buildRoot = Join-Path $repo ('artifacts/build-' + (Get-Date -Format 'yyyyMMdd-HHmmssfff') + '-' + [guid]::NewGuid().ToString('N').Substring(0, 6))
@@ -68,7 +57,6 @@ $references = @(
         $_.Name -notlike 'UnityEngine*.dll' -or $_.Name -in @('UnityEngine.UI.dll','UnityEngine.UnityWebRequestModule.dll')
     }
     Get-ChildItem -LiteralPath $referenceRoot -Filter '*.dll' -File
-    Get-Item -LiteralPath $baui
 ) | Sort-Object Name -Unique
 $sources = @(Get-ChildItem -LiteralPath (Join-Path $repo 'Scripts') -Filter '*.cs' -File -Recurse | Sort-Object FullName)
 if (!$sources.Count) { throw 'No MCG sources found.' }
@@ -93,6 +81,7 @@ try {
         if (!$attribute -or $attribute.ConstructorArguments[0].Value -ne $manifestVersion) { throw 'DLL release metadata must match the manifest.' }
     }
     $assemblyRefs = @($built.MainModule.AssemblyReferences.Name)
+    if (@($assemblyRefs | Where-Object { $_ -like 'LIB_*' }).Count) { throw 'MCG must not depend on another mod library.' }
     if ($assemblyRefs -contains 'netstandard' -or $assemblyRefs -notcontains 'mscorlib') { throw 'Wrong player runtime profile.' }
     if ($assemblyRefs -contains 'FlappyAmbition' -or $assemblyRefs -contains 'ComputerGameHighScore') { throw 'MCG must remain independent of game/leaderboard mods.' }
     if ($built.MainModule.HasDebugHeader) {
