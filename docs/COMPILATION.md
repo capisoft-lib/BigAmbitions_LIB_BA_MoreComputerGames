@@ -12,6 +12,8 @@ dotnet run --project tools/Tests~/MCG.Tests.csproj -c Release
 
 Ces tests utilisent les sources réelles du registre, du cycle de manche et du stockage, avec le sérialiseur JSON managé de MCG. Les types Unity sont substitués pour ce test .NET ; le chargement dynamique de la DLL dans un Player Unity est une vérification distincte. Les fichiers de test sont créés dans un répertoire temporaire unique, jamais dans les sauvegardes du joueur. Le dossier `Tests~` est ignoré par l'import Unity.
 
+La suite vérifie aussi les 22 locales : codes natifs, clés identiques à l'anglais, absence de doublons et de valeurs vides, UTF-8 valide, paramètres de format et GUID Unity uniques. Le script de build compare les langues du mod à `Big Ambitions_Data/StreamingAssets/locale/locale.json` dans l'installation fournie ; une locale manquante ou incomplète bloque le build.
+
 ## Build Player Windows autonome
 
 Prérequis fournis localement par le développeur :

@@ -1,0 +1,17 @@
+{
+  "bacg_title": "More Computer Games (MCG)",
+  "bacg_loading": "Caricamento del gioco…",
+  "bacg_failed": "Impossibile avviare questo gioco. Dettagli in Player.log.",
+  "bacg_close": "Annulla / chiudi",
+  "bacg_play": "Gioca",
+  "bacg_original": "Gioco originale (Brick Breaker)",
+  "bacg_original_desc": "Incluso in Big Ambitions.",
+  "bacg_lazy": "Le risorse del gioco vengono caricate solo quando giochi.",
+  "bacg_menu_tagline": "Una piccola pausa. Grandi ambizioni.",
+  "bacg_menu_controls": "↑ / ↓  Scegli    ENTER  Gioca    BACKSPACE  Menu    TAB  Esci    ESC  Pausa",
+  "bacg_menu_back": "BACKSPACE  Menu / annulla    TAB  Lascia il computer    ESC  Pausa",
+  "bacg_library": "I TUOI GIOCHI",
+  "bacg_details": "GIOCO SELEZIONATO",
+  "bacg_best": "RECORD",
+  "bacg_retry": "ENTER: riprova. BACKSPACE: menu."
+}

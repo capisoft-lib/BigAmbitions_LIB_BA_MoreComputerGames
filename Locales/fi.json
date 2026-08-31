@@ -1,0 +1,17 @@
+{
+  "bacg_title": "More Computer Games (MCG)",
+  "bacg_loading": "Ladataan peliä…",
+  "bacg_failed": "Peliä ei voitu käynnistää. Lisätiedot ovat Player.log-tiedostossa.",
+  "bacg_close": "Peruuta / sulje",
+  "bacg_play": "Pelaa",
+  "bacg_original": "Alkuperäinen peli (Brick Breaker)",
+  "bacg_original_desc": "Sisältyy Big Ambitions -peliin.",
+  "bacg_lazy": "Peliresurssit ladataan vasta, kun pelaat.",
+  "bacg_menu_tagline": "Pieni tauko. Suuret tavoitteet.",
+  "bacg_menu_controls": "↑ / ↓  Valitse    ENTER  Pelaa    BACKSPACE  Valikko    TAB  Poistu    ESC  Tauko",
+  "bacg_menu_back": "BACKSPACE  Valikko / peruuta    TAB  Poistu tietokoneelta    ESC  Tauko",
+  "bacg_library": "OMAT PELISI",
+  "bacg_details": "VALITTU PELI",
+  "bacg_best": "ENNÄTYS",
+  "bacg_retry": "ENTER: yritä uudelleen. BACKSPACE: valikko."
+}

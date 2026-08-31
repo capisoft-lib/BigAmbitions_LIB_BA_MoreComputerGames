@@ -6,10 +6,11 @@ The source repository contains the MCG library only. FlappyAmbition and the exte
 
 Verified on 2026-08-31:
 
-- `dotnet run --project tools/Tests~/MCG.Tests.csproj -c Release`: **89 assertions passed** against the actual registry, monitor catalog, session, round and record-store sources. Unity presentation types are substituted; record JSON uses the actual managed serializer.
+- `dotnet run --project tools/Tests~/MCG.Tests.csproj -c Release`: **114 assertions passed** against the actual registry, monitor catalog, session, round and record-store sources, plus the repository's locale files. Unity presentation types are substituted; record JSON uses the actual managed serializer.
 - Coverage includes registration without creating gameplay objects, duplicate ownership, lazy resource loading, cancellation, release after cancellation, session closure, display-scope lifecycle and subscriber failures.
 - Monitor-catalog checks cover vanilla availability, Up/Down wraparound, selection preservation when registrations change, removal of the selected game and navigation without preparing any session.
 - Record checks cover real temporary-file reload, 64-bit scores, atomic backup, strictly greater comparison, event ordering, write failures, corrupt/future/profile-mismatched files, rules separation and abandoned rounds. Vanilla round-state tests cover pending points on the last life and replay uniqueness.
+- Locale checks cover all 22 native language codes, strict UTF-8 decoding, matching nonempty keys and placeholders, unique Unity metadata and every localization key referenced by MCG sources. The build also compares the locale files with the installed game's selectable-language index.
 - `tools/build.ps1` compiles and packages MCG using only Big Ambitions 1.0 Build 3670 and Unity 2022.3.62f2 (`7670c08855a9`). No other mod library is supplied to the compiler. The build does not launch the game or modify an installation.
 - The package contains one DLL, belonging to MCG. The output uses the game's Mono `mscorlib` profile and has no assembly reference to FlappyAmbition or ComputerGameHighScore. The builder rejects PDB references, embedded debug symbols, known private build paths and private build artifacts in the package.
 
@@ -21,13 +22,21 @@ The manifest, public API version, DLL file/product metadata and assembly version
 
 After dependency removal, the DLL resolves all 192 type and 431 member references with only the game runtime supplied to the resolver. All 60 MCG references from the installed FlappyAmbition, Snake (Snacke) and AmbitionsInvaders assemblies resolve. The 89 repository assertions and 15 dynamic-record checks pass again. The compiler has no separate mod-library input, and the resulting DLL has no external mod-library assembly reference. Public API and gameplay keys are unchanged; this cleanup does not clear focus belonging to other interfaces.
 
-The 1.0.0 DLL also passes the 15 dynamic-record checks described below, across separate write/read Unity Player processes. The launcher was rerun with the 1.0.0 API sources and passes 77 checks; the repository suite passes 89. The package includes the changelog and eight English/French release and Workshop text files. Source, existing Git history and package scans found no secrets; compiler checks found no private machine paths or debug symbols in the DLL.
+The 1.0.0 DLL also passes the 15 dynamic-record checks described below, across separate write/read Unity Player processes. The launcher was rerun with the 1.0.0 API sources and passes 77 checks; the repository suite now passes 114, including 25 locale assertions. The package includes all 22 locale JSON files, the changelog and eight English/French release and Workshop text files. Source, existing Git history and package scans found no secrets; compiler checks found no private machine paths or debug symbols in the DLL.
+
+## Language coverage and rendering
+
+MCG provides 15 translation keys in each of the game's 22 selectable languages: **330 localized values** in total. The existing English/French JSON and Unity metadata are byte-for-byte unchanged. The native codes include `pt` for Brazilian Portuguese and `zh-cn` / `zh-tw` for Simplified/Traditional Chinese. Game names remain their own titles; separate game mods are responsible for their gameplay translations.
+
+An isolated Unity 2022.3.62f2 probe loaded the actual locale JSON files and production menu view, then checked menu, loading and error states in every language: **66 states passed**, with no missing glyphs or detected text overflow on the validation machine. Representative Latin, Greek, Cyrillic, Japanese, Korean and Chinese renders were inspected at 960×540. The probe reproduced a stale selected-game heading when changing language while the menu remained open; that heading now refreshes with the other labels.
+
+These rendering checks use the existing Unity runtime font and this machine's font fallback. They do not establish identical font availability on every player's system, nor replace a native Big Ambitions smoke test or review by native speakers. Public example screenshots remain in English.
 
 ## Earlier external integration checks
 
 Before extraction into this repository, an isolated Unity player harness exercised actual AssetBundle loading/unloading, cancellation/reload, Addressables session ownership, Unity button-event replacement/restoration and session-owned display-profile copies. The 28 record/native-round cases also passed with real Unity `JsonUtility`. External game fixtures exercised the consumer lifecycle and camera rendering.
 
-Those fixtures are not shipped here, so the 89-check command above does not reproduce that Unity coverage. Historical fixture results do not establish that the native Big Ambitions computer UI works in a live game.
+Those fixtures are not shipped here, so the 114-check command above does not reproduce that Unity coverage. Historical fixture results do not establish that the native Big Ambitions computer UI works in a live game.
 
 ## Native-monitor launcher checks
 
@@ -37,7 +46,7 @@ Coverage includes metadata-only opening, navigation/paging, loading before const
 
 Tab exits the computer from the menu, a game or loading; the tests cover all three states, denied exit when the native shortcut guard is active, and repeated cleanup without fabricated scores. Backspace returns to the catalog. Escape remains the native pause shortcut and is neither consumed nor reset by MCG. MCG input and Tick are suspended while the native pause menu or options are open. English examples show the updated control hints.
 
-The native prefab fixture implements the real `IVideoGame` interface and is instantiated through real Addressables. It verifies native-game hosting and score-adapter unwrapping, but does not execute the proprietary Brick Breaker gameplay. Its real round capture still requires a native-game check. Input tests invoke the menu's input handler; they are not physical keyboard automation in Big Ambitions. These external fixtures are not included in the 89-check command.
+The native prefab fixture implements the real `IVideoGame` interface and is instantiated through real Addressables. It verifies native-game hosting and score-adapter unwrapping, but does not execute the proprietary Brick Breaker gameplay. Its real round capture still requires a native-game check. Input tests invoke the menu's input handler; they are not physical keyboard automation in Big Ambitions. These external fixtures are not included in the 114-check command.
 
 English examples are available under `release-assets/screenshots/` in the source repository. They are direct isolated monitor renders, not screenshots of a running Big Ambitions city. They contain no workstation paths or user-save information; Flappy remains a separate mod.
 

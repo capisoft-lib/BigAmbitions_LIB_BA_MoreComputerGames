@@ -1,1 +1,1 @@
-MCG 1.0.0 adds a game catalog to your computer monitor, loads compatible mini-games on demand and saves local records. No other mod library required. Additional games are separate mods.
+MCG 1.0.0: a computer game catalog in all 22 game languages, on-demand mini-games and local records. No other mod library required. Games are separate mods.

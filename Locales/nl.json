@@ -1,0 +1,17 @@
+{
+  "bacg_title": "More Computer Games (MCG)",
+  "bacg_loading": "Spel laden…",
+  "bacg_failed": "Kan dit spel niet starten. Zie Player.log voor details.",
+  "bacg_close": "Annuleren / sluiten",
+  "bacg_play": "Spelen",
+  "bacg_original": "Oorspronkelijk spel (Brick Breaker)",
+  "bacg_original_desc": "Inbegrepen bij Big Ambitions.",
+  "bacg_lazy": "Spelonderdelen worden pas geladen wanneer je speelt.",
+  "bacg_menu_tagline": "Even pauze. Grote ambities.",
+  "bacg_menu_controls": "↑ / ↓  Kiezen    ENTER  Spelen    BACKSPACE  Menu    TAB  Verlaten    ESC  Pauze",
+  "bacg_menu_back": "BACKSPACE  Menu / annuleren    TAB  Computer verlaten    ESC  Pauze",
+  "bacg_library": "JOUW SPELLEN",
+  "bacg_details": "GESELECTEERD SPEL",
+  "bacg_best": "RECORD",
+  "bacg_retry": "ENTER: opnieuw proberen. BACKSPACE: menu."
+}

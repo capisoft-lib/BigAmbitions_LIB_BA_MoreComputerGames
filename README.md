@@ -33,6 +33,12 @@ Record files use managed JSON serialization and are read back before an atomic w
 
 See [API.md](API.md) for the interfaces, a minimal example and AssetBundle loading.
 
+## Languages
+
+MCG's interface is translated into all **22 selectable game languages**: Czech, Danish, Dutch, English, Finnish, French, German, Greek, Hungarian, Italian, Japanese, Korean, Lithuanian, Polish, Brazilian Portuguese, Romanian, Russian, Spanish (Spain), Turkish, Ukrainian, Simplified Chinese and Traditional Chinese. It follows the language selected in Big Ambitions; game mods provide their own gameplay translations. The existing English/French strings are preserved.
+
+Native locale codes: `cs da de el en es fi fr hu it ja ko lt nl pl pt ro ru tr uk zh-cn zh-tw`. In particular, the game's Brazilian Portuguese code is `pt`. The build checks these files against the installed game's selectable-language index.
+
 ## Available games
 
 - **Brick Breaker** — the original Big Ambitions game, available without installing another game mod.

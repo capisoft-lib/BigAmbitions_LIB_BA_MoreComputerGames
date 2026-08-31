@@ -4,6 +4,7 @@ MCG transforme l'ordinateur du jeu en point d'accès commun aux mini-jeux. L'act
 
 ## Contenu de cette version
 
+- L'interface MCG traduite dans les **22 langues sélectionnables du jeu**, selon la langue choisie dans Big Ambitions. Chaque mod de jeu fournit ses propres traductions de gameplay.
 - Un menu sur le moniteur : **Haut/Bas** sélectionne, **Entrée** lance le jeu, **Retour arrière** revient au catalogue ou annule un chargement, et **Tab** quitte l'ordinateur. **Échap** conserve le menu pause natif de Big Ambitions.
 - Les ressources d'un jeu ne sont chargées qu'après sa sélection. MCG gère le chargement, l'annulation, la nouvelle tentative, le passage entre caméras et la libération de chaque session.
 - Un système de records locaux commun aux jeux vanilla et moddés. Seul un meilleur score de manche terminée remplace un record ; une manche abandonnée ne compte pas. Les records sont séparés par profil Steam, jeu et règles.

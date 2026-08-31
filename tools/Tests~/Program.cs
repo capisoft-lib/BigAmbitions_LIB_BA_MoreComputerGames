@@ -124,6 +124,7 @@ static class Program
         missingDisplay.Dispose(); ComputerGames.BeginDisplaySession = null;
         ComputerGames.DeactivateHost();
         RecordsHarness.Run(Check, Path.Combine(Path.GetTempPath(), "mcg-record-tests-" + Guid.NewGuid().ToString("N")));
+        LocalesHarness.Run(Check);
         Console.WriteLine("COMPLETE " + passed + " assertions");
     }
 }

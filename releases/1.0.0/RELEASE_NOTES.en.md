@@ -4,6 +4,7 @@ MCG turns the in-game computer into a shared home for mini-games. Use the native
 
 ## What's included
 
+- MCG interface translations for all **22 selectable game languages**, following the language chosen in Big Ambitions. Individual game mods provide their own gameplay translations.
 - A monitor-based game menu: **Up/Down** selects, **Enter** plays, **Backspace** returns to the catalog or cancels loading, and **Tab** leaves the computer. **Escape** keeps Big Ambitions' native pause menu.
 - Game resources load only after selection. MCG handles loading, cancellation, retry, camera handoff and session cleanup.
 - One local high-score system for vanilla and mod games. Only a higher completed score replaces a record; abandoned rounds do not count. Records are separated by Steam profile, game and rules.

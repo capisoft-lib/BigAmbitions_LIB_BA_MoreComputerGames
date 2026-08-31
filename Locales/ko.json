@@ -1,0 +1,17 @@
+{
+  "bacg_title": "More Computer Games (MCG)",
+  "bacg_loading": "게임 불러오는 중…",
+  "bacg_failed": "게임을 시작할 수 없습니다. 자세한 내용은 Player.log를 확인하세요.",
+  "bacg_close": "취소 / 닫기",
+  "bacg_play": "플레이",
+  "bacg_original": "기본 게임(Brick Breaker)",
+  "bacg_original_desc": "Big Ambitions에 포함되어 있습니다.",
+  "bacg_lazy": "게임 리소스는 플레이할 때만 불러옵니다.",
+  "bacg_menu_tagline": "잠깐의 휴식. 커다란 야망.",
+  "bacg_menu_controls": "↑ / ↓  선택    ENTER  플레이    BACKSPACE  메뉴    TAB  나가기    ESC  일시정지",
+  "bacg_menu_back": "BACKSPACE  메뉴 / 취소    TAB  컴퓨터에서 나가기    ESC  일시정지",
+  "bacg_library": "내 게임",
+  "bacg_details": "선택한 게임",
+  "bacg_best": "최고 기록",
+  "bacg_retry": "ENTER: 다시 시도. BACKSPACE: 메뉴."
+}

@@ -2,6 +2,8 @@
 
 ## 1.0.0 — 2026-08-31
 
+- Translate the MCG interface into all 22 selectable game languages, preserving existing English/French strings. Refresh the selected-game heading when changing language while the monitor menu is open.
+- Validate locale coverage against the native language index during builds, with key/UTF-8/placeholder/metadata checks in the repository test suite.
 - Remove the obsolete external UI-library dependency. MCG builds and runs with the game's native computer integration and Unity UI, without another mod library.
 - Open the game catalog directly on the computer monitor through the native Play Video Games action.
 - Select with Up/Down and Enter; return to the catalog with Backspace and leave the computer with Tab. Escape keeps the native pause menu.

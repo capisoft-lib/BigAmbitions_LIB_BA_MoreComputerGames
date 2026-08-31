@@ -1,4 +1,5 @@
 MCG 1.0.0
+- Interface MCG traduite dans les 22 langues sélectionnables du jeu ; l'en-tête « Jeu sélectionné » suit aussi les changements de langue.
 - Catalogue sur le moniteur natif de l'ordinateur ; ressources des jeux chargées après sélection.
 - Haut/Bas et Entrée pour choisir et jouer, Retour arrière pour revenir, Tab pour quitter. Échap conserve la pause native.
 - Records locaux unifiés pour les jeux vanilla et moddés, avec sérialisation JSON managée fiable et protection des fichiers existants.

@@ -1,0 +1,17 @@
+{
+  "bacg_title": "More Computer Games (MCG)",
+  "bacg_loading": "正在載入遊戲…",
+  "bacg_failed": "無法啟動此遊戲。詳情請查看 Player.log。",
+  "bacg_close": "取消 / 關閉",
+  "bacg_play": "開始遊戲",
+  "bacg_original": "原版遊戲（Brick Breaker）",
+  "bacg_original_desc": "Big Ambitions 內附的遊戲。",
+  "bacg_lazy": "僅在開始遊玩時載入遊戲資源。",
+  "bacg_menu_tagline": "稍作休息，胸懷大志。",
+  "bacg_menu_controls": "↑ / ↓  選擇    ENTER  開始    BACKSPACE  選單    TAB  離開    ESC  暫停",
+  "bacg_menu_back": "BACKSPACE  選單 / 取消    TAB  離開電腦    ESC  暫停",
+  "bacg_library": "你的遊戲",
+  "bacg_details": "已選遊戲",
+  "bacg_best": "最高分",
+  "bacg_retry": "ENTER：重試。BACKSPACE：返回選單。"
+}

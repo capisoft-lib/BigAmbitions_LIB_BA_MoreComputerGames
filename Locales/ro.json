@@ -1,0 +1,17 @@
+{
+  "bacg_title": "More Computer Games (MCG)",
+  "bacg_loading": "Se încarcă jocul…",
+  "bacg_failed": "Jocul nu a putut fi pornit. Detalii în Player.log.",
+  "bacg_close": "Anulează / închide",
+  "bacg_play": "Joacă",
+  "bacg_original": "Jocul original (Brick Breaker)",
+  "bacg_original_desc": "Inclus în Big Ambitions.",
+  "bacg_lazy": "Resursele jocului se încarcă doar când începi să joci.",
+  "bacg_menu_tagline": "O mică pauză. Ambiții mari.",
+  "bacg_menu_controls": "↑ / ↓  Alege    ENTER  Joacă    BACKSPACE  Meniu    TAB  Ieșire    ESC  Pauză",
+  "bacg_menu_back": "BACKSPACE  Meniu / anulează    TAB  Părăsește computerul    ESC  Pauză",
+  "bacg_library": "JOCURILE TALE",
+  "bacg_details": "JOCUL SELECTAT",
+  "bacg_best": "RECORD",
+  "bacg_retry": "ENTER: reîncearcă. BACKSPACE: meniu."
+}

@@ -7,6 +7,7 @@ Donnez à votre ordinateur de nouvelles façons de vous distraire de votre empir
 [*]Gardez le casse-briques original et ajoutez séparément des mods de jeux compatibles.
 [*]Chargez les ressources de chaque jeu uniquement lorsque vous choisissez d'y jouer.
 [*]Conservez les meilleurs scores locaux des jeux vanilla et moddés dans un même système.
+[*]Retrouvez l'interface MCG dans les 22 langues sélectionnables du jeu. Les mods de jeux fournissent leurs propres traductions de gameplay.
 [/list]
 
 [h2]Commandes[/h2]

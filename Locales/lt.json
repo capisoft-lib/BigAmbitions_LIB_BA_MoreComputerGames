@@ -1,0 +1,17 @@
+{
+  "bacg_title": "More Computer Games (MCG)",
+  "bacg_loading": "Įkeliamas žaidimas…",
+  "bacg_failed": "Nepavyko paleisti žaidimo. Daugiau informacijos – Player.log.",
+  "bacg_close": "Atšaukti / uždaryti",
+  "bacg_play": "Žaisti",
+  "bacg_original": "Originalus žaidimas (Brick Breaker)",
+  "bacg_original_desc": "Įtraukta į Big Ambitions.",
+  "bacg_lazy": "Žaidimo ištekliai įkeliami tik pradėjus žaisti.",
+  "bacg_menu_tagline": "Trumpa pertrauka. Didelės ambicijos.",
+  "bacg_menu_controls": "↑ / ↓  Rinktis    ENTER  Žaisti    BACKSPACE  Meniu    TAB  Išeiti    ESC  Pauzė",
+  "bacg_menu_back": "BACKSPACE  Meniu / atšaukti    TAB  Palikti kompiuterį    ESC  Pauzė",
+  "bacg_library": "JŪSŲ ŽAIDIMAI",
+  "bacg_details": "PASIRINKTAS ŽAIDIMAS",
+  "bacg_best": "REKORDAS",
+  "bacg_retry": "ENTER: bandyti dar kartą. BACKSPACE: meniu."
+}

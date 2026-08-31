@@ -1,4 +1,5 @@
 MCG 1.0.0
+- MCG interface localized into all 22 selectable game languages; selected-game heading also refreshes when changing language.
 - Game catalog on the native computer monitor; game resources load after selection.
 - Up/Down and Enter to choose and play, Backspace to return, Tab to leave. Escape keeps native pause.
 - Unified local records for vanilla and mod games, with reliable managed JSON serialization and protection for existing files.

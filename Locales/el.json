@@ -1,0 +1,17 @@
+{
+  "bacg_title": "More Computer Games (MCG)",
+  "bacg_loading": "Φόρτωση παιχνιδιού…",
+  "bacg_failed": "Δεν ήταν δυνατή η εκκίνηση του παιχνιδιού. Λεπτομέρειες στο Player.log.",
+  "bacg_close": "Ακύρωση / κλείσιμο",
+  "bacg_play": "Παίξε",
+  "bacg_original": "Αρχικό παιχνίδι (Brick Breaker)",
+  "bacg_original_desc": "Περιλαμβάνεται στο Big Ambitions.",
+  "bacg_lazy": "Οι πόροι του παιχνιδιού φορτώνονται μόνο όταν αρχίζεις να παίζεις.",
+  "bacg_menu_tagline": "Μικρό διάλειμμα. Μεγάλες φιλοδοξίες.",
+  "bacg_menu_controls": "↑ / ↓  Επιλογή    ENTER  Παίξε    BACKSPACE  Μενού    TAB  Έξοδος    ESC  Παύση",
+  "bacg_menu_back": "BACKSPACE  Μενού / ακύρωση    TAB  Έξοδος από υπολογιστή    ESC  Παύση",
+  "bacg_library": "ΤΑ ΠΑΙΧΝΙΔΙΑ ΣΟΥ",
+  "bacg_details": "ΕΠΙΛΕΓΜΕΝΟ ΠΑΙΧΝΙΔΙ",
+  "bacg_best": "ΡΕΚΟΡ",
+  "bacg_retry": "ENTER: νέα προσπάθεια. BACKSPACE: μενού."
+}

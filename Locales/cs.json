@@ -1,0 +1,17 @@
+{
+  "bacg_title": "More Computer Games (MCG)",
+  "bacg_loading": "Načítání hry…",
+  "bacg_failed": "Hru se nepodařilo spustit. Podrobnosti najdete v Player.log.",
+  "bacg_close": "Zrušit / zavřít",
+  "bacg_play": "Hrát",
+  "bacg_original": "Původní hra (Brick Breaker)",
+  "bacg_original_desc": "Součást hry Big Ambitions.",
+  "bacg_lazy": "Herní prostředky se načítají až při spuštění hry.",
+  "bacg_menu_tagline": "Malá pauza. Velké ambice.",
+  "bacg_menu_controls": "↑ / ↓  Výběr    ENTER  Hrát    BACKSPACE  Menu    TAB  Odejít    ESC  Pauza",
+  "bacg_menu_back": "BACKSPACE  Menu / zrušit    TAB  Opustit počítač    ESC  Pauza",
+  "bacg_library": "VAŠE HRY",
+  "bacg_details": "VYBRANÁ HRA",
+  "bacg_best": "REKORD",
+  "bacg_retry": "ENTER: zkusit znovu. BACKSPACE: menu."
+}

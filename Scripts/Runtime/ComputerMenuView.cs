@@ -17,7 +17,7 @@ namespace Capisoft.Lib.BaComputerGames
         internal Camera Camera { get; }
         private readonly Image[] _rows = new Image[5];
         private readonly Text[] _names = new Text[5];
-        private readonly Text _title, _description, _record, _count, _hint, _status, _subtitle;
+        private readonly Text _title, _description, _record, _count, _hint, _status, _subtitle, _details;
         private readonly GameObject _library, _loading;
         private readonly RectTransform _progress;
         private bool _busy;
@@ -58,7 +58,7 @@ namespace Capisoft.Lib.BaComputerGames
                 _names[i] = Label(row, "", 16, 0, 501, 49, 24, Paper);
             }
             Box(library, "DetailsDivider", 596, 81, 1, 261, new Color32(53, 76, 82, 255));
-            Label(library, "01 / SELECT", 624, 348, 302, 34, 18, Green).text = T("bacg_details", "SELECTED GAME");
+            _details = Label(library, T("bacg_details", "SELECTED GAME"), 624, 348, 302, 34, 18, Green);
             _title = Label(library, "", 624, 266, 302, 78, 28, Paper, true);
             _description = Label(library, "", 624, 148, 302, 111, 20, Muted, true);
             _record = Label(library, "", 624, 91, 302, 47, 23, Green);
@@ -79,6 +79,7 @@ namespace Capisoft.Lib.BaComputerGames
             bool message = _busy || state == ComputerLauncherState.Error;
             _library.SetActive(!message); _loading.SetActive(message);
             _subtitle.text = T("bacg_menu_tagline", "A little break. Big ambitions.");
+            _details.text = T("bacg_details", "SELECTED GAME");
             _hint.text = message
                 ? T("bacg_menu_back", "BACKSPACE  Menu / cancel    TAB  Leave computer    ESC  Pause")
                 : T("bacg_menu_controls", "↑ / ↓  Select    ENTER  Play    BACKSPACE  Menu    TAB  Leave    ESC  Pause");

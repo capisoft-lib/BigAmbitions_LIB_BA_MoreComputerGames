@@ -1,0 +1,17 @@
+{
+  "bacg_title": "More Computer Games (MCG)",
+  "bacg_loading": "Játék betöltése…",
+  "bacg_failed": "A játék nem indítható. Részletek: Player.log.",
+  "bacg_close": "Mégse / bezárás",
+  "bacg_play": "Játék",
+  "bacg_original": "Eredeti játék (Brick Breaker)",
+  "bacg_original_desc": "A Big Ambitions része.",
+  "bacg_lazy": "A játék erőforrásai csak indításkor töltődnek be.",
+  "bacg_menu_tagline": "Kis szünet. Nagy tervek.",
+  "bacg_menu_controls": "↑ / ↓  Választás    ENTER  Indítás    BACKSPACE  Menü    TAB  Kilépés    ESC  Szünet",
+  "bacg_menu_back": "BACKSPACE  Menü / mégse    TAB  Számítógép elhagyása    ESC  Szünet",
+  "bacg_library": "JÁTÉKAID",
+  "bacg_details": "KIVÁLASZTOTT JÁTÉK",
+  "bacg_best": "REKORD",
+  "bacg_retry": "ENTER: újrapróbálás. BACKSPACE: menü."
+}

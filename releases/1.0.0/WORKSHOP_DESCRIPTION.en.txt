@@ -7,6 +7,7 @@ Give your in-game computer more ways to distract you from building an empire. MC
 [*]Keep the original Brick Breaker and add compatible game mods separately.
 [*]Load each game's resources only when you choose to play it.
 [*]Save local high scores for vanilla and mod games through the same system.
+[*]Use the MCG interface in all 22 selectable game languages. Game mods supply their own gameplay translations.
 [/list]
 
 [h2]Controls[/h2]

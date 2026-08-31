@@ -1,0 +1,17 @@
+{
+  "bacg_title": "More Computer Games (MCG)",
+  "bacg_loading": "Загрузка игры…",
+  "bacg_failed": "Не удалось запустить игру. Подробности в Player.log.",
+  "bacg_close": "Отмена / закрыть",
+  "bacg_play": "Играть",
+  "bacg_original": "Оригинальная игра (Brick Breaker)",
+  "bacg_original_desc": "Входит в состав Big Ambitions.",
+  "bacg_lazy": "Ресурсы игры загружаются только при её запуске.",
+  "bacg_menu_tagline": "Небольшой перерыв. Большие амбиции.",
+  "bacg_menu_controls": "↑ / ↓  Выбор    ENTER  Играть    BACKSPACE  Меню    TAB  Выйти    ESC  Пауза",
+  "bacg_menu_back": "BACKSPACE  Меню / отмена    TAB  Выйти из-за компьютера    ESC  Пауза",
+  "bacg_library": "ВАШИ ИГРЫ",
+  "bacg_details": "ВЫБРАННАЯ ИГРА",
+  "bacg_best": "РЕКОРД",
+  "bacg_retry": "ENTER: повторить. BACKSPACE: меню."
+}

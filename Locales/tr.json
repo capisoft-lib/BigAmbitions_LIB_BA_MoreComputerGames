@@ -1,0 +1,17 @@
+{
+  "bacg_title": "More Computer Games (MCG)",
+  "bacg_loading": "Oyun yükleniyor…",
+  "bacg_failed": "Oyun başlatılamadı. Ayrıntılar için Player.log dosyasına bakın.",
+  "bacg_close": "İptal / kapat",
+  "bacg_play": "Oyna",
+  "bacg_original": "Orijinal oyun (Brick Breaker)",
+  "bacg_original_desc": "Big Ambitions'a dahildir.",
+  "bacg_lazy": "Oyun kaynakları yalnızca oynamaya başladığında yüklenir.",
+  "bacg_menu_tagline": "Küçük bir mola. Büyük hedefler.",
+  "bacg_menu_controls": "↑ / ↓  Seç    ENTER  Oyna    BACKSPACE  Menü    TAB  Çık    ESC  Duraklat",
+  "bacg_menu_back": "BACKSPACE  Menü / iptal    TAB  Bilgisayardan ayrıl    ESC  Duraklat",
+  "bacg_library": "OYUNLARIN",
+  "bacg_details": "SEÇİLİ OYUN",
+  "bacg_best": "REKOR",
+  "bacg_retry": "ENTER: yeniden dene. BACKSPACE: menü."
+}

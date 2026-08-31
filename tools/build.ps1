@@ -15,6 +15,18 @@ foreach ($binary in @($editor, (Join-Path $game 'UnityPlayer.dll'))) {
     if ($version -notlike '2022.3.62f2*7670c08855a9*') { throw 'Unity Editor and game player must use 2022.3.62f2 (7670c08855a9).' }
 }
 if (!(Test-Path -LiteralPath (Join-Path $game 'MonoBleedingEdge'))) { throw 'A Mono game installation is required; IL2CPP is unsupported.' }
+$nativeCodes = @((Get-Content -LiteralPath (Join-Path $game 'Big Ambitions_Data/StreamingAssets/locale/locale.json') -Raw -Encoding UTF8 | ConvertFrom-Json).PSObject.Properties.Name | Sort-Object)
+$localeFiles = @(Get-ChildItem -LiteralPath (Join-Path $repo 'Locales') -Filter '*.json' -File)
+$localeCodes = @($localeFiles.BaseName | Sort-Object)
+if (!$nativeCodes.Count -or @(Compare-Object $nativeCodes $localeCodes).Count) { throw 'MCG locale files must match every selectable native game language.' }
+$englishKeys = @((Get-Content -LiteralPath (Join-Path $repo 'Locales/en.json') -Raw -Encoding UTF8 | ConvertFrom-Json).PSObject.Properties.Name | Sort-Object)
+foreach ($file in $localeFiles) {
+    $locale = Get-Content -LiteralPath $file.FullName -Raw -Encoding UTF8 | ConvertFrom-Json
+    if (@(Compare-Object $englishKeys @($locale.PSObject.Properties.Name | Sort-Object)).Count -or
+        @($locale.PSObject.Properties | Where-Object { $_.Value -isnot [string] -or [string]::IsNullOrWhiteSpace($_.Value) }).Count) {
+        throw ('Incomplete or invalid locale: ' + $file.Name)
+    }
+}
 foreach ($name in @('mscorlib.dll', 'BigAmbitions.dll', 'BigAmbitions.ModAPI.dll', 'ArcadeMachines.dll')) {
     if (!(Test-Path -LiteralPath (Join-Path $managed $name))) { throw "Missing required game assembly: $name" }
 }

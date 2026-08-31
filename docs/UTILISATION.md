@@ -26,7 +26,8 @@ ModsLocal/
     ├── ModManifest.asset
     ├── Locales/
     │   ├── en.json
-    │   └── fr.json
+    │   ├── fr.json
+    │   └── ... (20 autres langues)
     ├── Thumbnail.jpg
     ├── README.md
     ├── API.md
@@ -43,6 +44,8 @@ ModsLocal/
 Ne pas ajouter de DLL de dépendance dans ce dossier. Conserver les bibliothèques dont les autres mods ont besoin dans leurs installations séparées. Déplacer une ancienne installation `ModsLocal/LIB_BaComputerGames` hors de ModsLocal avant d'installer la nouvelle pour éviter deux copies. Retirer le prototype ComputerArcade si son jeu existe déjà sous forme de mod séparé.
 
 ## Jouer
+
+L'interface MCG suit la langue choisie dans Big Ambitions et couvre ses **22 langues sélectionnables**, dont le portugais brésilien (`pt`), le chinois simplifié (`zh-cn`) et traditionnel (`zh-tw`). Les jeux supplémentaires fournissent leurs propres traductions de gameplay. L'en-tête « Jeu sélectionné » est actualisé avec les autres libellés si la langue change pendant que le menu du moniteur reste ouvert.
 
 1. Relancer Big Ambitions et vérifier l'état actif des mods requis.
 2. Charger une partie et sélectionner un ordinateur utilisable.
