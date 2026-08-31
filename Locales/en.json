@@ -1,0 +1,10 @@
+{
+  "bacg_title": "More Computer Games (MCG)",
+  "bacg_loading": "Walking to the computer / loading game…",
+  "bacg_failed": "Unable to start this game. See Player.log for details.",
+  "bacg_close": "Cancel / close",
+  "bacg_play": "Play",
+  "bacg_original": "Original game (Brick Breaker)",
+  "bacg_original_desc": "Included with Big Ambitions.",
+  "bacg_lazy": "Game resources load only when you play."
+}

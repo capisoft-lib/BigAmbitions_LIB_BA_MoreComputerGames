@@ -1,0 +1,36 @@
+{
+  "noEngineReferences": false,
+  "allowUnsafeCode": false,
+  "autoReferenced": false,
+  "overrideReferences": true,
+  "precompiledReferences": [
+    "BigAmbitions.dll",
+    "BigAmbitions.ModAPI.dll",
+    "BigAmbitions.Items.dll",
+    "BigAmbitions.Characters.dll",
+    "HGExtensions.dll",
+    "HGPlugins.dll",
+    "ArcadeMachines.dll",
+    "Facepunch.Steamworks.Win64.dll"
+  ],
+  "versionDefines": [],
+  "includePlatforms": [],
+  "rootNamespace": "Capisoft.Lib.BaComputerGames",
+  "excludePlatforms": [
+    "WindowsStandalone64",
+    "macOSStandalone",
+    "LinuxStandalone64"
+  ],
+  "references": [
+    "Unity.TextMeshPro",
+    "Unity.ugui",
+    "Unity.Addressables",
+    "Unity.ResourceManager",
+    "GUID:f1e2d3c4b5a6478890ab1c2d3e4f5a6b",
+    "Unity.RenderPipelines.Core.Runtime"
+  ],
+  "name": "LIB_BaComputerGames",
+  "defineConstraints": [
+    "BA_GAME_DLLS_IMPORTED"
+  ]
+}

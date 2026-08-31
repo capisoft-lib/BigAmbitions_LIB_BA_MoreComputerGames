@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../Scripts/Api/ComputerGameDefinition.cs" Link="Api/ComputerGameDefinition.cs" />
+    <Compile Include="../../Scripts/Api/ComputerGameContext.cs" Link="Api/ComputerGameContext.cs" />
+    <Compile Include="../../Scripts/Api/ComputerGames.cs" Link="Api/ComputerGames.cs" />
+    <Compile Include="../../Scripts/Api/ComputerGameRecords.cs" Link="Api/ComputerGameRecords.cs" />
+    <Compile Include="../../Scripts/Api/VanillaRoundTracker.cs" Link="Api/VanillaRoundTracker.cs" />
+    <Compile Include="../../Scripts/Api/ComputerGameMod.cs" Link="Api/ComputerGameMod.cs" />
+  </ItemGroup>
+</Project>

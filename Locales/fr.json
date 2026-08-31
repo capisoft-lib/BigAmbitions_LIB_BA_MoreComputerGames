@@ -1,0 +1,10 @@
+{
+  "bacg_title": "More Computer Games (MCG)",
+  "bacg_loading": "Déplacement vers l’ordinateur / chargement du jeu…",
+  "bacg_failed": "Impossible de démarrer ce jeu. Détails dans Player.log.",
+  "bacg_close": "Annuler / fermer",
+  "bacg_play": "Jouer",
+  "bacg_original": "Jeu d’origine (Brick Breaker)",
+  "bacg_original_desc": "Inclus dans Big Ambitions.",
+  "bacg_lazy": "Les ressources du jeu sont chargées au moment de jouer."
+}
