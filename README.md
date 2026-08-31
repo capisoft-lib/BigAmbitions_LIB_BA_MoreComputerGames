@@ -34,6 +34,7 @@ See [API.md](API.md) for the interfaces, a minimal example and AssetBundle loadi
 - **Brick Breaker** — the original Big Ambitions game, available without installing another game mod.
 - **[FlappyAmbitions](https://github.com/capisoft-lib/BigAmbitions_MCG_FlappyAmbitions)** — fly a banknote between office towers. A separate MCG game mod and an example for developers creating their own games.
 - **[Snacke](https://github.com/capisoft-lib/BigAmbitions_MCG_Snacke)** — grow a bread snake into a sandwich by eating lettuce, tomatoes and rare cheese. A separate MCG game mod translated into all 22 game languages.
+- **[Ambitions Invaders](https://github.com/capisoft-lib/BigAmbitions_MCG_AmbitionsInvaders)** — pilot a banknote and fire yellow lasers at pixel-art rival tycoons in a horizontal shooter. A separate MCG game mod translated into all 22 game languages.
 
 Additional games must be installed separately. MCG does not include or automatically download them; FlappyAmbitions is not required to install, build or use this library.
 
