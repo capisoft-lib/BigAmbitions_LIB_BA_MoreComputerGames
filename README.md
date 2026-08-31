@@ -27,9 +27,14 @@ Game authors provide a description, gameplay and an optional resource loader. MC
 
 MCG also saves local high scores for the original brick-breaker and added games through the same round-completion event. Only a strictly higher score replaces a record. Records are separated by Steam profile, game and rules, shared across saves and stored outside ModsLocal. No additional online account or sharing is required. Abandoned rounds do not count.
 
-**FlappyAmbition** is an example consumer developed separately. It is not required to install, build or use this library.
-
 See [API.md](API.md) for the interfaces, a minimal example and AssetBundle loading.
+
+## Available games
+
+- **Brick Breaker** — the original Big Ambitions game, available without installing another game mod.
+- **[FlappyAmbitions](https://github.com/capisoft-lib/BigAmbitions_MCG_FlappyAmbitions)** — fly a banknote between office towers. A separate MCG game mod and an example for developers creating their own games.
+
+Additional games must be installed separately. MCG does not include or automatically download them; FlappyAmbitions is not required to install, build or use this library.
 
 ## Loading lifecycle
 
