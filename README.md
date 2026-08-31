@@ -2,8 +2,6 @@
 
 A shared library for adding mini-games to the computers inside Big Ambitions.
 
-> ☕ If MCG has made your in-game workday a little less productive, [buy me a coffee](https://buymeacoffee.com/capitaine). Someone still has to keep the developer working.
-
 ![More Computer Games promotional artwork](Thumbnail.jpg)
 
 **This repository contains MCG only.** FlappyAmbition is a separate mod: its sources, assets, tests and binaries are not included. The original brick-breaker game remains available without installing any additional games.
@@ -62,3 +60,9 @@ The [build guide](docs/COMPILATION.md) explains how to build MCG alone using you
 The included tests do not launch Big Ambitions or touch its saves. Earlier Unity checks using external game fixtures are documented separately in [VERIFICATION.md](VERIFICATION.md); those fixtures are not included in this repository. Native computer UI and in-game compatibility checks are still pending, as described there. The build script does not install or publish anything.
 
 Original sources are released under the MIT license. Big Ambitions, Unity and other dependencies retain their respective licenses.
+
+## ☕ Support MCG
+
+If you enjoy MCG, you can help support its development with a coffee. Someone still has to keep the developer working.
+
+**[Buy me a coffee](https://buymeacoffee.com/capitaine)**
