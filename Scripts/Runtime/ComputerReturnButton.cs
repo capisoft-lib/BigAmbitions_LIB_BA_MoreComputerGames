@@ -37,8 +37,8 @@ namespace Capisoft.Lib.BaComputerGames
                 prepare?.Invoke(_button);
                 _label = _button.GetComponentInChildren<TMP_Text>(true);
                 if (_label == null) throw new InvalidOperationException("Native Leave button has no text label.");
+                _label.fontSizeMax = _label.enableAutoSizing ? _label.fontSizeMax : _label.fontSize;
                 _label.enableAutoSizing = true;
-                _label.fontSizeMax = _label.fontSize;
                 _label.fontSizeMin = Mathf.Min(12, _label.fontSizeMax);
                 // Shared by the Unity 2022 SDK TMP and the game's newer TMP version.
 #pragma warning disable CS0618

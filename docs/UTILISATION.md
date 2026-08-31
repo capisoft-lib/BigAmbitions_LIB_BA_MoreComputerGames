@@ -3,9 +3,15 @@
 ## Prérequis
 
 - Big Ambitions pour Windows ; cible actuelle : **1.0 Build 3670**.
-- Un paquet MCG compilé. Le dépôt GitHub contient les sources ; suivre [COMPILATION.md](COMPILATION.md) si aucun paquet de release n'est disponible.
+- MCG depuis le Workshop ou un paquet compilé. Le dépôt GitHub contient les sources ; suivre [COMPILATION.md](COMPILATION.md) pour produire un paquet local.
 
 MCG ne nécessite aucune autre bibliothèque de mod et fonctionne sans jeu supplémentaire grâce au casse-briques vanilla. FlappyAmbition n'est pas inclus et ComputerGameHighScore n'est pas nécessaire.
+
+## Installation depuis Steam Workshop
+
+S'abonner à **[LIB BA More Computer Games (MCG)](https://steamcommunity.com/sharedfiles/filedetails/?id=3793604724)**, laisser Steam terminer le téléchargement, puis activer le mod dans Big Ambitions et redémarrer le jeu. Installer séparément les jeux MCG souhaités.
+
+Si MCG était installé manuellement, fermer le jeu et conserver l'ancienne copie hors de ModsLocal avant de passer au Workshop. Éviter deux copies actives de la même bibliothèque. Les records restent stockés séparément des dossiers de mods.
 
 ## Installation locale Windows
 
@@ -46,6 +52,8 @@ Ne pas ajouter de DLL de dépendance dans ce dossier. Conserver les bibliothèqu
 ## Jouer
 
 Pendant un jeu ou un chargement, le bouton **Retour au menu [Backspace]** apparaît à côté de **Quitter** dans le panneau natif sous le moniteur. Il revient au catalogue MCG ou annule le chargement sans quitter l'ordinateur. Le libellé est traduit dans les 22 langues ; le bouton est masqué dans le catalogue et ne répond pas lorsque le menu pause ou les options bloquent l'interface. Quitter une manche inachevée ne crée pas de score.
+
+Le bouton natif pour quitter conserve son texte traduit et affiche **[TAB]** dans le menu MCG et pendant un jeu. Son action ne change pas ; l'indication disparaît lorsque l'on quitte l'ordinateur.
 
 L'interface MCG suit la langue choisie dans Big Ambitions et couvre ses **22 langues sélectionnables**, dont le portugais brésilien (`pt`), le chinois simplifié (`zh-cn`) et traditionnel (`zh-tw`). Les jeux supplémentaires fournissent leurs propres traductions de gameplay. L'en-tête « Jeu sélectionné » est actualisé avec les autres libellés si la langue change pendant que le menu du moniteur reste ouvert.
 

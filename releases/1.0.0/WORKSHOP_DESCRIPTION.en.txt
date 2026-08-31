@@ -8,12 +8,15 @@ Give your in-game computer more ways to distract you from building an empire. MC
 [*]Load each game's resources only when you choose to play it.
 [*]Save local high scores for vanilla and mod games through the same system.
 [*]Use the MCG interface in all 22 selectable game languages. Game mods supply their own gameplay translations.
+[*]Return to the game menu or leave the computer with clear buttons below the monitor.
 [/list]
 
 [h2]Controls[/h2]
 [b]Up/Down[/b]: select a game. [b]Enter[/b]: play.
 [b]Backspace[/b]: return to the catalog or cancel loading.
 [b]Tab[/b]: leave the computer. [b]Escape[/b]: native pause menu, unchanged.
+The translated [b]Return to menu [Backspace][/b] button returns to the catalog or cancels loading without leaving the PC. It appears during gameplay, loading or a launch error and is hidden in the catalog.
+The original [b]Leave[/b] button keeps its translated text and shows [b][TAB][/b] while using MCG. Its action is unchanged; the hint is removed on exit.
 MCG shortcuts are inactive while the pause menu or options are open. Tab respects native UI focus.
 
 [h2]Requirements[/h2]
@@ -22,8 +25,9 @@ MCG requires no other mod library. Enable MCG in the mod list.
 Restart Big Ambitions after installing or updating mods.
 
 [h2]Compatible games and developers[/h2]
-[url=https://github.com/capisoft-lib/BigAmbitions_MCG_FlappyAmbitions]FlappyAmbitions[/url], [url=https://github.com/capisoft-lib/BigAmbitions_MCG_Snacke]Snacke[/url] and [url=https://github.com/capisoft-lib/BigAmbitions_MCG_AmbitionsInvaders]Ambitions Invaders[/url] are separate MCG game mods. They are not included or downloaded automatically.
+[url=https://github.com/capisoft-lib/BigAmbitions_MCG_FlappyAmbitions]FlappyAmbitions[/url], [url=https://github.com/capisoft-lib/BigAmbitions_MCG_Snacke]Snacke[/url], [url=https://github.com/capisoft-lib/BigAmbitions_MCG_AmbitionsInvaders]Ambitions Invaders[/url] and [url=https://github.com/capisoft-lib/BigAmbitions_MCG_Tetrix]Tetrix[/url] are separate MCG game mods. They are not included or downloaded automatically.
 Want to add your own game? MCG provides registration, loading, session and round-completion APIs. See the [url=https://github.com/capisoft-lib/BigAmbitions_LIB_BA_MoreComputerGames]source repository and documentation[/url].
+Game authors: rebuild against MCG 1.0.0 (assembly 1.0.0.0), declare MCG as a separate dependency and never bundle its DLL. MCG itself has no Required Items.
 
 [h2]Local records and roadmap[/h2]
 Only a better score from a completed round replaces a record. Records are separated by Steam profile, game and rules; abandoned rounds do not count. ComputerGameHighScore is not required.

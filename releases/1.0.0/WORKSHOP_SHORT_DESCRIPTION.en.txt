@@ -1,1 +1,1 @@
-MCG 1.0.0: a computer game catalog in all 22 game languages, on-demand mini-games and local records. No other mod library required. Games are separate mods.
+MCG 1.0.0: a native computer game menu in 22 languages, on-demand games and local high scores. Return with [Backspace], leave with [TAB]. No other mod library required; extra games are separate mods.

@@ -18,6 +18,8 @@ See [the build guide](docs/COMPILATION.md) to reproduce these checks with your o
 
 ## Version 1.0.0 package checks
 
+The latest native-button build keeps assembly version 1.0.0.0 and all 141 public signatures. Its 208 type references and 481 member references resolve against the installed game runtime. The existing 114 repository assertions and 168 isolated launcher/panel assertions pass with the [TAB] hint applied; the English panel render was inspected. This remains isolated evidence, not a restarted native-game test. The following paragraphs also retain earlier validation stages for context.
+
 The manifest, public API version, DLL file/product metadata and assembly version agree on 1.0.0 (assembly identity 1.0.0.0). The 141 public type/member signatures from the 0.2.0 library are preserved. Removing the obsolete overlay-focus helper removes the last external mod-library reference; the native computer panel and shortcut guards are unchanged. Game and consumer reference checks are binary API validation, not a gameplay test of those mods.
 
 After dependency removal, the DLL resolves all 192 type and 431 member references with only the game runtime supplied to the resolver. All 60 MCG references from the installed FlappyAmbition, Snake (Snacke) and AmbitionsInvaders assemblies resolve. The 89 repository assertions and 15 dynamic-record checks pass again. The compiler has no separate mod-library input, and the resulting DLL has no external mod-library assembly reference. Public API and gameplay keys are unchanged; this cleanup does not clear focus belonging to other interfaces.
@@ -41,6 +43,8 @@ Those fixtures are not shipped here, so the 114-check command above does not rep
 ## Native-monitor launcher checks
 
 The native-panel **Return to menu [Backspace]** button is covered by an expanded isolated Unity run: **168 assertions pass**, including the earlier 77 launcher checks. The added checks cover pending-load cancellation and late asset disposal, mod/native/error returns, blocked clicks, persistent native Leave-listener isolation, abandoned rounds, pointer raycasting, horizontal/manual layout and cleanup. All 22 translated button labels fit beside Leave with no missing glyphs in the fixture; representative English, French, Cyrillic and Asian renders were inspected. The fixture uses a representative native-style panel with private test fonts; production clones the actual native Leave button and keeps its font/style. No fonts are shipped with MCG. A restarted native-game smoke remains required for the new button.
+
+The native Leave caption now receives **[TAB]** while an MCG session owns the computer. Its localization component and click event are not replaced. The hint follows native caption changes, avoids duplication and restores its own text/temporary autosizing when the session closes. The return-button clone retains the template's maximum font size. The same 168-check fixture was rerun with this hint; its English panel rendering is separate from native gameplay verification.
 
 The separate catalog popup has been replaced by a menu rendered inside the computer monitor. An isolated Unity 2022.3.62f2 harness using the exact production launcher, provider, loader and API sources passes **77 assertions**, with inspected English camera renders at 960×540, 1280×720, 800×600 and 1920×1080.
 

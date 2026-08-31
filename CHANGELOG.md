@@ -2,8 +2,8 @@
 
 ## 1.0.0 — 2026-08-31
 
+- Append [TAB] to the native Leave button's existing translated caption during MCG sessions, restoring the original caption on exit.
 - Add a translated Return to menu [Backspace] button beside Leave in the native computer panel. It uses the same return/cancellation path as Backspace and leaves the native Leave action unchanged.
-
 - Translate the MCG interface into all 22 selectable game languages, preserving existing English/French strings. Refresh the selected-game heading when changing language while the monitor menu is open.
 - Validate locale coverage against the native language index during builds, with key/UTF-8/placeholder/metadata checks in the repository test suite.
 - Remove the obsolete external UI-library dependency. MCG builds and runs with the game's native computer integration and Unity UI, without another mod library.
@@ -14,7 +14,9 @@
 - Save local high scores through one round-completion API, separated by Steam profile, game and rules. Abandoned rounds do not create results.
 - Fix incomplete record files produced by Unity serialization of dynamically loaded mod types. Managed JSON preserves full records and backs up the known legacy header on the next successful record.
 - Preserve the public 0.2.0 API signatures, technical mod ID, assembly name and record schema while promoting version metadata to 1.0.0.
+- Clarify that game mods must be rebuilt against assembly 1.0.0.0; preserving API signatures does not bypass the native major-version check.
 - Document the game-author API, existing games, build/privacy workflow and planned leaderboard. The leaderboard is not implemented and has no confirmed release date.
+- Refresh all English/French release and Workshop texts, add Tetrix to the separate-game examples, and provide a Steam upload checklist.
 
 Release notes: [English](releases/1.0.0/RELEASE_NOTES.en.md) · [Français](releases/1.0.0/RELEASE_NOTES.fr.md).
 

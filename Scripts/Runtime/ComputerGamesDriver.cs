@@ -21,6 +21,7 @@ namespace Capisoft.Lib.BaComputerGames
         private CustomizableButtonsOverlay _overlay;
         private readonly ButtonActionOverride _playAction = new ButtonActionOverride();
         private ComputerReturnButton _returnButton;
+        private ComputerLeaveHint _leaveHint;
         private bool _returnButtonFailed;
         private ComputerController _computer;
         private ComputerGameSession _session;
@@ -121,13 +122,21 @@ namespace Capisoft.Lib.BaComputerGames
             (ComputerGames.InputAllowed == null || ComputerGames.InputAllowed());
         private void UpdateReturnButton()
         {
-            if (_returnButtonFailed || _session == null || !OwnsActiveSession(_session) ||
+            if (_session == null || !OwnsActiveSession(_session) ||
                 !(_session.Instance is ComputerGameLauncher launcher)) return;
             bool visible = launcher.State != ComputerLauncherState.Menu && launcher.State != ComputerLauncherState.Closed;
             var leave = InstanceBehavior<UI.UIs>.Instance?.playerHUD?.itemPanelUI?.leaveButton;
-            if (leave == null) { _returnButton?.Dispose(); _returnButton = null; return; }
+            if (leave == null)
+            {
+                _returnButton?.Dispose(); _returnButton = null;
+                _leaveHint?.Dispose(); _leaveHint = null; return;
+            }
             try
             {
+                if (_leaveHint != null && !_leaveHint.Uses(leave)) { _leaveHint.Dispose(); _leaveHint = null; }
+                if (_leaveHint == null) _leaveHint = new ComputerLeaveHint(leave);
+                _leaveHint.Refresh();
+                if (_returnButtonFailed) return;
                 if (_returnButton != null && !_returnButton.Uses(leave)) { _returnButton.Dispose(); _returnButton = null; }
                 if (_returnButton == null && visible)
                     _returnButton = new ComputerReturnButton(leave, () => launcher.HandleInput(0, false, true), CanReturnToMenu,
@@ -160,6 +169,7 @@ namespace Capisoft.Lib.BaComputerGames
         private void CloseSession()
         {
             _returnButton?.Dispose(); _returnButton = null; _returnButtonFailed = false;
+            _leaveHint?.Dispose(); _leaveHint = null;
             var session = _session; _session = null;
             var setup = _setup; _setup = null;
             var reference = _reference; _reference = null;

@@ -8,4 +8,4 @@ Direct 1920×1080 renders from the MCG launcher in an isolated Unity 2022.3.62f2
 
 These images show the content rendered into the computer monitor. They do not show the native Big Ambitions city, monitor geometry or HDRP effects, and do not establish an in-game runtime test. No player save data is used.
 
-[FlappyAmbitions](https://github.com/capisoft-lib/BigAmbitions_MCG_FlappyAmbitions) is installed separately and is not included in MCG. Its metadata is shown here as a compatible game example. The menu and screenshots are in English; MCG also includes French text.
+[FlappyAmbitions](https://github.com/capisoft-lib/BigAmbitions_MCG_FlappyAmbitions) is installed separately and is not included in MCG. Its metadata is shown here as a compatible game example. The menu and screenshots are in English; MCG supports all 22 game languages. These monitor-only examples do not show the native Return to menu [Backspace] and Leave [TAB] buttons below the monitor.

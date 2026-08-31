@@ -4,9 +4,11 @@ A shared library for adding mini-games to the computers inside Big Ambitions.
 
 ![More Computer Games promotional artwork](Thumbnail.jpg)
 
+**[Get MCG on Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3793604724)**
+
 **This repository contains MCG only.** FlappyAmbition is a separate mod: its sources, assets, tests and binaries are not included. The original brick-breaker game remains available without installing any additional games.
 
-**Version 1.0.0** brings the arcade menu onto the computer monitor, loads each game only when selected and keeps local high scores for vanilla and mod games. Read the release notes in [English](releases/1.0.0/RELEASE_NOTES.en.md) or [French](releases/1.0.0/RELEASE_NOTES.fr.md), or browse the [changelog](CHANGELOG.md).
+**Version 1.0.0** brings a game menu onto the computer monitor, with **22 interface languages**, resources loaded only after selection and local high scores for vanilla and mod games. The native panel offers a translated **Return to menu [Backspace]** button and keeps its original **Leave** button with a **[TAB]** hint. No other mod library is required. Read the release notes in [English](releases/1.0.0/RELEASE_NOTES.en.md) or [French](releases/1.0.0/RELEASE_NOTES.fr.md), or browse the [changelog](CHANGELOG.md).
 
 ## Documentation
 
@@ -16,18 +18,31 @@ The detailed guides below are currently in French:
 - [Create a compatible game](docs/CREER_UN_JEU.md), then read the [full API reference](API.md).
 - [Build and verify MCG](docs/COMPILATION.md).
 - [Source and package privacy](docs/CONFIDENTIALITE.md).
+- [Steam Workshop publication checklist and ready-to-copy texts](releases/1.0.0/PUBLISHING_CHECKLIST.md).
 
-The Steam display title is **LIB BA More Computer Games**, also stored in **release-assets/WORKSHOP_TITLE.txt** for publication. The short name is **More Computer Games (MCG)**. Install the package in **ModsLocal/LIB_BA_MoreComputerGames**. The technical mod ID and assembly name remain **LIB_BaComputerGames** to preserve references from game mods and the C# API. Big Ambitions uses the folder name in its local mod list; the Workshop title is entered separately when publishing.
+The Steam display title is **LIB BA More Computer Games (MCG)**, also stored in **release-assets/WORKSHOP_TITLE.txt** for publication. The short name is **More Computer Games (MCG)**. For manual installation, use **ModsLocal/LIB_BA_MoreComputerGames**; do not keep an active local duplicate alongside the Workshop version. The technical mod ID and assembly name remain **LIB_BaComputerGames** to preserve references from game mods and the C# API. Big Ambitions uses the folder name in its local mod list; the Workshop title is entered separately when publishing.
 
 The Steam thumbnail is **Thumbnail.jpg**. The original PNG and generation prompt are in **release-assets/**. This promotional artwork illustrates the library's purpose; it is not a screenshot or a list of included games.
 
 ## What MCG provides
 
-When MCG is active, the computer's native video-game action takes the player to the computer and opens an arcade menu on its monitor. Use **Up/Down** to select a game and **Enter** to launch it. **Backspace** returns to the menu or cancels loading; **Tab** leaves the computer. **Escape** keeps Big Ambitions' native pause menu. MCG shortcuts do not act while that menu or the options are open; Tab also respects native UI focus. No external catalog window or extra computer button is added. The original brick-breaker remains available without additional game mods, and the time-passing action is unchanged. Disabling MCG restores the original play action.
+When MCG is active, the computer's native **Play Video Games** action takes the player to the computer and opens the game menu on its monitor. The original brick-breaker remains available without additional game mods. The time-passing action is unchanged, and disabling MCG restores the original play action.
+
+| Action | Keyboard | Native panel |
+| --- | --- | --- |
+| Select a game | Up / Down | — |
+| Launch the selection | Enter | — |
+| Return to the MCG menu or cancel loading | Backspace | Return to menu [Backspace] |
+| Leave the computer | Tab | Original translated Leave caption + [TAB] |
+| Open the native pause menu | Escape | Unchanged |
+
+MCG shortcuts do not act while the pause menu or options are open; Tab also respects native UI focus. The catalog stays on the monitor, with no separate popup or additional computer interaction to learn.
 
 Game authors provide a description, gameplay and an optional resource loader. MCG handles the catalog, monitor integration, standard controls and session cleanup.
 
 During a game or loading, **Return to menu [Backspace]** also appears beside **Leave** in the native panel below the monitor. It returns to the MCG catalog or cancels loading without leaving the computer. The label follows the game's language; the button is hidden in the catalog and respects pause/options and UI input blocking. It uses the native button style and requires no additional UI library.
+
+The native Leave button keeps its translated caption and shows **[TAB]** while using the MCG computer menu or a game. Its action is unchanged; the hint is removed when leaving the computer.
 
 MCG also saves local high scores for the original brick-breaker and added games through the same round-completion event. Only a strictly higher score replaces a record. Records are separated by Steam profile, game and rules, shared across saves and stored outside ModsLocal. No additional online account or sharing is required. Abandoned rounds do not count.
 
@@ -47,6 +62,7 @@ Native locale codes: `cs da de el en es fi fr hu it ja ko lt nl pl pt ro ru tr u
 - **[FlappyAmbitions](https://github.com/capisoft-lib/BigAmbitions_MCG_FlappyAmbitions)** — fly a banknote between office towers. A separate MCG game mod and an example for developers creating their own games.
 - **[Snacke](https://github.com/capisoft-lib/BigAmbitions_MCG_Snacke)** — grow a bread snake into a sandwich by eating lettuce, tomatoes and rare cheese. A separate MCG game mod translated into all 22 game languages.
 - **[Ambitions Invaders](https://github.com/capisoft-lib/BigAmbitions_MCG_AmbitionsInvaders)** — pilot a banknote and fire yellow lasers at pixel-art rival tycoons in a horizontal shooter. A separate MCG game mod translated into all 22 game languages.
+- **[Tetrix](https://github.com/capisoft-lib/BigAmbitions_MCG_Tetrix)** — stack building-shaped pieces and clear floors in a separate falling-block game.
 
 Additional games must be installed separately. MCG does not include or automatically download them; FlappyAmbitions is not required to install, build or use this library.
 
@@ -68,9 +84,9 @@ Games can register before or after the library becomes active. A namespaced iden
 
 Target: **Big Ambitions 1.0 Build 3670 / Unity 2022.3.62f2**. **MCG requires no other mod library.** The monitor menu uses the game's native computer integration and Unity UI. Individual game mods must reference MCG as a separate dependency, never bundle its DLL, and declare MCG in Steam Required Items when publishing.
 
-MCG 1.0.0 preserves the public API signatures used by the 0.2.0 game mods. The library's namespace, assembly name, technical mod ID and record-file schema are unchanged. Mod loading remains under the official SDK: MCG does not scan the disk for DLLs, download code or use a network service.
+MCG 1.0.0 preserves the public API signatures used by the 0.2.0 game mods. **Game authors must still rebuild against the MCG 1.0.0 DLL (assembly version 1.0.0.0)**: the native loader can reject a game binary that still references major version 0. The library's namespace, assembly name, technical mod ID and record-file schema are unchanged. Mod loading remains under the official SDK: MCG does not scan the disk for DLLs, download code or use a network service.
 
-The [1.0.0 release folder](releases/1.0.0/) includes English and French release notes and Steam descriptions. Workshop publication and its Required Items are separate steps; no MCG Workshop item link is supplied here yet. Preparing these files or pushing the source repository does not publish the mod on Steam.
+The [1.0.0 release folder](releases/1.0.0/) contains English/French release notes, full Steam descriptions in BBCode, short descriptions and change notes, plus an [upload checklist](releases/1.0.0/PUBLISHING_CHECKLIST.md). Update the [existing Workshop item](https://steamcommunity.com/sharedfiles/filedetails/?id=3793604724) through Big Ambitions' **Mods > Mod Creator > Edit mod**, using the built `LIB_BA_MoreComputerGames` folder. Never upload the source checkout or its private build directory. MCG requires **no Steam Required Items**. Compatible games list MCG as their dependency. Pushing GitHub does not update the Workshop item's content or description.
 
 ## Build and verification
 

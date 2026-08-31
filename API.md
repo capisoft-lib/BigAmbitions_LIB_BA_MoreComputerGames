@@ -2,6 +2,8 @@
 
 Namespace public : **Capisoft.Lib.BaComputerGames**. Assembly : **LIB_BaComputerGames.dll**. API **1.0.0**, avec les signatures publiques de la 0.2.0 conservées. Le nom de l'assembly, l'identifiant technique du mod et le schéma des records restent inchangés.
 
+**Recompiler les mods de jeux contre la DLL MCG 1.0.0 (assembly 1.0.0.0).** La conservation des signatures ne dispense pas de cette recompilation : le chargeur natif peut refuser un ancien binaire référençant la version majeure 0.
+
 ## Contrats
 
 | Type | Responsabilité |

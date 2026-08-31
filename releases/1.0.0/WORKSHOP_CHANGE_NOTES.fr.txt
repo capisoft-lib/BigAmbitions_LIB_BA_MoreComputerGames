@@ -1,9 +1,11 @@
 MCG 1.0.0
+- Bouton traduit Retour au menu [Backspace] sous le moniteur pendant les jeux, chargements et erreurs de lancement.
+- Le bouton natif pour quitter conserve son texte traduit et son action, ajoute [TAB] pendant les sessions MCG et retrouve son affichage d'origine à la sortie.
 - Interface MCG traduite dans les 22 langues sélectionnables du jeu ; l'en-tête « Jeu sélectionné » suit aussi les changements de langue.
 - Catalogue sur le moniteur natif de l'ordinateur ; ressources des jeux chargées après sélection.
 - Haut/Bas et Entrée pour choisir et jouer, Retour arrière pour revenir, Tab pour quitter. Échap conserve la pause native.
 - Records locaux unifiés pour les jeux vanilla et moddés, avec sérialisation JSON managée fiable et protection des fichiers existants.
-- Signatures publiques de l'API, identifiant du mod, nom de l'assembly et schéma des records conservés depuis la 0.2.0.
-- Documentation développeur, liens vers les jeux compatibles et exemples en anglais mis à jour.
+- Signatures publiques de l'API, identifiant du mod, nom de l'assembly et schéma des records conservés depuis la 0.2.0 ; recompiler les jeux contre l'assembly MCG 1.0.0.0.
+- Documentation développeur, liens vers les jeux séparés dont Tetrix, exemples en anglais et checklist de publication Steam mis à jour.
 - Leaderboard partagé envisagé ; pas encore disponible et aucune date confirmée.
 Aucune autre bibliothèque de mod requise. Le rapport de vérification du dépôt détaille les tests et les essais natifs restant à effectuer.

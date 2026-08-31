@@ -8,12 +8,15 @@ Donnez à votre ordinateur de nouvelles façons de vous distraire de votre empir
 [*]Chargez les ressources de chaque jeu uniquement lorsque vous choisissez d'y jouer.
 [*]Conservez les meilleurs scores locaux des jeux vanilla et moddés dans un même système.
 [*]Retrouvez l'interface MCG dans les 22 langues sélectionnables du jeu. Les mods de jeux fournissent leurs propres traductions de gameplay.
+[*]Revenez au menu des jeux ou quittez l'ordinateur grâce aux boutons sous le moniteur.
 [/list]
 
 [h2]Commandes[/h2]
 [b]Haut/Bas[/b] : choisir un jeu. [b]Entrée[/b] : jouer.
 [b]Retour arrière[/b] : revenir au catalogue ou annuler le chargement.
 [b]Tab[/b] : quitter l'ordinateur. [b]Échap[/b] : menu pause natif, inchangé.
+Le bouton traduit [b]Retour au menu [Backspace][/b] revient au catalogue ou annule un chargement sans quitter le PC. Il apparaît pendant un jeu, un chargement ou une erreur de lancement, puis disparaît dans le catalogue.
+Le bouton natif pour [b]quitter[/b] conserve son texte traduit et affiche [b][TAB][/b] pendant l'utilisation de MCG. Son action ne change pas ; l'indication est retirée à la sortie.
 Les raccourcis MCG sont inactifs pendant le menu pause ou les options. Tab respecte le focus de l'interface native.
 
 [h2]Prérequis[/h2]
@@ -22,8 +25,9 @@ MCG ne nécessite aucune autre bibliothèque de mod. Activez MCG dans la liste d
 Redémarrez Big Ambitions après l'installation ou la mise à jour des mods.
 
 [h2]Jeux compatibles et développeurs[/h2]
-[url=https://github.com/capisoft-lib/BigAmbitions_MCG_FlappyAmbitions]FlappyAmbitions[/url], [url=https://github.com/capisoft-lib/BigAmbitions_MCG_Snacke]Snacke[/url] et [url=https://github.com/capisoft-lib/BigAmbitions_MCG_AmbitionsInvaders]Ambitions Invaders[/url] sont des mods de jeux MCG séparés. Ils ne sont ni inclus ni téléchargés automatiquement.
+[url=https://github.com/capisoft-lib/BigAmbitions_MCG_FlappyAmbitions]FlappyAmbitions[/url], [url=https://github.com/capisoft-lib/BigAmbitions_MCG_Snacke]Snacke[/url], [url=https://github.com/capisoft-lib/BigAmbitions_MCG_AmbitionsInvaders]Ambitions Invaders[/url] et [url=https://github.com/capisoft-lib/BigAmbitions_MCG_Tetrix]Tetrix[/url] sont des mods de jeux MCG séparés. Ils ne sont ni inclus ni téléchargés automatiquement.
 Vous souhaitez ajouter votre jeu ? MCG fournit des API d'enregistrement, de chargement, de session et de fin de manche. Consultez le [url=https://github.com/capisoft-lib/BigAmbitions_LIB_BA_MoreComputerGames]dépôt des sources et la documentation[/url].
+Pour les auteurs : recompiler contre MCG 1.0.0 (assembly 1.0.0.0), déclarer MCG comme dépendance séparée et ne jamais incorporer sa DLL. MCG n'a lui-même aucun Required Item.
 
 [h2]Records locaux et roadmap[/h2]
 Seul un meilleur score de manche terminée remplace un record. Les records sont séparés par profil Steam, jeu et règles ; une manche abandonnée ne compte pas. ComputerGameHighScore n'est pas nécessaire.
