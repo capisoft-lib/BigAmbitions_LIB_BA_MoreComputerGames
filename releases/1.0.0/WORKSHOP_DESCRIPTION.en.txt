@@ -25,7 +25,15 @@ MCG requires no other mod library. Enable MCG in the mod list.
 Restart Big Ambitions after installing or updating mods.
 
 [h2]Compatible games[/h2]
-[url=https://github.com/capisoft-lib/BigAmbitions_MCG_FlappyAmbitions]FlappyAmbitions[/url], [url=https://github.com/capisoft-lib/BigAmbitions_MCG_Snacke]Snacke[/url], [url=https://github.com/capisoft-lib/BigAmbitions_MCG_AmbitionsInvaders]Ambitions Invaders[/url] and [url=https://github.com/capisoft-lib/BigAmbitions_MCG_Tetrix]Tetrix[/url] are separate MCG game mods. They are not included or downloaded automatically.
+Subscribe to the games on Steam Workshop; their source code is available on GitHub.
+[table]
+[tr][th]Name[/th][th]Steam Workshop[/th][th]GitHub[/th][/tr]
+[tr][td]Flappy Ambitions[/td][td][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3793614760]Subscribe[/url][/td][td][url=https://github.com/capisoft-lib/BigAmbitions_MCG_FlappyAmbitions]Source code[/url][/td][/tr]
+[tr][td]Snacke[/td][td][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3793615439]Subscribe[/url][/td][td][url=https://github.com/capisoft-lib/BigAmbitions_MCG_Snacke]Source code[/url][/td][/tr]
+[tr][td]Ambitions Invaders[/td][td][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3793615886]Subscribe[/url][/td][td][url=https://github.com/capisoft-lib/BigAmbitions_MCG_AmbitionsInvaders]Source code[/url][/td][/tr]
+[tr][td]Tetrix[/td][td][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3793616341]Subscribe[/url][/td][td][url=https://github.com/capisoft-lib/BigAmbitions_MCG_Tetrix]Source code[/url][/td][/tr]
+[/table]
+These four games require LIB MCG installed and enabled. They are separate mods: MCG does not include or download them automatically. Install and enable each game you want to play alongside MCG.
 
 [h2]Developers: create your own game[/h2]
 MCG is open source under the MIT license. Try the examples or build your own mini-game: MCG provides registration, loading, session and round-completion APIs, so you can focus on gameplay.

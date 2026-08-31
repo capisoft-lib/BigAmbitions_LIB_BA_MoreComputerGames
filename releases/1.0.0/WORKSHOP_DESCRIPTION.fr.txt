@@ -25,7 +25,15 @@ MCG ne nécessite aucune autre bibliothèque de mod. Activez MCG dans la liste d
 Redémarrez Big Ambitions après l'installation ou la mise à jour des mods.
 
 [h2]Jeux compatibles[/h2]
-[url=https://github.com/capisoft-lib/BigAmbitions_MCG_FlappyAmbitions]FlappyAmbitions[/url], [url=https://github.com/capisoft-lib/BigAmbitions_MCG_Snacke]Snacke[/url], [url=https://github.com/capisoft-lib/BigAmbitions_MCG_AmbitionsInvaders]Ambitions Invaders[/url] et [url=https://github.com/capisoft-lib/BigAmbitions_MCG_Tetrix]Tetrix[/url] sont des mods de jeux MCG séparés. Ils ne sont ni inclus ni téléchargés automatiquement.
+Abonnez-vous aux jeux sur le Steam Workshop ; leur code source est disponible sur GitHub.
+[table]
+[tr][th]Nom[/th][th]Steam Workshop[/th][th]GitHub[/th][/tr]
+[tr][td]Flappy Ambitions[/td][td][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3793614760]S'abonner[/url][/td][td][url=https://github.com/capisoft-lib/BigAmbitions_MCG_FlappyAmbitions]Code source[/url][/td][/tr]
+[tr][td]Snacke[/td][td][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3793615439]S'abonner[/url][/td][td][url=https://github.com/capisoft-lib/BigAmbitions_MCG_Snacke]Code source[/url][/td][/tr]
+[tr][td]Ambitions Invaders[/td][td][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3793615886]S'abonner[/url][/td][td][url=https://github.com/capisoft-lib/BigAmbitions_MCG_AmbitionsInvaders]Code source[/url][/td][/tr]
+[tr][td]Tetrix[/td][td][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3793616341]S'abonner[/url][/td][td][url=https://github.com/capisoft-lib/BigAmbitions_MCG_Tetrix]Code source[/url][/td][/tr]
+[/table]
+Ces quatre jeux nécessitent LIB MCG installé et activé. Ce sont des mods séparés : MCG ne les inclut pas et ne les télécharge pas automatiquement. Installez et activez chaque jeu souhaité en plus de MCG.
 
 [h2]Développeurs : créez votre propre jeu[/h2]
 MCG est open source sous licence MIT. Essayez les exemples ou créez votre mini-jeu : MCG fournit les API d'enregistrement, de chargement, de session et de fin de manche pour vous laisser vous concentrer sur le gameplay.
