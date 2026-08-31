@@ -1,62 +1,64 @@
 # LIB BA More Computer Games — preview 0.2.0
 
-Bibliothèque commune pour ajouter des mini-jeux aux ordinateurs de Big Ambitions.
+A shared library for adding mini-games to the computers inside Big Ambitions.
 
-![Illustration promotionnelle de More Computer Games](Thumbnail.jpg)
+> ☕ If MCG has made your in-game workday a little less productive, [buy me a coffee](https://buymeacoffee.com/capitaine). Someone still has to keep the developer working.
 
-**Ce dépôt contient uniquement MCG.** FlappyAmbition est un mod séparé : ses sources, ressources, tests et binaires ne sont pas inclus. Le casse-briques fourni par Big Ambitions reste disponible sans ajouter de jeu.
+![More Computer Games promotional artwork](Thumbnail.jpg)
+
+**This repository contains MCG only.** FlappyAmbition is a separate mod: its sources, assets, tests and binaries are not included. The original brick-breaker game remains available without installing any additional games.
 
 ## Documentation
 
-- [Installer et utiliser MCG](docs/UTILISATION.md).
-- [Créer un jeu compatible](docs/CREER_UN_JEU.md), puis [référence complète de l'API](API.md).
-- [Compiler et vérifier MCG](docs/COMPILATION.md).
-- [Confidentialité des sources et paquets](docs/CONFIDENTIALITE.md).
+The detailed guides below are currently in French:
 
-Titre du mod sur Steam : **LIB BA More Computer Games**, également conservé dans **release-assets/WORKSHOP_TITLE.txt** pour le formulaire de publication. Nom court : **More Computer Games (MCG)**. Le dossier installé est **ModsLocal/LIB_BA_MoreComputerGames**. L'identifiant de build et la DLL restent **LIB_BaComputerGames** pour conserver les références des jeux et le contrat C#. Dans la liste des mods locaux, Big Ambitions utilise le nom du dossier ; le titre Workshop est saisi séparément lors de la publication.
+- [Install and use MCG](docs/UTILISATION.md).
+- [Create a compatible game](docs/CREER_UN_JEU.md), then read the [full API reference](API.md).
+- [Build and verify MCG](docs/COMPILATION.md).
+- [Source and package privacy](docs/CONFIDENTIALITE.md).
 
-Visuel Steam : **Thumbnail.jpg**. Le PNG original et le prompt sont conservés dans **release-assets/**. L'illustration représente le principe de la bibliothèque ; ce n'est pas une capture ni une liste de jeux inclus.
+The Steam display title is **LIB BA More Computer Games**, also stored in **release-assets/WORKSHOP_TITLE.txt** for publication. The short name is **More Computer Games (MCG)**. Install the package in **ModsLocal/LIB_BA_MoreComputerGames**. The technical mod ID and assembly name remain **LIB_BaComputerGames** to preserve references from game mods and the C# API. Big Ambitions uses the folder name in its local mod list; the Workshop title is entered separately when publishing.
 
-Lorsque MCG est activé, l'action native **Jouer aux jeux vidéo** de l'ordinateur ouvre notre catalogue. Aucun bouton supplémentaire n'est ajouté : le texte, la position et les conditions d'accès du bouton natif sont conservés. Le casse-brique d'origine reste dans la liste, même sans autre mod de jeu ; **Passer le temps** reste inchangé. La désactivation de MCG rétablit l'action d'origine.
+The Steam thumbnail is **Thumbnail.jpg**. The original PNG and generation prompt are in **release-assets/**. This promotional artwork illustrates the library's purpose; it is not a screenshot or a list of included games.
 
-L'auteur fournit sa description, son gameplay et éventuellement un chargeur de ressources ; la bibliothèque gère le menu, l'intégration au moniteur, les contrôles usuels et la fermeture.
+## What MCG provides
 
-MCG conserve aussi les records locaux du casse-briques vanilla et des jeux ajoutés via le même événement de fin de partie. Seul un score strictement supérieur remplace le record. Les records sont séparés par profil Steam, jeu et règles, communs aux sauvegardes et conservés hors ModsLocal. Aucun compte en ligne supplémentaire ni partage n'est nécessaire. Les parties abandonnées ne comptent pas.
+When MCG is active, the computer's native video-game action opens the game catalog. No extra button is added: the original button's text, position and availability conditions are preserved. The original brick-breaker remains in the list even without additional game mods, and the time-passing action is unchanged. Disabling MCG restores the original play action.
 
-Le mod **FlappyAmbition** est un exemple de consommateur développé séparément. Il n'est pas nécessaire pour installer, compiler ou utiliser cette bibliothèque.
+Game authors provide a description, gameplay and an optional resource loader. MCG handles the catalog, monitor integration, standard controls and session cleanup.
 
-Voir [API.md](API.md) pour les contrats, un exemple minimal et le chargement d'AssetBundles.
+MCG also saves local high scores for the original brick-breaker and added games through the same round-completion event. Only a strictly higher score replaces a record. Records are separated by Steam profile, game and rules, shared across saves and stored outside ModsLocal. No additional online account or sharing is required. Abandoned rounds do not count.
 
-## Chargement
+**FlappyAmbition** is an example consumer developed separately. It is not required to install, build or use this library.
 
-- Au chargement de la ville : enregistrement des métadonnées et lecture du petit fichier de records locaux ; aucun gameplay ou bundle préchargé.
-- Après sélection et arrivée devant l'ordinateur : chargement optionnel des ressources.
-- Lors de l'instanciation native : création du gameplay et de sa caméra.
-- À la fermeture, au retrait du jeu ou au déchargement de la bibliothèque : arrêt du gameplay et libération des ressources.
-- Les DLL restent chargées dans le processus, comme les autres mods Unity. Ce mécanisme ne décharge pas les assemblies.
+See [API.md](API.md) for the interfaces, a minimal example and AssetBundle loading.
 
-Les mods peuvent s'enregistrer avant ou après l'activation de la bibliothèque. Un identifiant comme **capisoft:flappy-ambition** est unique dans le catalogue ; un doublon est refusé explicitement. Chaque inscription possède un jeton qui retire uniquement le jeu et les sessions appartenant à cette inscription.
+## Loading lifecycle
 
-## Dépendances et distribution
+- On city load: register game metadata and read the small local-record file; no gameplay objects or bundles are preloaded.
+- After selection and arrival at the computer: load optional game resources.
+- During native game instantiation: create the gameplay and its camera.
+- On session closure, game removal or library unload: stop gameplay and release resources.
+- DLLs stay loaded in the process, as with other Unity mods. This mechanism does not unload assemblies.
 
-Big Ambitions 1.0 Build 3670 / Unity 2022.3.62f2, et **LIB_BaUnifiedUI 1.0.2+** installé séparément. Ne pas incorporer les DLL de cette bibliothèque ou de BAUI dans chaque jeu. Déclarer aussi les dépendances dans les Required Items Steam lors d'une future publication.
+Games can register before or after the library becomes active. A namespaced identifier such as **mystudio:my-game** must be unique in the catalog; duplicates are explicitly rejected. Each registration owns a token that removes only its own game and sessions.
 
-Cette preview n'est pas publiée au Workshop et ne dispose pas encore d'un identifiant Steam. L'API 0.2.0 est expérimentale. Le chargement des mods reste celui du SDK officiel ; aucune recherche de DLL sur disque, aucun téléchargement de code ou service réseau.
+## Dependencies and distribution
 
-## Construire et vérifier
+Target: **Big Ambitions 1.0 Build 3670 / Unity 2022.3.62f2**, with **LIB_BaUnifiedUI 1.0.2+** installed separately. Do not bundle MCG or BAUI DLLs inside individual game mods. Add the dependencies to Steam Required Items when publishing.
 
-Depuis la racine de ce dépôt, avec .NET 8 pour les tests :
+This preview is not published on the Workshop and does not yet have a Steam item ID. API 0.2.0 is experimental. Mod loading remains under the official SDK: MCG does not scan the disk for DLLs, download code or use a network service.
 
-    dotnet run --project tools/Tests~/MCG.Tests.csproj -c Release
+## Build and verification
 
-Le [guide de compilation](docs/COMPILATION.md) décrit le build MCG seul avec ses propres installations de Big Ambitions, Unity et BAUI. Les dépendances propriétaires et les binaires ne sont pas versionnés. Le ZIP « Code » de GitHub contient des sources, pas un mod prêt à jouer.
+From the repository root, with the .NET 8 SDK installed:
 
-Les tests inclus ne lancent pas Big Ambitions et ne touchent pas ses sauvegardes. Les anciennes vérifications Unity utilisant un jeu externe sont rapportées séparément dans [VERIFICATION.md](VERIFICATION.md) ; ce dépôt ne contient pas ce jeu.
+```powershell
+dotnet run --project tools/Tests~/MCG.Tests.csproj -c Release
+```
 
-## Migration du prototype
+The [build guide](docs/COMPILATION.md) explains how to build MCG alone using your own Big Ambitions, Unity and BAUI installations. Proprietary dependencies and generated binaries are not tracked in Git. GitHub's "Code" ZIP contains sources, not a ready-to-play mod package.
 
-L'ancien mod **ComputerArcade** ne doit pas être activé avec cette nouvelle architecture. Installer BAUI et MCG séparément ; ajouter ensuite les mods de jeux souhaités. Retirer aussi toute ancienne copie locale de MCG avant de copier le paquet dans **ModsLocal/LIB_BA_MoreComputerGames**. Le build inclus ne modifie jamais les mods installés.
+The included tests do not launch Big Ambitions or touch its saves. Earlier Unity checks using external game fixtures are documented separately in [VERIFICATION.md](VERIFICATION.md); those fixtures are not included in this repository. Native computer UI and in-game compatibility checks are still pending, as described there. The build script does not install or publish anything.
 
-MCG conserve lui-même les records locaux et n'a pas besoin de ComputerGameHighScore. Le signal **ComputerGames.RoundCompleted** reste disponible pour de futurs consommateurs. Aucun envoi en ligne ni import d'une ancienne file d'envoi n'est effectué.
-
-Licence MIT pour les sources originales. Big Ambitions, Unity et les autres dépendances conservent leurs licences.
+Original sources are released under the MIT license. Big Ambitions, Unity and other dependencies retain their respective licenses.
