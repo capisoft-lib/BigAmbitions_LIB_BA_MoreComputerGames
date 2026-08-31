@@ -24,9 +24,17 @@ Cible : Big Ambitions 1.0 Build 3670 sous Windows.
 MCG ne nécessite aucune autre bibliothèque de mod. Activez MCG dans la liste des mods.
 Redémarrez Big Ambitions après l'installation ou la mise à jour des mods.
 
-[h2]Jeux compatibles et développeurs[/h2]
+[h2]Jeux compatibles[/h2]
 [url=https://github.com/capisoft-lib/BigAmbitions_MCG_FlappyAmbitions]FlappyAmbitions[/url], [url=https://github.com/capisoft-lib/BigAmbitions_MCG_Snacke]Snacke[/url], [url=https://github.com/capisoft-lib/BigAmbitions_MCG_AmbitionsInvaders]Ambitions Invaders[/url] et [url=https://github.com/capisoft-lib/BigAmbitions_MCG_Tetrix]Tetrix[/url] sont des mods de jeux MCG séparés. Ils ne sont ni inclus ni téléchargés automatiquement.
-Vous souhaitez ajouter votre jeu ? MCG fournit des API d'enregistrement, de chargement, de session et de fin de manche. Consultez le [url=https://github.com/capisoft-lib/BigAmbitions_LIB_BA_MoreComputerGames]dépôt des sources et la documentation[/url].
+
+[h2]Développeurs : créez votre propre jeu[/h2]
+MCG est open source sous licence MIT. Essayez les exemples ou créez votre mini-jeu : MCG fournit les API d'enregistrement, de chargement, de session et de fin de manche pour vous laisser vous concentrer sur le gameplay.
+
+[url=https://github.com/capisoft-lib/BigAmbitions_LIB_BA_MoreComputerGames][b]GitHub — code source, API et exemples MCG[/b][/url]
+
+[url=https://github.com/capisoft-lib/BigAmbitions_LIB_BA_MoreComputerGames/blob/main/docs/CREER_UN_JEU.md]Créer votre premier jeu MCG — guide pas à pas[/url]
+[url=https://github.com/capisoft-lib/BigAmbitions_LIB_BA_MoreComputerGames/blob/main/API.md]Référence complète de l'API[/url]
+
 Pour les auteurs : recompiler contre MCG 1.0.0 (assembly 1.0.0.0), déclarer MCG comme dépendance séparée et ne jamais incorporer sa DLL. MCG n'a lui-même aucun Required Item.
 
 [h2]Records locaux et roadmap[/h2]
@@ -36,4 +44,10 @@ Nous envisageons d'ajouter prochainement un leaderboard partagé. Il n'est pas e
 [h2]Validation[/h2]
 La compilation et les tests isolés sont documentés dans le dépôt. Les essais en partie réelle et de coexistence restent à réaliser. Les images d'exemple en anglais sont des rendus isolés du moniteur.
 
-Si MCG vous plaît, vous pouvez [url=https://buymeacoffee.com/capitaine]offrir un café au développeur[/url]. Il faut bien que quelqu'un reste productif pendant que vous jouez.
+[h2]Soutenir le développeur ☕[/h2]
+
+Si MCG a transformé votre ordinateur de travail en salle d'arcade, vous pouvez soutenir son développement en m'offrant un café :
+
+[url=https://buymeacoffee.com/capitaine][b]☕ M'offrir un café[/b][/url]
+
+MCG peut charger un autre jeu, mais toujours pas remplir ma tasse.
