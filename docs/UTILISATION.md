@@ -51,9 +51,11 @@ Ne pas ajouter de DLL de dépendance dans ce dossier. Conserver les bibliothèqu
 
 ## Jouer
 
-Pendant un jeu ou un chargement, le bouton **Retour au menu [Backspace]** apparaît à côté de **Quitter** dans le panneau natif sous le moniteur. Il revient au catalogue MCG ou annule le chargement sans quitter l'ordinateur. Le libellé est traduit dans les 22 langues ; le bouton est masqué dans le catalogue et ne répond pas lorsque le menu pause ou les options bloquent l'interface. Quitter une manche inachevée ne crée pas de score.
+Pendant un jeu ou un chargement, le bouton **Retour au menu [raccourci actif]** apparaît à côté de **Quitter** dans le panneau natif sous le moniteur. Il revient au catalogue MCG ou annule le chargement sans quitter l'ordinateur. Le libellé est traduit dans les 22 langues et suit immédiatement le rebind ; le bouton est masqué dans le catalogue et ne répond pas lorsque le menu pause ou les options bloquent l'interface. Quitter une manche inachevée ne crée pas de score.
 
-Le bouton natif pour quitter conserve son texte traduit et affiche **[TAB]** dans le menu MCG et pendant un jeu. Son action ne change pas ; l'indication disparaît lorsque l'on quitte l'ordinateur.
+Le bouton natif pour quitter conserve son texte traduit et affiche le raccourci actif dans le menu MCG et pendant un jeu. Son action au clic ne change pas ; l'indication disparaît lorsque l'on quitte l'ordinateur.
+
+Les deux raccourcis appartenant à MCG se règlent dans **Options > Mods > More Computer Games**. Cliquer sur un champ puis presser une touche ou une combinaison ; Retour arrière/Suppr pendant la capture efface le raccourci, Échap annule la capture et le bouton rouge restaure la valeur par défaut. Deux actions MCG ne peuvent pas utiliser exactement la même combinaison. **Retour arrière** et **Tab** restent les valeurs d'usine.
 
 L'interface MCG suit la langue choisie dans Big Ambitions et couvre ses **22 langues sélectionnables**, dont le portugais brésilien (`pt`), le chinois simplifié (`zh-cn`) et traditionnel (`zh-tw`). Les jeux supplémentaires fournissent leurs propres traductions de gameplay. L'en-tête « Jeu sélectionné » est actualisé avec les autres libellés si la langue change pendant que le menu du moniteur reste ouvert.
 
@@ -62,7 +64,7 @@ L'interface MCG suit la langue choisie dans Big Ambitions et couvre ses **22 lan
 3. Cliquer sur **Jouer aux jeux vidéo** : le personnage rejoint l'ordinateur et le menu MCG apparaît sur son moniteur.
 4. Utiliser **↑ / ↓** pour sélectionner un jeu, puis **Entrée** pour le charger et jouer. Le casse-briques est toujours proposé, et le record local du jeu sélectionné est affiché.
 
-Les ressources ne sont préparées qu'après validation du choix sur le moniteur. **Retour arrière** annule un chargement ou revient au menu depuis un jeu, sans quitter l'ordinateur. **Tab** quitte l'ordinateur depuis le menu, un chargement ou un jeu. **Échap** conserve le menu pause natif de Big Ambitions ; MCG ne consomme pas cette touche. Les raccourcis MCG sont inactifs pendant le menu pause ou les options, et Tab conserve sa navigation native lorsqu'un contrôle UI a le focus. Un chargement échoué laisse le menu accessible ; Entrée permet de réessayer.
+Les ressources ne sont préparées qu'après validation du choix sur le moniteur. Le raccourci **Retour au menu** annule un chargement ou revient au catalogue depuis un jeu, sans quitter l'ordinateur. Le raccourci **Quitter l'ordinateur** ferme la session depuis le menu, un chargement ou un jeu. **Échap** conserve le menu pause natif de Big Ambitions ; MCG ne consomme pas cette touche. Les raccourcis MCG sont inactifs pendant le menu pause ou les options. Un chargement échoué laisse le menu accessible ; Entrée permet de réessayer.
 
 Les contrôles habituels des jeux restent clic/espace pour l'action principale et R pour recommencer si le jeu le prévoit. Chaque jeu décrit ses règles. Les jeux supplémentaires s'installent séparément, sans copier MCG dans leur dossier. Le menu est une image de mini-jeu rendue dans l'écran natif, avec Unity UI. La fermeture du panneau d'action natif et les contrôles de raccourcis du jeu restent en place ; MCG n'efface pas globalement le focus des autres interfaces.
 

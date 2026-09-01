@@ -12,7 +12,7 @@ namespace Capisoft.Lib.BaComputerGames
         private readonly TMP_Text _label;
         private readonly bool _autoSizing;
         private readonly float _fontSize, _minSize, _maxSize, _hintMin, _hintMax;
-        private string _original, _applied;
+        private string _original, _applied, _shortcut;
         private bool _disposed;
         internal bool Uses(Button button) => !_disposed && _button == button && _label != null;
 
@@ -29,13 +29,16 @@ namespace Capisoft.Lib.BaComputerGames
             _label.enableAutoSizing = true;
         }
 
-        internal void Refresh()
+        internal void Refresh(string shortcut)
         {
-            if (_disposed || _label == null || _label.text == _applied || string.IsNullOrEmpty(_label.text)) return;
+            if (_disposed || _label == null || string.IsNullOrEmpty(_label.text)) return;
             // Native localization may replace the caption at any time, including a language change.
-            _original = _label.text;
-            _applied = _original.EndsWith("[TAB]", StringComparison.OrdinalIgnoreCase) ? _original : _original + " [TAB]";
-            _label.text = _applied;
+            if (_label.text != _applied) _original = _label.text;
+            if (string.IsNullOrEmpty(_original)) return;
+            shortcut = shortcut ?? string.Empty;
+            string applied = _original + " [" + shortcut + "]";
+            if (_shortcut == shortcut && _label.text == applied) return;
+            _shortcut = shortcut; _applied = applied; _label.text = _applied;
         }
 
         public void Dispose()

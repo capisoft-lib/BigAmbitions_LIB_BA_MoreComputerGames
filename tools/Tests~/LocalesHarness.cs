@@ -15,6 +15,13 @@ static class LocalesHarness
         check(files.Select(Path.GetFileNameWithoutExtension).SequenceEqual(expected), "Locales: all 22 native selectable language codes");
         using var english = Read(Path.Combine(locales, "en.json"));
         var baseline = english.RootElement.EnumerateObject().ToDictionary(p => p.Name, p => p.Value.GetString(), StringComparer.Ordinal);
+        check(baseline["bacg_menu_controls"].Contains("{0}") && baseline["bacg_menu_controls"].Contains("{1}") &&
+            baseline["bacg_menu_back"].Contains("{0}") && baseline["bacg_menu_back"].Contains("{1}") &&
+            baseline["bacg_retry"].Contains("{0}") && baseline["bacg_return_menu"].Contains("{0}"),
+            "Locales: every session hint uses live shortcut placeholders");
+        check(new[] { "bacg_shortcuts_header", "bacg_shortcut_return", "bacg_shortcut_leave", "bacg_shortcut_unbound",
+                "bacg_shortcut_capture", "bacg_shortcut_conflict" }.All(baseline.ContainsKey),
+            "Locales: shortcut selector labels are translated by every locale");
         var keys = baseline.Keys.OrderBy(x => x, StringComparer.Ordinal).ToArray();
         var guids = new List<string>();
         foreach (var file in files)

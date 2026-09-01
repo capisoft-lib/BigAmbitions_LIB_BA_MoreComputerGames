@@ -8,11 +8,17 @@
   "bacg_original_desc": "Dołączona do Big Ambitions.",
   "bacg_lazy": "Zasoby gry są ładowane dopiero po jej uruchomieniu.",
   "bacg_menu_tagline": "Mała przerwa. Wielkie ambicje.",
-  "bacg_menu_controls": "↑ / ↓  Wybór    ENTER  Graj    BACKSPACE  Menu    TAB  Wyjdź    ESC  Pauza",
-  "bacg_menu_back": "BACKSPACE  Menu / anuluj    TAB  Odejdź od komputera    ESC  Pauza",
+  "bacg_menu_controls": "↑ / ↓  Wybór    ENTER  Graj    {0}  Menu    {1}  Wyjdź    ESC  Pauza",
+  "bacg_menu_back": "{0}  Menu / anuluj    {1}  Odejdź od komputera    ESC  Pauza",
   "bacg_library": "TWOJE GRY",
   "bacg_details": "WYBRANA GRA",
   "bacg_best": "REKORD",
-  "bacg_retry": "ENTER: ponów. BACKSPACE: menu.",
-  "bacg_return_menu": "Powrót do menu [Backspace]"
+  "bacg_retry": "ENTER: ponów. {0}: menu.",
+  "bacg_return_menu": "Powrót do menu [{0}]",
+  "bacg_shortcuts_header": "Skróty klawiaturowe",
+  "bacg_shortcut_return": "Powrót do menu gier",
+  "bacg_shortcut_leave": "Odejdź od komputera",
+  "bacg_shortcut_unbound": "Nieprzypisany",
+  "bacg_shortcut_capture": "Naciśnij klawisz…",
+  "bacg_shortcut_conflict": "Już używany"
 }

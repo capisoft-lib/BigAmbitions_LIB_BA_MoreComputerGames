@@ -8,11 +8,17 @@
   "bacg_original_desc": "Big Ambitions に付属しています。",
   "bacg_lazy": "ゲームのデータはプレイ開始時に読み込まれます。",
   "bacg_menu_tagline": "ちょっと休憩。大きな野望。",
-  "bacg_menu_controls": "↑ / ↓  選択    ENTER  プレイ    BACKSPACE  メニュー    TAB  終了    ESC  一時停止",
-  "bacg_menu_back": "BACKSPACE  メニュー / キャンセル    TAB  パソコンを離れる    ESC  一時停止",
+  "bacg_menu_controls": "↑ / ↓  選択    ENTER  プレイ    {0}  メニュー    {1}  終了    ESC  一時停止",
+  "bacg_menu_back": "{0}  メニュー / キャンセル    {1}  パソコンを離れる    ESC  一時停止",
   "bacg_library": "ゲーム一覧",
   "bacg_details": "選択中のゲーム",
   "bacg_best": "ハイスコア",
-  "bacg_retry": "ENTER：再試行。BACKSPACE：メニュー。",
-  "bacg_return_menu": "メニューに戻る [Backspace]"
+  "bacg_retry": "ENTER：再試行。{0}：メニュー。",
+  "bacg_return_menu": "メニューに戻る [{0}]",
+  "bacg_shortcuts_header": "キーボードショートカット",
+  "bacg_shortcut_return": "ゲームメニューに戻る",
+  "bacg_shortcut_leave": "パソコンを離れる",
+  "bacg_shortcut_unbound": "未割り当て",
+  "bacg_shortcut_capture": "キーを押してください…",
+  "bacg_shortcut_conflict": "使用済み"
 }

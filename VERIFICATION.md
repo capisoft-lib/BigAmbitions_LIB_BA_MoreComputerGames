@@ -2,7 +2,16 @@
 
 The source repository contains the MCG library only. FlappyAmbition and the external Unity integration fixtures are not included. Compilation, isolated tests and actual Big Ambitions gameplay are separate levels of evidence.
 
-## Workshop discovery and shutdown fix — 2026-09-01
+## Combined fix and configurable-shortcut branch — 2026-09-01
+
+- `dotnet run --project tools/Tests~/MCG.Tests.csproj -c Release`: **120 assertions passed**. This combines the four native-close policy cases with the configurable-shortcut locale and placeholder checks.
+- The current `McgKeybind.cs` passes **7 isolated chord-model assertions** covering defaults, stable serialization, exact modifiers, display, invalid values, unbound state and rejection of a modifier-only primary key.
+- `tools/build.ps1` completed against Big Ambitions Build 3670 and Unity 2022.3.62f2 without installing or launching anything. Combined DLL SHA-256: `B54AC02289301A8518CD6E8B1A0B68120CD326E560A99DE322ECCE54B27EB037`.
+- All **241 type references** and **580 member references** resolve against the installed runtime. The combined DLL retains the installed 1.0.0 library's exact **200 public API signatures** and has no `LIB_*` assembly reference.
+- Flappy, Snake, Ambitions Invaders, Tetrix and DOOM all rebuild against this exact combined MCG DLL. A matching Unity Mono discovery probe still resolves every rebuilt `RegisterModClass` entry with MCG blocked and not loaded.
+- This is source, unit, binary-discovery and package-build evidence. A fresh native Workshop-only launch, city shutdown and rendered shortcut/rebinding/persistence smoke remain pending.
+
+## Earlier isolated Workshop discovery and shutdown fix — 2026-09-01
 
 - `dotnet run --project tools/Tests~/MCG.Tests.csproj -c Release`: **118 assertions passed**, including four close-policy cases. Native `VideoGameSetup.Finish()` is requested only for a live, MCG-owned session; cleanup still runs when the game is uninitialized, the city is unloading or the playing field belongs to another session.
 - `tools/build.ps1` completed against Big Ambitions Build 3670 and Unity 2022.3.62f2 without installing or launching anything. DLL SHA-256: `D8A30D064D8C7032A3E29A6322690C6BFA58C3E8F6D140240B161B96C348E81B`.
@@ -13,7 +22,7 @@ The source repository contains the MCG library only. FlappyAmbition and the exte
 
 Verified on 2026-08-31:
 
-- `dotnet run --project tools/Tests~/MCG.Tests.csproj -c Release`: **114 assertions passed** against the actual registry, monitor catalog, session, round and record-store sources, plus the repository's locale files. Unity presentation types are substituted; record JSON uses the actual managed serializer.
+- `dotnet run --project tools/Tests~/MCG.Tests.csproj -c Release`: **116 assertions passed** against the actual registry, monitor catalog, session, round and record-store sources, plus the repository's locale files. Unity presentation types are substituted; record JSON uses the actual managed serializer.
 - Coverage includes registration without creating gameplay objects, duplicate ownership, lazy resource loading, cancellation, release after cancellation, session closure, display-scope lifecycle and subscriber failures.
 - Monitor-catalog checks cover vanilla availability, Up/Down wraparound, selection preservation when registrations change, removal of the selected game and navigation without preparing any session.
 - Record checks cover real temporary-file reload, 64-bit scores, atomic backup, strictly greater comparison, event ordering, write failures, corrupt/future/profile-mismatched files, rules separation and abandoned rounds. Vanilla round-state tests cover pending points on the last life and replay uniqueness.
@@ -22,6 +31,14 @@ Verified on 2026-08-31:
 - The package contains one DLL, belonging to MCG. The output uses the game's Mono `mscorlib` profile and has no assembly reference to FlappyAmbition or ComputerGameHighScore. The builder rejects PDB references, embedded debug symbols, known private build paths and private build artifacts in the package.
 
 See [the build guide](docs/COMPILATION.md) to reproduce these checks with your own dependencies. Generated compiler responses, references, test outputs and logs are private build material and are deliberately excluded from Git.
+
+## Unreleased configurable session shortcuts — 2026-08-31
+
+The standalone MCG build adds two persistable custom rows for Return to game menu and Leave computer under the official Mods options. Backspace and Tab are the defaults. Capture, clear, reset and exact duplicate rejection are owned by MCG; the final assembly references `Unity.InputSystem` but no `LIB_*` mod library.
+
+Repository and locale tests pass **116 assertions**, including all 22 native language codes, identical key/placeholder sets, translated selector strings and live-binding placeholders in every monitor/button hint. The official build produces DLL SHA-256 `41FE4A919F814671F290B8B77FDDDF0F99CDAD0B29407E38F37ED72D962F4EDE`; all 241 type references and 580 member references resolve against the current game runtime. Final IL confirms option registration/removal, rebound Return/Leave polling, removal of the hard-coded Tab helper, and dynamic formatting for both native buttons. The 200 public signatures match the installed 1.0.0 Workshop DLL exactly.
+
+Nothing was installed or published for this change. A restarted native-game check is still required to prove the two rendered option rows, interactive capture/persistence and live below-screen caption refresh in the actual UI.
 
 ## Version 1.0.0 package checks
 

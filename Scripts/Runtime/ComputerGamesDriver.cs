@@ -135,7 +135,7 @@ namespace Capisoft.Lib.BaComputerGames
             {
                 if (_leaveHint != null && !_leaveHint.Uses(leave)) { _leaveHint.Dispose(); _leaveHint = null; }
                 if (_leaveHint == null) _leaveHint = new ComputerLeaveHint(leave);
-                _leaveHint.Refresh();
+                _leaveHint.Refresh(McgShortcuts.LeaveComputerDisplay);
                 if (_returnButtonFailed) return;
                 if (_returnButton != null && !_returnButton.Uses(leave)) { _returnButton.Dispose(); _returnButton = null; }
                 if (_returnButton == null && visible)
@@ -151,7 +151,7 @@ namespace Capisoft.Lib.BaComputerGames
             catch (Exception error)
             {
                 _returnButton?.Dispose(); _returnButton = null; _returnButtonFailed = true;
-                ComputerGames.Report(error); // Backspace still works if the native panel changes.
+                ComputerGames.Report(error); // The configured keyboard binding still works if the native panel changes.
             }
         }
         private static AudioMixerGroup GetNativeMixer() => BuildingManager.IsInsideBuilding &&

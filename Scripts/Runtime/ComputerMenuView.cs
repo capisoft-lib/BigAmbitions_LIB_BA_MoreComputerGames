@@ -80,14 +80,15 @@ namespace Capisoft.Lib.BaComputerGames
             _library.SetActive(!message); _loading.SetActive(message);
             _subtitle.text = T("bacg_menu_tagline", "A little break. Big ambitions.");
             _details.text = T("bacg_details", "SELECTED GAME");
-            _hint.text = message
-                ? T("bacg_menu_back", "BACKSPACE  Menu / cancel    TAB  Leave computer    ESC  Pause")
-                : T("bacg_menu_controls", "↑ / ↓  Select    ENTER  Play    BACKSPACE  Menu    TAB  Leave    ESC  Pause");
+            _hint.text = McgShortcuts.FormatSessionText(message
+                ? T("bacg_menu_back", "{0}  Menu / cancel    {1}  Leave computer    ESC  Pause")
+                : T("bacg_menu_controls", "↑ / ↓  Select    ENTER  Play    {0}  Menu    {1}  Leave    ESC  Pause"));
             if (message)
             {
                 string title = choice == null ? "" : ComputerGames.ResolveText(choice.TitleKey, choice.Title);
                 _status.text = _busy ? T("bacg_loading", "Loading game…") + "\n" + title :
-                    T("bacg_failed", "Unable to load this game.") + "\n" + T("bacg_retry", "ENTER to retry, BACKSPACE for the menu.");
+                    T("bacg_failed", "Unable to load this game.") + "\n" +
+                    McgShortcuts.FormatSessionText(T("bacg_retry", "ENTER to retry, {0} for the menu."));
                 _progress.gameObject.SetActive(_busy); return;
             }
             int pageStart = catalog.SelectedIndex / 5 * 5;

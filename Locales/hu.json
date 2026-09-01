@@ -8,11 +8,17 @@
   "bacg_original_desc": "A Big Ambitions része.",
   "bacg_lazy": "A játék erőforrásai csak indításkor töltődnek be.",
   "bacg_menu_tagline": "Kis szünet. Nagy tervek.",
-  "bacg_menu_controls": "↑ / ↓  Választás    ENTER  Indítás    BACKSPACE  Menü    TAB  Kilépés    ESC  Szünet",
-  "bacg_menu_back": "BACKSPACE  Menü / mégse    TAB  Számítógép elhagyása    ESC  Szünet",
+  "bacg_menu_controls": "↑ / ↓  Választás    ENTER  Indítás    {0}  Menü    {1}  Kilépés    ESC  Szünet",
+  "bacg_menu_back": "{0}  Menü / mégse    {1}  Számítógép elhagyása    ESC  Szünet",
   "bacg_library": "JÁTÉKAID",
   "bacg_details": "KIVÁLASZTOTT JÁTÉK",
   "bacg_best": "REKORD",
-  "bacg_retry": "ENTER: újrapróbálás. BACKSPACE: menü.",
-  "bacg_return_menu": "Vissza a menübe [Backspace]"
+  "bacg_retry": "ENTER: újrapróbálás. {0}: menü.",
+  "bacg_return_menu": "Vissza a menübe [{0}]",
+  "bacg_shortcuts_header": "Billentyűparancsok",
+  "bacg_shortcut_return": "Vissza a játékmenübe",
+  "bacg_shortcut_leave": "Számítógép elhagyása",
+  "bacg_shortcut_unbound": "Nincs hozzárendelve",
+  "bacg_shortcut_capture": "Nyomj meg egy billentyűt…",
+  "bacg_shortcut_conflict": "Már használatban"
 }

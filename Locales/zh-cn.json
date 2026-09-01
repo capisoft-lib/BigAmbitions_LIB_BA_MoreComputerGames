@@ -8,11 +8,17 @@
   "bacg_original_desc": "Big Ambitions 自带的游戏。",
   "bacg_lazy": "仅在开始游玩时加载游戏资源。",
   "bacg_menu_tagline": "稍作休息，胸怀大志。",
-  "bacg_menu_controls": "↑ / ↓  选择    ENTER  开始    BACKSPACE  菜单    TAB  离开    ESC  暂停",
-  "bacg_menu_back": "BACKSPACE  菜单 / 取消    TAB  离开电脑    ESC  暂停",
+  "bacg_menu_controls": "↑ / ↓  选择    ENTER  开始    {0}  菜单    {1}  离开    ESC  暂停",
+  "bacg_menu_back": "{0}  菜单 / 取消    {1}  离开电脑    ESC  暂停",
   "bacg_library": "你的游戏",
   "bacg_details": "已选游戏",
   "bacg_best": "最高分",
-  "bacg_retry": "ENTER：重试。BACKSPACE：返回菜单。",
-  "bacg_return_menu": "返回菜单 [Backspace]"
+  "bacg_retry": "ENTER：重试。{0}：返回菜单。",
+  "bacg_return_menu": "返回菜单 [{0}]",
+  "bacg_shortcuts_header": "键盘快捷键",
+  "bacg_shortcut_return": "返回游戏菜单",
+  "bacg_shortcut_leave": "离开电脑",
+  "bacg_shortcut_unbound": "未绑定",
+  "bacg_shortcut_capture": "请按一个键…",
+  "bacg_shortcut_conflict": "已被使用"
 }

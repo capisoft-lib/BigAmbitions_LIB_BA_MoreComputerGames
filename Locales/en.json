@@ -8,11 +8,17 @@
   "bacg_original_desc": "Included with Big Ambitions.",
   "bacg_lazy": "Game resources load only when you play.",
   "bacg_menu_tagline": "A little break. Big ambitions.",
-  "bacg_menu_controls": "↑ / ↓  Select    ENTER  Play    BACKSPACE  Menu    TAB  Leave    ESC  Pause",
-  "bacg_menu_back": "BACKSPACE  Menu / cancel    TAB  Leave computer    ESC  Pause",
+  "bacg_menu_controls": "↑ / ↓  Select    ENTER  Play    {0}  Menu    {1}  Leave    ESC  Pause",
+  "bacg_menu_back": "{0}  Menu / cancel    {1}  Leave computer    ESC  Pause",
   "bacg_library": "YOUR GAMES",
   "bacg_details": "SELECTED GAME",
   "bacg_best": "BEST",
-  "bacg_retry": "ENTER to retry, BACKSPACE for the menu.",
-  "bacg_return_menu": "Return to menu [Backspace]"
+  "bacg_retry": "ENTER to retry, {0} for the menu.",
+  "bacg_return_menu": "Return to menu [{0}]",
+  "bacg_shortcuts_header": "Keyboard shortcuts",
+  "bacg_shortcut_return": "Return to game menu",
+  "bacg_shortcut_leave": "Leave computer",
+  "bacg_shortcut_unbound": "Unbound",
+  "bacg_shortcut_capture": "Press a key…",
+  "bacg_shortcut_conflict": "Already used"
 }

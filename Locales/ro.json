@@ -8,11 +8,17 @@
   "bacg_original_desc": "Inclus în Big Ambitions.",
   "bacg_lazy": "Resursele jocului se încarcă doar când începi să joci.",
   "bacg_menu_tagline": "O mică pauză. Ambiții mari.",
-  "bacg_menu_controls": "↑ / ↓  Alege    ENTER  Joacă    BACKSPACE  Meniu    TAB  Ieșire    ESC  Pauză",
-  "bacg_menu_back": "BACKSPACE  Meniu / anulează    TAB  Părăsește computerul    ESC  Pauză",
+  "bacg_menu_controls": "↑ / ↓  Alege    ENTER  Joacă    {0}  Meniu    {1}  Ieșire    ESC  Pauză",
+  "bacg_menu_back": "{0}  Meniu / anulează    {1}  Părăsește computerul    ESC  Pauză",
   "bacg_library": "JOCURILE TALE",
   "bacg_details": "JOCUL SELECTAT",
   "bacg_best": "RECORD",
-  "bacg_retry": "ENTER: reîncearcă. BACKSPACE: meniu.",
-  "bacg_return_menu": "Înapoi la meniu [Backspace]"
+  "bacg_retry": "ENTER: reîncearcă. {0}: meniu.",
+  "bacg_return_menu": "Înapoi la meniu [{0}]",
+  "bacg_shortcuts_header": "Comenzi rapide de la tastatură",
+  "bacg_shortcut_return": "Înapoi la meniul jocurilor",
+  "bacg_shortcut_leave": "Părăsește computerul",
+  "bacg_shortcut_unbound": "Neatribuit",
+  "bacg_shortcut_capture": "Apasă o tastă…",
+  "bacg_shortcut_conflict": "Deja utilizat"
 }

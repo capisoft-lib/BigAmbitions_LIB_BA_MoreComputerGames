@@ -23,6 +23,7 @@ namespace Capisoft.Lib.BaComputerGames
             ComputerGamesDriver.ValidateContract();
             ComputerGames.Error += LogError;
             ComputerGames.Translator = Text;
+            McgShortcuts.Initialize(context);
             ComputerGames.BeginDisplaySession = NativeScreenEffects.BeginSession;
             ComputerGames.InputAllowed = () => !UI.MiniMenu.MiniMenu.IsOpen &&
                 !Scenes.MainMenu.Options.IsVisible && !GameManager.isCitySceneBeingUnloaded;
@@ -37,6 +38,7 @@ namespace Capisoft.Lib.BaComputerGames
         }
         public Task OnUnloadAsync()
         {
+            McgShortcuts.Shutdown();
             if (_scores != null) { _scores.Shutdown(); _scores = null; }
             if (_driver != null) { _driver.Shutdown(); UnityEngine.Object.Destroy(_driver.gameObject); _driver = null; }
             ComputerGames.DeactivateHost();

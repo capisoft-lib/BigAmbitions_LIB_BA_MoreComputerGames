@@ -8,11 +8,17 @@
   "bacg_original_desc": "Входить до складу Big Ambitions.",
   "bacg_lazy": "Ресурси гри завантажуються лише під час її запуску.",
   "bacg_menu_tagline": "Невелика перерва. Великі амбіції.",
-  "bacg_menu_controls": "↑ / ↓  Вибір    ENTER  Грати    BACKSPACE  Меню    TAB  Вийти    ESC  Пауза",
-  "bacg_menu_back": "BACKSPACE  Меню / скасувати    TAB  Відійти від комп’ютера    ESC  Пауза",
+  "bacg_menu_controls": "↑ / ↓  Вибір    ENTER  Грати    {0}  Меню    {1}  Вийти    ESC  Пауза",
+  "bacg_menu_back": "{0}  Меню / скасувати    {1}  Відійти від комп’ютера    ESC  Пауза",
   "bacg_library": "ВАШІ ІГРИ",
   "bacg_details": "ВИБРАНА ГРА",
   "bacg_best": "РЕКОРД",
-  "bacg_retry": "ENTER: повторити. BACKSPACE: меню.",
-  "bacg_return_menu": "Повернутися до меню [Backspace]"
+  "bacg_retry": "ENTER: повторити. {0}: меню.",
+  "bacg_return_menu": "Повернутися до меню [{0}]",
+  "bacg_shortcuts_header": "Сполучення клавіш",
+  "bacg_shortcut_return": "Повернутися до меню ігор",
+  "bacg_shortcut_leave": "Відійти від комп’ютера",
+  "bacg_shortcut_unbound": "Не призначено",
+  "bacg_shortcut_capture": "Натисніть клавішу…",
+  "bacg_shortcut_conflict": "Уже використовується"
 }

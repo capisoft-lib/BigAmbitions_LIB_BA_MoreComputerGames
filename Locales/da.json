@@ -8,11 +8,17 @@
   "bacg_original_desc": "Inkluderet i Big Ambitions.",
   "bacg_lazy": "Spillets ressourcer indlæses først, når du spiller.",
   "bacg_menu_tagline": "En lille pause. Store ambitioner.",
-  "bacg_menu_controls": "↑ / ↓  Vælg    ENTER  Spil    BACKSPACE  Menu    TAB  Forlad    ESC  Pause",
-  "bacg_menu_back": "BACKSPACE  Menu / annuller    TAB  Forlad computeren    ESC  Pause",
+  "bacg_menu_controls": "↑ / ↓  Vælg    ENTER  Spil    {0}  Menu    {1}  Forlad    ESC  Pause",
+  "bacg_menu_back": "{0}  Menu / annuller    {1}  Forlad computeren    ESC  Pause",
   "bacg_library": "DINE SPIL",
   "bacg_details": "VALGT SPIL",
   "bacg_best": "REKORD",
-  "bacg_retry": "ENTER: prøv igen. BACKSPACE: menu.",
-  "bacg_return_menu": "Tilbage til menuen [Backspace]"
+  "bacg_retry": "ENTER: prøv igen. {0}: menu.",
+  "bacg_return_menu": "Tilbage til menuen [{0}]",
+  "bacg_shortcuts_header": "Tastaturgenveje",
+  "bacg_shortcut_return": "Tilbage til spilmenuen",
+  "bacg_shortcut_leave": "Forlad computeren",
+  "bacg_shortcut_unbound": "Ikke tildelt",
+  "bacg_shortcut_capture": "Tryk på en tast…",
+  "bacg_shortcut_conflict": "Allerede i brug"
 }

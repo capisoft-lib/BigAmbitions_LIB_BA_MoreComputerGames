@@ -8,11 +8,17 @@
   "bacg_original_desc": "Περιλαμβάνεται στο Big Ambitions.",
   "bacg_lazy": "Οι πόροι του παιχνιδιού φορτώνονται μόνο όταν αρχίζεις να παίζεις.",
   "bacg_menu_tagline": "Μικρό διάλειμμα. Μεγάλες φιλοδοξίες.",
-  "bacg_menu_controls": "↑ / ↓  Επιλογή    ENTER  Παίξε    BACKSPACE  Μενού    TAB  Έξοδος    ESC  Παύση",
-  "bacg_menu_back": "BACKSPACE  Μενού / ακύρωση    TAB  Έξοδος από υπολογιστή    ESC  Παύση",
+  "bacg_menu_controls": "↑ / ↓  Επιλογή    ENTER  Παίξε    {0}  Μενού    {1}  Έξοδος    ESC  Παύση",
+  "bacg_menu_back": "{0}  Μενού / ακύρωση    {1}  Έξοδος από υπολογιστή    ESC  Παύση",
   "bacg_library": "ΤΑ ΠΑΙΧΝΙΔΙΑ ΣΟΥ",
   "bacg_details": "ΕΠΙΛΕΓΜΕΝΟ ΠΑΙΧΝΙΔΙ",
   "bacg_best": "ΡΕΚΟΡ",
-  "bacg_retry": "ENTER: νέα προσπάθεια. BACKSPACE: μενού.",
-  "bacg_return_menu": "Επιστροφή στο μενού [Backspace]"
+  "bacg_retry": "ENTER: νέα προσπάθεια. {0}: μενού.",
+  "bacg_return_menu": "Επιστροφή στο μενού [{0}]",
+  "bacg_shortcuts_header": "Συντομεύσεις πληκτρολογίου",
+  "bacg_shortcut_return": "Επιστροφή στο μενού παιχνιδιών",
+  "bacg_shortcut_leave": "Έξοδος από τον υπολογιστή",
+  "bacg_shortcut_unbound": "Χωρίς αντιστοίχιση",
+  "bacg_shortcut_capture": "Πατήστε ένα πλήκτρο…",
+  "bacg_shortcut_conflict": "Χρησιμοποιείται ήδη"
 }

@@ -8,11 +8,17 @@
   "bacg_original_desc": "Součást hry Big Ambitions.",
   "bacg_lazy": "Herní prostředky se načítají až při spuštění hry.",
   "bacg_menu_tagline": "Malá pauza. Velké ambice.",
-  "bacg_menu_controls": "↑ / ↓  Výběr    ENTER  Hrát    BACKSPACE  Menu    TAB  Odejít    ESC  Pauza",
-  "bacg_menu_back": "BACKSPACE  Menu / zrušit    TAB  Opustit počítač    ESC  Pauza",
+  "bacg_menu_controls": "↑ / ↓  Výběr    ENTER  Hrát    {0}  Menu    {1}  Odejít    ESC  Pauza",
+  "bacg_menu_back": "{0}  Menu / zrušit    {1}  Opustit počítač    ESC  Pauza",
   "bacg_library": "VAŠE HRY",
   "bacg_details": "VYBRANÁ HRA",
   "bacg_best": "REKORD",
-  "bacg_retry": "ENTER: zkusit znovu. BACKSPACE: menu.",
-  "bacg_return_menu": "Zpět do nabídky [Backspace]"
+  "bacg_retry": "ENTER: zkusit znovu. {0}: menu.",
+  "bacg_return_menu": "Zpět do nabídky [{0}]",
+  "bacg_shortcuts_header": "Klávesové zkratky",
+  "bacg_shortcut_return": "Zpět do nabídky her",
+  "bacg_shortcut_leave": "Opustit počítač",
+  "bacg_shortcut_unbound": "Nepřiřazeno",
+  "bacg_shortcut_capture": "Stiskněte klávesu…",
+  "bacg_shortcut_conflict": "Již použito"
 }

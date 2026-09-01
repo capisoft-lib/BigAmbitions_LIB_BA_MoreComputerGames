@@ -8,11 +8,17 @@
   "bacg_original_desc": "Sisältyy Big Ambitions -peliin.",
   "bacg_lazy": "Peliresurssit ladataan vasta, kun pelaat.",
   "bacg_menu_tagline": "Pieni tauko. Suuret tavoitteet.",
-  "bacg_menu_controls": "↑ / ↓  Valitse    ENTER  Pelaa    BACKSPACE  Valikko    TAB  Poistu    ESC  Tauko",
-  "bacg_menu_back": "BACKSPACE  Valikko / peruuta    TAB  Poistu tietokoneelta    ESC  Tauko",
+  "bacg_menu_controls": "↑ / ↓  Valitse    ENTER  Pelaa    {0}  Valikko    {1}  Poistu    ESC  Tauko",
+  "bacg_menu_back": "{0}  Valikko / peruuta    {1}  Poistu tietokoneelta    ESC  Tauko",
   "bacg_library": "OMAT PELISI",
   "bacg_details": "VALITTU PELI",
   "bacg_best": "ENNÄTYS",
-  "bacg_retry": "ENTER: yritä uudelleen. BACKSPACE: valikko.",
-  "bacg_return_menu": "Takaisin valikkoon [Backspace]"
+  "bacg_retry": "ENTER: yritä uudelleen. {0}: valikko.",
+  "bacg_return_menu": "Takaisin valikkoon [{0}]",
+  "bacg_shortcuts_header": "Pikanäppäimet",
+  "bacg_shortcut_return": "Takaisin pelivalikkoon",
+  "bacg_shortcut_leave": "Poistu tietokoneelta",
+  "bacg_shortcut_unbound": "Ei määritetty",
+  "bacg_shortcut_capture": "Paina näppäintä…",
+  "bacg_shortcut_conflict": "Jo käytössä"
 }

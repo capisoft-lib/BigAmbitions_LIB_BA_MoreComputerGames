@@ -63,7 +63,8 @@ namespace Capisoft.Lib.BaComputerGames
         internal void Refresh(bool visible)
         {
             if (_disposed || _button == null || _template == null) return;
-            string text = ComputerGames.ResolveText("bacg_return_menu", "Return to menu [Backspace]");
+            string text = McgShortcuts.FormatSessionText(
+                ComputerGames.ResolveText("bacg_return_menu", "Return to menu [{0}]"));
             if (_label.text != text) _label.text = text;
             _button.gameObject.SetActive(visible);
             _button.interactable = visible && (_allowed == null || _allowed());

@@ -8,7 +8,7 @@ A shared library for adding mini-games to the computers inside Big Ambitions.
 
 **This repository contains MCG only.** FlappyAmbition is a separate mod: its sources, assets, tests and binaries are not included. The original brick-breaker game remains available without installing any additional games.
 
-**Version 1.0.0** brings a game menu onto the computer monitor, with **22 interface languages**, resources loaded only after selection and local high scores for vanilla and mod games. The native panel offers a translated **Return to menu [Backspace]** button and keeps its original **Leave** button with a **[TAB]** hint. No other mod library is required. Read the release notes in [English](releases/1.0.0/RELEASE_NOTES.en.md) or [French](releases/1.0.0/RELEASE_NOTES.fr.md), or browse the [changelog](CHANGELOG.md).
+**Version 1.0.0** brings a game menu onto the computer monitor, with **22 interface languages**, resources loaded only after selection and local high scores for vanilla and mod games. The current source adds standalone selectors under **Options > Mods > More Computer Games** for the native panel's **Return to menu** and **Leave** actions; **[Backspace]** and **[Tab]** remain their defaults. No other mod library is required. Read the release notes in [English](releases/1.0.0/RELEASE_NOTES.en.md) or [French](releases/1.0.0/RELEASE_NOTES.fr.md), or browse the [changelog](CHANGELOG.md).
 
 ## Documentation
 
@@ -32,17 +32,17 @@ When MCG is active, the computer's native **Play Video Games** action takes the 
 | --- | --- | --- |
 | Select a game | Up / Down | — |
 | Launch the selection | Enter | — |
-| Return to the MCG menu or cancel loading | Backspace | Return to menu [Backspace] |
-| Leave the computer | Tab | Original translated Leave caption + [TAB] |
+| Return to the MCG menu or cancel loading | Backspace by default; configurable | Return to menu + active binding |
+| Leave the computer | Tab by default; configurable | Original translated Leave caption + active binding |
 | Open the native pause menu | Escape | Unchanged |
 
-MCG shortcuts do not act while the pause menu or options are open; Tab also respects native UI focus. The catalog stays on the monitor, with no separate popup or additional computer interaction to learn.
+The two MCG-owned shortcuts are configured under **Options > Mods > More Computer Games**. Click a field and press a keyboard chord, use Backspace/Delete while capturing to clear it, Escape to cancel, or the red reset button to restore its factory value. Exact duplicates are rejected. MCG shortcuts do not act while the pause menu or options are open. The catalog stays on the monitor, with no separate popup or additional computer interaction to learn.
 
 Game authors provide a description, gameplay and an optional resource loader. MCG handles the catalog, monitor integration, standard controls and session cleanup.
 
-During a game or loading, **Return to menu [Backspace]** also appears beside **Leave** in the native panel below the monitor. It returns to the MCG catalog or cancels loading without leaving the computer. The label follows the game's language; the button is hidden in the catalog and respects pause/options and UI input blocking. It uses the native button style and requires no additional UI library.
+During a game or loading, **Return to menu [active binding]** also appears beside **Leave** in the native panel below the monitor. It returns to the MCG catalog or cancels loading without leaving the computer. The label follows the game's language and the current binding; the button is hidden in the catalog and respects pause/options and UI input blocking. It uses the native button style and requires no additional UI library.
 
-The native Leave button keeps its translated caption and shows **[TAB]** while using the MCG computer menu or a game. Its action is unchanged; the hint is removed when leaving the computer.
+The native Leave button keeps its translated caption and shows the active shortcut while using the MCG computer menu or a game. Its click action is unchanged; the hint is removed when leaving the computer.
 
 MCG also saves local high scores for the original brick-breaker and added games through the same round-completion event. Only a strictly higher score replaces a record. Records are separated by Steam profile, game and rules, shared across saves and stored outside ModsLocal. No additional online account or sharing is required. Abandoned rounds do not count.
 

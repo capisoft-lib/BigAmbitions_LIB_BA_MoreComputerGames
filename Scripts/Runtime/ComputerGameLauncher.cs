@@ -38,10 +38,12 @@ namespace Capisoft.Lib.BaComputerGames
         {
             _view = new ComputerMenuView(transform);
             Catalog.Refresh(); ComputerGames.CatalogChanged += RefreshCatalog;
+            McgShortcuts.BindingsChanged += OnBindingsChanged;
             State = ComputerLauncherState.Menu; _acceptInputAt = Time.unscaledTime + .4f;
             Draw();
         }
         private void RefreshCatalog() { Catalog.Refresh(); if (State == ComputerLauncherState.Menu) Draw(); }
+        private void OnBindingsChanged() { if (State != ComputerLauncherState.Closed) Draw(); }
         public override void SetScreenResolution(int width, int height)
         {
             _width = width; _height = height; _target = _view.Camera.targetTexture;
@@ -58,7 +60,7 @@ namespace Capisoft.Lib.BaComputerGames
             bool ready = Time.unscaledTime >= _acceptInputAt;
             HandleInput(ready ? (Input.GetKeyDown(KeyCode.DownArrow) ? 1 : Input.GetKeyDown(KeyCode.UpArrow) ? -1 : 0) : 0,
                 ready && (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)),
-                ready && Input.GetKeyDown(KeyCode.Backspace), ready && LeaveKeyPressed());
+                ready && McgShortcuts.ReturnToMenuPressed(), ready && McgShortcuts.LeaveComputerPressed());
             if (State == ComputerLauncherState.Closed) return;
             if (State == ComputerLauncherState.Loading && _loading == null && Time.frameCount > _loadFrame)
                 LoadSelected(); // Let the loading screen render even with a synchronous loader.
@@ -75,12 +77,6 @@ namespace Capisoft.Lib.BaComputerGames
                 catch (Exception error) { ShowFailure(error); }
             }
         }
-        private static bool LeaveKeyPressed() => Input.GetKeyDown(KeyCode.Tab) &&
-            !Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift) &&
-            !Input.GetKey(KeyCode.LeftControl) && !Input.GetKey(KeyCode.RightControl) &&
-            !Input.GetKey(KeyCode.LeftAlt) && !Input.GetKey(KeyCode.RightAlt) &&
-            !Input.GetKey(KeyCode.LeftCommand) && !Input.GetKey(KeyCode.RightCommand);
-
         internal void HandleInput(int direction, bool confirm, bool back, bool leave = false)
         {
             if (State == ComputerLauncherState.Closed) return;
@@ -193,6 +189,7 @@ namespace Capisoft.Lib.BaComputerGames
         {
             State = ComputerLauncherState.Closed;
             ComputerGames.CatalogChanged -= RefreshCatalog;
+            McgShortcuts.BindingsChanged -= OnBindingsChanged;
             CancelLoad(); ReleaseGame();
             ComputerGames.SafeDispose(_menuEffects); _menuEffects = null;
             if (_view != null) { _view.Dispose(); _view = null; }

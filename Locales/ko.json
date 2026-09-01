@@ -8,11 +8,17 @@
   "bacg_original_desc": "Big Ambitions에 포함되어 있습니다.",
   "bacg_lazy": "게임 리소스는 플레이할 때만 불러옵니다.",
   "bacg_menu_tagline": "잠깐의 휴식. 커다란 야망.",
-  "bacg_menu_controls": "↑ / ↓  선택    ENTER  플레이    BACKSPACE  메뉴    TAB  나가기    ESC  일시정지",
-  "bacg_menu_back": "BACKSPACE  메뉴 / 취소    TAB  컴퓨터에서 나가기    ESC  일시정지",
+  "bacg_menu_controls": "↑ / ↓  선택    ENTER  플레이    {0}  메뉴    {1}  나가기    ESC  일시정지",
+  "bacg_menu_back": "{0}  메뉴 / 취소    {1}  컴퓨터에서 나가기    ESC  일시정지",
   "bacg_library": "내 게임",
   "bacg_details": "선택한 게임",
   "bacg_best": "최고 기록",
-  "bacg_retry": "ENTER: 다시 시도. BACKSPACE: 메뉴.",
-  "bacg_return_menu": "메뉴로 돌아가기 [Backspace]"
+  "bacg_retry": "ENTER: 다시 시도. {0}: 메뉴.",
+  "bacg_return_menu": "메뉴로 돌아가기 [{0}]",
+  "bacg_shortcuts_header": "키보드 단축키",
+  "bacg_shortcut_return": "게임 메뉴로 돌아가기",
+  "bacg_shortcut_leave": "컴퓨터에서 나가기",
+  "bacg_shortcut_unbound": "할당되지 않음",
+  "bacg_shortcut_capture": "키를 누르세요…",
+  "bacg_shortcut_conflict": "이미 사용 중"
 }

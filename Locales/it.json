@@ -8,11 +8,17 @@
   "bacg_original_desc": "Incluso in Big Ambitions.",
   "bacg_lazy": "Le risorse del gioco vengono caricate solo quando giochi.",
   "bacg_menu_tagline": "Una piccola pausa. Grandi ambizioni.",
-  "bacg_menu_controls": "↑ / ↓  Scegli    ENTER  Gioca    BACKSPACE  Menu    TAB  Esci    ESC  Pausa",
-  "bacg_menu_back": "BACKSPACE  Menu / annulla    TAB  Lascia il computer    ESC  Pausa",
+  "bacg_menu_controls": "↑ / ↓  Scegli    ENTER  Gioca    {0}  Menu    {1}  Esci    ESC  Pausa",
+  "bacg_menu_back": "{0}  Menu / annulla    {1}  Lascia il computer    ESC  Pausa",
   "bacg_library": "I TUOI GIOCHI",
   "bacg_details": "GIOCO SELEZIONATO",
   "bacg_best": "RECORD",
-  "bacg_retry": "ENTER: riprova. BACKSPACE: menu.",
-  "bacg_return_menu": "Torna al menu [Backspace]"
+  "bacg_retry": "ENTER: riprova. {0}: menu.",
+  "bacg_return_menu": "Torna al menu [{0}]",
+  "bacg_shortcuts_header": "Scorciatoie da tastiera",
+  "bacg_shortcut_return": "Torna al menu dei giochi",
+  "bacg_shortcut_leave": "Lascia il computer",
+  "bacg_shortcut_unbound": "Non assegnato",
+  "bacg_shortcut_capture": "Premi un tasto…",
+  "bacg_shortcut_conflict": "Già in uso"
 }
