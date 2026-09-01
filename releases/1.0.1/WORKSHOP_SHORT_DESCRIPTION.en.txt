@@ -1,0 +1,1 @@
+MCG 1.0.1: a native computer game menu in 22 languages, configurable controls, on-demand games and local high scores. No other mod library required; extra games are separate Workshop mods.

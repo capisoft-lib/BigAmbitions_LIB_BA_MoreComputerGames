@@ -1,0 +1,8 @@
+MCG 1.0.1
+- Correction de la découverte des jeux compatibles installés uniquement comme Required Items Workshop séparés. Leur classe enregistrée peut maintenant être inspectée avant la résolution de MCG.
+- Aucun appel natif à VideoGameSetup.Finish pendant la fermeture du jeu ou le démontage de la ville, tout en conservant le nettoyage MCG et la fermeture native d'une session active normale.
+- Raccourcis Retour au menu et Quitter configurables dans Options > Mods > More Computer Games. Retour arrière et Tab restent les valeurs par défaut.
+- Capture, effacement, réinitialisation et avertissement de doublon ; les combinaisons exactes persistent dans les préférences officielles des options de mods.
+- Instructions du moniteur et deux boutons natifs actualisés immédiatement dans les 22 langues lorsque les raccourcis changent.
+- Signatures publiques de l'API, identifiant technique, nom de l'assembly et schéma des records inchangés. Les auteurs doivent recompiler contre MCG 1.0.1.0 et conserver une classe RegisterModClass dépendant uniquement de BAModAPI.
+Aucune autre bibliothèque de mod n'est requise. Les jeux compatibles restent des éléments Workshop séparés et ne doivent pas embarquer la DLL MCG.

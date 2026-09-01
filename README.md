@@ -1,4 +1,4 @@
-# LIB BA More Computer Games — 1.0.0
+# LIB BA More Computer Games — 1.0.1
 
 A shared library for adding mini-games to the computers inside Big Ambitions.
 
@@ -8,7 +8,7 @@ A shared library for adding mini-games to the computers inside Big Ambitions.
 
 **This repository contains MCG only.** FlappyAmbition is a separate mod: its sources, assets, tests and binaries are not included. The original brick-breaker game remains available without installing any additional games.
 
-**Version 1.0.0** brings a game menu onto the computer monitor, with **22 interface languages**, resources loaded only after selection and local high scores for vanilla and mod games. The current source adds standalone selectors under **Options > Mods > More Computer Games** for the native panel's **Return to menu** and **Leave** actions; **[Backspace]** and **[Tab]** remain their defaults. No other mod library is required. Read the release notes in [English](releases/1.0.0/RELEASE_NOTES.en.md) or [French](releases/1.0.0/RELEASE_NOTES.fr.md), or browse the [changelog](CHANGELOG.md).
+**Version 1.0.1** fixes separate Workshop-game discovery and a shutdown teardown exception. It also adds standalone selectors under **Options > Mods > More Computer Games** for the native panel's **Return to menu** and **Leave** actions; **[Backspace]** and **[Tab]** remain their defaults. The catalog, **22 interface languages**, on-demand resources and local high scores remain available, with no other mod library required. Read the release notes in [English](releases/1.0.1/RELEASE_NOTES.en.md) or [French](releases/1.0.1/RELEASE_NOTES.fr.md), or browse the [changelog](CHANGELOG.md).
 
 ## Documentation
 
@@ -18,7 +18,7 @@ The detailed guides below are currently in French:
 - [Create a compatible game](docs/CREER_UN_JEU.md), then read the [full API reference](API.md).
 - [Build and verify MCG](docs/COMPILATION.md).
 - [Source and package privacy](docs/CONFIDENTIALITE.md).
-- [Steam Workshop publication checklist and ready-to-copy texts](releases/1.0.0/PUBLISHING_CHECKLIST.md).
+- [Steam Workshop publication checklist and ready-to-copy texts](releases/1.0.1/PUBLISHING_CHECKLIST.md).
 
 The Steam display title is **LIB BA More Computer Games (MCG)**, also stored in **release-assets/WORKSHOP_TITLE.txt** for publication. The short name is **More Computer Games (MCG)**. For manual installation, use **ModsLocal/LIB_BA_MoreComputerGames**; do not keep an active local duplicate alongside the Workshop version. The technical mod ID and assembly name remain **LIB_BaComputerGames** to preserve references from game mods and the C# API. Big Ambitions uses the folder name in its local mod list; the Workshop title is entered separately when publishing.
 
@@ -85,9 +85,9 @@ Games can register before or after the library becomes active. A namespaced iden
 
 Target: **Big Ambitions 1.0 Build 3670 / Unity 2022.3.62f2**. **MCG requires no other mod library.** The monitor menu uses the game's native computer integration and Unity UI. Individual game mods must reference MCG as a separate dependency, never bundle its DLL, and declare MCG in Steam Required Items when publishing.
 
-MCG 1.0.0 preserves the public API signatures used by the 0.2.0 game mods. **Game authors must still rebuild against the MCG 1.0.0 DLL (assembly version 1.0.0.0)**: the native loader can reject a game binary that still references major version 0. The library's namespace, assembly name, technical mod ID and record-file schema are unchanged. Mod loading remains under the official SDK: MCG does not scan the disk for DLLs, download code or use a network service.
+MCG 1.0.1 preserves the public API signatures used by MCG 1.0.0 and the earlier 0.2.0 game mods. **Game authors must rebuild against the MCG 1.0.1 DLL (assembly version 1.0.1.0)** and keep their `RegisterModClass` entry type BAModAPI-only: Big Ambitions can inspect that attribute before resolving MCG from a separate Workshop item. The library's namespace, assembly name, technical mod ID and record-file schema are unchanged. Mod loading remains under the official SDK: MCG does not scan the disk for DLLs, download code or use a network service.
 
-The [1.0.0 release folder](releases/1.0.0/) contains English/French release notes, full Steam descriptions in BBCode, short descriptions and change notes, plus an [upload checklist](releases/1.0.0/PUBLISHING_CHECKLIST.md). Update the [existing Workshop item](https://steamcommunity.com/sharedfiles/filedetails/?id=3793604724) through Big Ambitions' **Mods > Mod Creator > Edit mod**, using the built `LIB_BA_MoreComputerGames` folder. Never upload the source checkout or its private build directory. MCG requires **no Steam Required Items**. Compatible games list MCG as their dependency. Pushing GitHub does not update the Workshop item's content or description.
+The [1.0.1 release folder](releases/1.0.1/) contains English/French release notes, full Steam descriptions in BBCode, short descriptions and change notes, plus an [upload checklist](releases/1.0.1/PUBLISHING_CHECKLIST.md). Update the [existing Workshop item](https://steamcommunity.com/sharedfiles/filedetails/?id=3793604724) through Big Ambitions' **Mods > Mod Creator > Edit mod**, using the built `LIB_BA_MoreComputerGames` folder. Never upload the source checkout or its private build directory. MCG requires **no Steam Required Items**. Compatible games list MCG as their dependency. Pushing GitHub does not update the Workshop item's content or description.
 
 ## Build and verification
 

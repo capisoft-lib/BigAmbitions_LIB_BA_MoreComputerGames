@@ -9,7 +9,7 @@ namespace Capisoft.Lib.BaComputerGames
     // Registration APIs and all Unity-facing continuations are main-thread only.
     public static class ComputerGames
     {
-        public const string ApiVersion = "1.0.0";
+        public const string ApiVersion = "1.0.1";
         public const string VanillaBrickBreakerId = "vanilla:brick-breaker";
         public const string VanillaBrickBreakerRuleset = "ba-1.0-standard";
         public static bool IsVanillaScoreTrackingActive { get; internal set; }

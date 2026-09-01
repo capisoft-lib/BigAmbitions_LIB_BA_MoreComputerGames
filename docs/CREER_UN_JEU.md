@@ -8,7 +8,7 @@ Utiliser le [SDK Big Ambitions](https://github.com/hovgaardgames/bigambitions) e
 
 Dans l'asmdef du jeu, référencer **LIB_BaComputerGames** ou son GUID existant. Si `overrideReferences` est activé, conserver **BigAmbitions.ModAPI.dll** pour les attributs d'entrée du SDK. Ne pas incorporer les DLL de MCG ou Big Ambitions au paquet distribué.
 
-Pour MCG 1.0.0, recompiler le jeu avec la DLL de la bibliothèque **1.0.0.0**. Une DLL de jeu encore liée à la version majeure 0 peut être refusée par le chargeur natif, même si les signatures de l'API sont conservées.
+Pour MCG 1.0.1, recompiler le jeu avec la DLL de la bibliothèque **1.0.1.0**. Le type déclaré par `RegisterModClass` doit dépendre uniquement de BAModAPI : Big Ambitions peut inspecter cet attribut avant de résoudre MCG depuis son élément Workshop séparé. Déplacer les types MCG et l'enregistrement du jeu dans un helper appelé depuis `OnLoad`.
 
 ## 2. Enregistrer automatiquement le jeu
 

@@ -1,0 +1,67 @@
+[h1]More Computer Games (MCG) 1.0.1[/h1]
+Give your in-game computer more ways to distract you from building an empire. MCG is a shared library for mini-games in Big Ambitions.
+
+[h2]What's new in 1.0.1[/h2]
+[list]
+[*]Fixes Workshop-only discovery for compatible games installed as separate Required Items.
+[*]Avoids a native Finish exception while Big Ambitions is shutting down or tearing down the city.
+[*]Makes Return to menu and Leave configurable under Options > Mods > More Computer Games, with live captions and persistent keyboard chords.
+[/list]
+
+[h2]One computer, more games[/h2]
+[list]
+[*]Open the game catalog directly on the computer monitor with the native Play Video Games action.
+[*]Keep the original Brick Breaker and add compatible game mods separately.
+[*]Load each game's resources only when you choose to play it.
+[*]Save local high scores for vanilla and mod games through the same system.
+[*]Use the MCG interface in all 22 selectable game languages. Game mods supply their own gameplay translations.
+[*]Return to the game menu or leave the computer with clear buttons below the monitor.
+[/list]
+
+[h2]Controls[/h2]
+[b]Up/Down[/b]: select a game. [b]Enter[/b]: play.
+[b]Backspace[/b] by default: return to the catalog or cancel loading.
+[b]Tab[/b] by default: leave the computer. [b]Escape[/b]: native pause menu, unchanged.
+Change Return to menu and Leave under [b]Options > Mods > More Computer Games[/b]. Capture a chord, clear it or restore the default; duplicate bindings are reported. Changes apply immediately to monitor instructions and both native buttons.
+MCG shortcuts are inactive while the pause menu or options are open. The Leave shortcut respects native UI focus.
+
+[h2]Requirements[/h2]
+Target: Big Ambitions 1.0 Build 3670 on Windows.
+MCG requires no other mod library. Enable MCG in the mod list.
+Restart Big Ambitions after installing or updating mods.
+
+[h2]Compatible games[/h2]
+Subscribe to the games on Steam Workshop; their source code is available on GitHub.
+[table]
+[tr][th]Name[/th][th]Steam Workshop[/th][th]GitHub[/th][/tr]
+[tr][td]Flappy Ambitions[/td][td][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3793614760]Subscribe[/url][/td][td][url=https://github.com/capisoft-lib/BigAmbitions_MCG_FlappyAmbitions]Source code[/url][/td][/tr]
+[tr][td]Snacke[/td][td][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3793615439]Subscribe[/url][/td][td][url=https://github.com/capisoft-lib/BigAmbitions_MCG_Snacke]Source code[/url][/td][/tr]
+[tr][td]Ambitions Invaders[/td][td][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3793615886]Subscribe[/url][/td][td][url=https://github.com/capisoft-lib/BigAmbitions_MCG_AmbitionsInvaders]Source code[/url][/td][/tr]
+[tr][td]Tetrix[/td][td][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3793616341]Subscribe[/url][/td][td][url=https://github.com/capisoft-lib/BigAmbitions_MCG_Tetrix]Source code[/url][/td][/tr]
+[/table]
+These four games require LIB MCG installed and enabled. They are separate mods: MCG does not include or download them automatically. Install and enable each game you want to play alongside MCG.
+
+[h2]Developers: create your own game[/h2]
+MCG is open source under the MIT license. Try the examples or build your own mini-game: MCG provides registration, loading, session and round-completion APIs, so you can focus on gameplay.
+
+[url=https://github.com/capisoft-lib/BigAmbitions_LIB_BA_MoreComputerGames][b]GitHub — MCG source code, API and examples[/b][/url]
+
+[url=https://github.com/capisoft-lib/BigAmbitions_LIB_BA_MoreComputerGames/blob/main/docs/CREER_UN_JEU.md]Create your first MCG game — step-by-step guide (French)[/url]
+[url=https://github.com/capisoft-lib/BigAmbitions_LIB_BA_MoreComputerGames/blob/main/API.md]Full API reference (French)[/url]
+
+Game authors: rebuild against MCG 1.0.1 (assembly 1.0.1.0), declare MCG as a separate dependency and never bundle its DLL. Keep the RegisterModClass entry loadable with BAModAPI alone; register MCG-specific types from OnLoad after the dependency is available. MCG itself has no Required Items.
+
+[h2]Local records and roadmap[/h2]
+Only a better score from a completed round replaces a record. Records are separated by Steam profile, game and rules; abandoned rounds do not count. ComputerGameHighScore is not required.
+We plan to explore adding a shared leaderboard soon. It is not available yet and has no confirmed release date. Scores remain local, with no uploads or extra account.
+
+[h2]Validation[/h2]
+Build and isolated tests are documented in the repository. Native gameplay and compatibility smoke tests remain to be completed. The English example images are isolated monitor renders.
+
+[h2]Support the developer ☕[/h2]
+
+If MCG has turned your work computer into an arcade, you can support its development by buying me a coffee:
+
+[url=https://buymeacoffee.com/capitaine][b]☕ Buy me a coffee[/b][/url]
+
+MCG can load another game; it still cannot refill my mug.

@@ -1,6 +1,6 @@
 # Required mods
 
-MCG 1.0.0 requires no other mod library. It uses the Big Ambitions native computer integration and the Unity runtime supplied with the game.
+MCG 1.0.1 requires no other mod library. It uses the Big Ambitions native computer integration and the Unity runtime supplied with the game.
 
 There is no additional mod to add to MCG's Steam Required Items. Compatible game mods must declare MCG as their own separate dependency; they must not include its DLL in their packages.
 

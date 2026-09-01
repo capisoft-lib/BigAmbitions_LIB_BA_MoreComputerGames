@@ -1,4 +1,4 @@
-# Verification — MCG 1.0.0
+# Verification — MCG 1.0.1
 
 The source repository contains the MCG library only. FlappyAmbition and the external Unity integration fixtures are not included. Compilation, isolated tests and actual Big Ambitions gameplay are separate levels of evidence.
 
@@ -6,7 +6,7 @@ The source repository contains the MCG library only. FlappyAmbition and the exte
 
 - `dotnet run --project tools/Tests~/MCG.Tests.csproj -c Release`: **120 assertions passed**. This combines the four native-close policy cases with the configurable-shortcut locale and placeholder checks.
 - The current `McgKeybind.cs` passes **7 isolated chord-model assertions** covering defaults, stable serialization, exact modifiers, display, invalid values, unbound state and rejection of a modifier-only primary key.
-- `tools/build.ps1` completed against Big Ambitions Build 3670 and Unity 2022.3.62f2 without installing or launching anything. Combined DLL SHA-256: `B54AC02289301A8518CD6E8B1A0B68120CD326E560A99DE322ECCE54B27EB037`.
+- `tools/build.ps1` completed against Big Ambitions Build 3670 and Unity 2022.3.62f2 without installing or launching anything. Manifest, API, file/product and assembly identities agree on **1.0.1** / **1.0.1.0**. Release-candidate DLL SHA-256: `6B111BF45763A424F3A69FD939DF6D12B0DFC276D797B5622EF26A01CDF19051`.
 - All **241 type references** and **580 member references** resolve against the installed runtime. The combined DLL retains the installed 1.0.0 library's exact **200 public API signatures** and has no `LIB_*` assembly reference.
 - Flappy, Snake, Ambitions Invaders, Tetrix and DOOM all rebuild against this exact combined MCG DLL. A matching Unity Mono discovery probe still resolves every rebuilt `RegisterModClass` entry with MCG blocked and not loaded.
 - This is source, unit, binary-discovery and package-build evidence. A fresh native Workshop-only launch, city shutdown and rendered shortcut/rebinding/persistence smoke remain pending.

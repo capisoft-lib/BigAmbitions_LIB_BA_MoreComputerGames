@@ -1,0 +1,1 @@
+MCG 1.0.1 : menu de jeux sur l'ordinateur en 22 langues, commandes configurables, chargement à la demande et records locaux. Aucune autre bibliothèque requise ; jeux Workshop séparés.

@@ -1,12 +1,14 @@
 # Changelog
 
-## Unreleased
+## 1.0.1 — 2026-09-01
 
 - Document a BAModAPI-only `RegisterModClass` bootstrap for games shipped as separate Workshop items, avoiding eager resolution of the external `ComputerGameMod<T>` base while Mono decodes the assembly attribute.
 - Skip native `VideoGameSetup.Finish()` requests after game shutdown or during city teardown while still disposing MCG-owned sessions and references.
 - Add standalone shortcut selectors under **Options > Mods > More Computer Games** for returning to the game menu and leaving the computer. MCG keeps no dependency on another mod library.
 - Persist exact keyboard chords in the official mod-options preference namespace, with capture, clear, reset and duplicate-binding feedback. Backspace and Tab remain the defaults.
 - Apply rebinding immediately to the real session input, monitor instructions and both native buttons below the computer screen in all 22 interface languages.
+
+Release notes: [English](releases/1.0.1/RELEASE_NOTES.en.md) · [Français](releases/1.0.1/RELEASE_NOTES.fr.md).
 
 ## 1.0.0 — 2026-08-31
 

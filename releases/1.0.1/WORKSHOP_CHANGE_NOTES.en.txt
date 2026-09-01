@@ -1,0 +1,8 @@
+MCG 1.0.1
+- Fixed Workshop-only discovery for compatible games installed as separate Required Items. Their registered entry can now be inspected before MCG is resolved.
+- Prevented the native VideoGameSetup.Finish call during game shutdown or city teardown while keeping MCG-owned cleanup and normal live-session closing.
+- Added configurable Return to menu and Leave shortcuts under Options > Mods > More Computer Games. Backspace and Tab remain the defaults.
+- Added capture, clear, reset and duplicate-binding feedback; exact keyboard chords persist in the official mod-options preferences.
+- Updated monitor instructions and both native buttons immediately when bindings change, across all 22 interface languages.
+- Public API signatures, technical mod ID, assembly name and local-record schema remain unchanged. Game authors must rebuild against MCG 1.0.1.0 and keep the RegisterModClass entry BAModAPI-only.
+No other mod library is required. Compatible games remain separate Workshop items and must not bundle the MCG DLL.

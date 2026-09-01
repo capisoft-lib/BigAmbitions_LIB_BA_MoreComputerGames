@@ -1,4 +1,4 @@
-# Installer et utiliser MCG 1.0.0
+# Installer et utiliser MCG 1.0.1
 
 ## Prérequis
 

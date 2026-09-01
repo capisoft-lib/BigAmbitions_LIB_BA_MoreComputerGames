@@ -15,7 +15,7 @@ MonoBehaviour:
   ModId: LIB_BaComputerGames
   DisplayName: LIB BA More Computer Games
   Author: capisoft-lib
-  Version: 1.0.0
+  Version: 1.0.1
   AssetBundleName:
   ModAssembly: {fileID: 5897886265953266890, guid: deaa7cd47f384c9bbb96cee101816ca5, type: 3}
   LocalesFolder: {fileID: 102900000, guid: 65b9ffc46b9d4387b780ef8b5fd2ebfd, type: 3}
