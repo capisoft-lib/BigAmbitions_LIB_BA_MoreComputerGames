@@ -59,10 +59,11 @@ Native locale codes: `cs da de el en es fi fr hu it ja ko lt nl pl pt ro ru tr u
 ## Available games
 
 - **Brick Breaker** — the original Big Ambitions game, available without installing another game mod.
-- **[FlappyAmbitions](https://github.com/capisoft-lib/BigAmbitions_MCG_FlappyAmbitions)** — fly a banknote between office towers. A separate MCG game mod and an example for developers creating their own games.
-- **[Snacke](https://github.com/capisoft-lib/BigAmbitions_MCG_Snacke)** — grow a bread snake into a sandwich by eating lettuce, tomatoes and rare cheese. A separate MCG game mod translated into all 22 game languages.
-- **[Ambitions Invaders](https://github.com/capisoft-lib/BigAmbitions_MCG_AmbitionsInvaders)** — pilot a banknote and fire yellow lasers at pixel-art rival tycoons in a horizontal shooter. A separate MCG game mod translated into all 22 game languages.
-- **[Tetrix](https://github.com/capisoft-lib/BigAmbitions_MCG_Tetrix)** — stack building-shaped pieces and clear floors in a separate falling-block game.
+- **Flappy Ambitions** — [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3793614760) · [GitHub](https://github.com/capisoft-lib/BigAmbitions_MCG_FlappyAmbitions) — fly a banknote between office towers. A separate MCG game mod and an example for developers creating their own games.
+- **Snacke** — [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3793615439) · [GitHub](https://github.com/capisoft-lib/BigAmbitions_MCG_Snacke) — grow a bread snake into a sandwich by eating lettuce, tomatoes and rare cheese. A separate MCG game mod translated into all 22 game languages.
+- **Ambitions Invaders** — [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3793615886) · [GitHub](https://github.com/capisoft-lib/BigAmbitions_MCG_AmbitionsInvaders) — pilot a banknote and fire yellow lasers at pixel-art rival tycoons in a horizontal shooter. A separate MCG game mod translated into all 22 game languages.
+- **Tetrix** — [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3793616341) · [GitHub](https://github.com/capisoft-lib/BigAmbitions_MCG_Tetrix) — stack building-shaped pieces and clear floors in a separate falling-block game.
+- **[MCG] DOOM** — [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3793713417) · [GitHub](https://github.com/Dudeldups/big-ambitions-mods/tree/mcg-doom-v1.0.0/Assets/Mods/MCG_Doom) — play the DOOM shareware episode through MCG, with keyboard and mouse controls plus the original music and sound effects. Created by Dudeldups.
 
 Additional games must be installed separately. MCG does not include or automatically download them; FlappyAmbitions is not required to install, build or use this library.
 
