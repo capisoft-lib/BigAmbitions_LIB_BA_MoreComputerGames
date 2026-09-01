@@ -175,8 +175,12 @@ namespace Capisoft.Lib.BaComputerGames
             var reference = _reference; _reference = null;
             try
             {
-                // Never finish another mod's game or the original game.
-                if (setup != null && PlayingField.GetValue(null) as VideoGameSetup == setup) VideoGameSetup.RequestFinish();
+                // Never finish another mod's game or the original game. The native Finish method
+                // dereferences player/UI singletons, so scene teardown must own its own cleanup.
+                var ownsNativeSession = setup != null && PlayingField.GetValue(null) as VideoGameSetup == setup;
+                if (ComputerGameClosePolicy.ShouldRequestNativeFinish(
+                    GameManager.IsInitialized, GameManager.isCitySceneBeingUnloaded, ownsNativeSession))
+                    VideoGameSetup.RequestFinish();
             }
             catch (Exception error) { ComputerGames.Report(error); }
             finally

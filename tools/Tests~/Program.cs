@@ -11,6 +11,10 @@ static class Program
 
     static async Task Main()
     {
+        Check(ComputerGameClosePolicy.ShouldRequestNativeFinish(true, false, true), "Owned live native session requests normal finish");
+        Check(!ComputerGameClosePolicy.ShouldRequestNativeFinish(false, false, true), "Uninitialized game skips native finish during teardown");
+        Check(!ComputerGameClosePolicy.ShouldRequestNativeFinish(true, true, true), "City unload skips native finish during teardown");
+        Check(!ComputerGameClosePolicy.ShouldRequestNativeFinish(true, false, false), "Foreign native session is never finished");
         await Reject<ArgumentException>(() => Task.FromResult(Def("Invalid")), "Ids require a namespace");
         await Reject<ArgumentException>(() => Task.FromResult(Def("author:UPPER")), "Ids are lowercase");
         await Reject<ArgumentException>(() => Task.FromResult(Def("a:b:c")), "Multiple namespaces rejected");

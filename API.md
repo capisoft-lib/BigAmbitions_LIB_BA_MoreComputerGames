@@ -9,7 +9,7 @@ Namespace public : **Capisoft.Lib.BaComputerGames**. Assembly : **LIB_BaComputer
 | Type | Responsabilité |
 | --- | --- |
 | ComputerGameDefinition | Identifiant unique, titre, description, version, règles, traductions, factory et chargeur optionnel. |
-| ComputerGameMod&lt;TGame&gt; | Point d'entrée de mod qui enregistre automatiquement la définition au chargement, puis retire son inscription au déchargement. |
+| ComputerGameMod&lt;TGame&gt; | Aide de compatibilité pour un assembly déjà résolu avec MCG. Ne pas l'utiliser comme base du type ciblé par `RegisterModClass` dans un élément Workshop séparé. |
 | ComputerGameBehaviour | Base recommandée : caméra, OnInitialize, OnTick, OnShutdown. L'initialisation et l'arrêt sont protégés contre les appels multiples. |
 | IComputerGame | Alternative : implémenter directement l'interface sur un MonoBehaviour existant. |
 | ComputerGameContext | Ressources préparées, répertoire du mod, traduction, sortie et événements de manche. |
@@ -24,6 +24,8 @@ Namespace public : **Capisoft.Lib.BaComputerGames**. Assembly : **LIB_BaComputer
 Dans un mod SDK distinct, référencer LIB_BaComputerGames par son nom d'assembly ou son GUID dans l'asmdef. Conserver BigAmbitions.ModAPI comme référence précompilée pour les attributs du SDK. Utiliser l'API MCG pour l'intégration à l'ordinateur ; aucune bibliothèque de mod supplémentaire n'est requise par MCG. Voir aussi le [guide développeur](docs/CREER_UN_JEU.md).
 
 ~~~csharp
+using System;
+using System.Threading.Tasks;
 using BAModAPI;
 using Capisoft.Lib.BaComputerGames;
 using UnityEngine;
@@ -33,12 +35,35 @@ using UnityEngine;
 namespace MyStudio
 {
     [ModEntryOnCityLoad]
-    public sealed class MyGameMod : ComputerGameMod<MyGame>
+    public sealed class MyGameMod : IModBigAmbitions
     {
-        protected override ComputerGameDefinition Definition =>
-            ComputerGameDefinition.Create<MyGame>(
+        private IDisposable registration;
+        public string[] RelativeAssetBundlePaths => Array.Empty<string>();
+
+        public Task OnLoadAsync(ModContext context)
+        {
+            registration?.Dispose();
+            registration = MyGameRegistration.Register(context);
+            return Task.CompletedTask;
+        }
+
+        public Task OnUnloadAsync()
+        {
+            registration?.Dispose();
+            registration = null;
+            return Task.CompletedTask;
+        }
+    }
+
+    internal static class MyGameRegistration
+    {
+        internal static IDisposable Register(ModContext context)
+        {
+            var definition = ComputerGameDefinition.Create<MyGame>(
                 "mystudio:my-game", "Mon jeu", "Une courte description",
                 version: "0.1.0", ruleset: "standard-v1");
+            return ComputerGames.Register(context.ModId, context.ModRootPath, definition);
+        }
     }
 
     public sealed class MyGame : ComputerGameBehaviour
@@ -77,13 +102,13 @@ namespace MyStudio
 }
 ~~~
 
-Les attributs d'entrée restent nécessaires : c'est le SDK officiel qui choisit les mods activés. La bibliothèque ne scanne pas les assemblies pour exécuter du code arbitrairement.
+Les attributs d'entrée restent nécessaires : c'est le SDK officiel qui choisit les mods activés. Le type passé à `RegisterModClass` doit rester chargeable avec `mscorlib` et `BAModAPI` seuls dans ses bases, interfaces et signatures publiques. Le helper séparé ne touche MCG qu'au moment de `OnLoadAsync`, après l'ordonnancement des dépendances. La bibliothèque ne scanne pas les assemblies pour exécuter du code arbitrairement.
 
 Un seul identifiant lowercase avec un namespace, par exemple **mystudio:my-game**, par jeu. Le nom affiché peut changer sans changer cet identifiant. Réserver un nouveau ruleset si les règles de score changent.
 
 ## Cycle de vie et règles Unity
 
-1. La classe de mod décrit le jeu. Son constructeur, sa propriété Definition et le constructeur du loader doivent rester légers : pas d'objets Unity, pas de lecture de gros fichiers.
+1. La classe d'entrée BAModAPI délègue à un helper qui décrit le jeu. Son constructeur, la création de définition et le constructeur du loader doivent rester légers : pas d'objets Unity, pas de lecture de gros fichiers.
 2. Le joueur rejoint l'ordinateur ; le lanceur MCG affiche le catalogue sur le moniteur. Aucune ressource de jeu n'est encore chargée.
 3. Après validation par Entrée, le loader éventuel est appelé sur le thread Unity. Un écran de chargement reste visible dans le moniteur pendant cette opération.
 4. La bibliothèque crée un GameObject enfant du conteneur natif et appelle la factory. Celle-ci doit attacher un MonoBehaviour implémentant IComputerGame à ce GameObject précis.
@@ -97,7 +122,7 @@ Parenter tous les objets de gameplay à la racine fournie, avec positions locale
 
 Ne pas utiliser Update pour le gameplay : il contournerait la pause des contrôles gérée par la bibliothèque. Libérer abonnements, coroutines et ressources propres dans OnShutdown. Les ressources Unity indépendantes de la hiérarchie doivent avoir un propriétaire explicite.
 
-Une fermeture abandonne la manche active sans fabriquer de score. Context.RequestExit ferme la session de ce jeu ; le lanceur revient au menu lors de sa prochaine mise à jour, sans terminer l'activité native sur l'ordinateur. Le jeu sera recréé au prochain lancement. Toutes les API de registre, de contexte et les opérations Unity se font sur le thread principal. Les signatures publiques restent compatibles : les mods de jeu existants n'ont pas besoin de se réenregistrer autrement.
+Une fermeture abandonne la manche active sans fabriquer de score. Context.RequestExit ferme la session de ce jeu ; le lanceur revient au menu lors de sa prochaine mise à jour, sans terminer l'activité native sur l'ordinateur. Le jeu sera recréé au prochain lancement. Toutes les API de registre, de contexte et les opérations Unity se font sur le thread principal. Les signatures publiques restent compatibles, mais les jeux distribués comme éléments Workshop séparés doivent utiliser l'entrée BAModAPI ci-dessus afin que Mono puisse décoder `RegisterModClass` avant de lier MCG.
 
 Avec IComputerGame directement, implémenter Camera, Initialize, Tick, SetScreenResolution, SetMusicState et Shutdown. Le composant reste un MonoBehaviour ; conserver soi-même le contexte reçu et rendre Shutdown idempotent. ComputerGameBehaviour convient à la plupart des nouveaux jeux.
 

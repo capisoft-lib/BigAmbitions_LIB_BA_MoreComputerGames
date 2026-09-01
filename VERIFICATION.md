@@ -2,6 +2,13 @@
 
 The source repository contains the MCG library only. FlappyAmbition and the external Unity integration fixtures are not included. Compilation, isolated tests and actual Big Ambitions gameplay are separate levels of evidence.
 
+## Workshop discovery and shutdown fix — 2026-09-01
+
+- `dotnet run --project tools/Tests~/MCG.Tests.csproj -c Release`: **118 assertions passed**, including four close-policy cases. Native `VideoGameSetup.Finish()` is requested only for a live, MCG-owned session; cleanup still runs when the game is uninitialized, the city is unloading or the playing field belongs to another session.
+- `tools/build.ps1` completed against Big Ambitions Build 3670 and Unity 2022.3.62f2 without installing or launching anything. DLL SHA-256: `D8A30D064D8C7032A3E29A6322690C6BFA58C3E8F6D140240B161B96C348E81B`.
+- A matching Unity Mono discovery probe blocks resolution of `LIB_BaComputerGames.dll` while decoding `RegisterModClass`. The original Workshop Flappy and DOOM DLLs reproduce the reported `TypeLoadException`; rebuilt Flappy, Snake, Ambitions Invaders, Tetrix and DOOM entries all resolve without loading MCG.
+- This proves the assembly-discovery mechanism and the teardown decision logic in isolation. A fresh native Workshop-only game launch and city-shutdown smoke test remain pending.
+
 ## Reproducible checks in this repository
 
 Verified on 2026-08-31:

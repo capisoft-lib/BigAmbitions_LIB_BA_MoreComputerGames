@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Document a BAModAPI-only `RegisterModClass` bootstrap for games shipped as separate Workshop items, avoiding eager resolution of the external `ComputerGameMod<T>` base while Mono decodes the assembly attribute.
+- Skip native `VideoGameSetup.Finish()` requests after game shutdown or during city teardown while still disposing MCG-owned sessions and references.
+
 ## 1.0.0 — 2026-08-31
 
 - Append [TAB] to the native Leave button's existing translated caption during MCG sessions, restoring the original caption on exit.

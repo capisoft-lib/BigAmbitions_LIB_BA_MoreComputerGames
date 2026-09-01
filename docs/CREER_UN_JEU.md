@@ -13,6 +13,8 @@ Pour MCG 1.0.0, recompiler le jeu avec la DLL de la bibliothèque **1.0.0.0**. U
 ## 2. Enregistrer automatiquement le jeu
 
 ```csharp
+using System;
+using System.Threading.Tasks;
 using BAModAPI;
 using Capisoft.Lib.BaComputerGames;
 
@@ -21,17 +23,40 @@ using Capisoft.Lib.BaComputerGames;
 namespace MyStudio
 {
     [ModEntryOnCityLoad]
-    public sealed class MyGameMod : ComputerGameMod<MyGame>
+    public sealed class MyGameMod : IModBigAmbitions
     {
-        protected override ComputerGameDefinition Definition =>
-            ComputerGameDefinition.Create<MyGame>(
+        private IDisposable registration;
+        public string[] RelativeAssetBundlePaths => Array.Empty<string>();
+
+        public Task OnLoadAsync(ModContext context)
+        {
+            registration?.Dispose();
+            registration = MyGameRegistration.Register(context);
+            return Task.CompletedTask;
+        }
+
+        public Task OnUnloadAsync()
+        {
+            registration?.Dispose();
+            registration = null;
+            return Task.CompletedTask;
+        }
+    }
+
+    internal static class MyGameRegistration
+    {
+        internal static IDisposable Register(ModContext context)
+        {
+            var definition = ComputerGameDefinition.Create<MyGame>(
                 "mystudio:my-game", "Mon jeu", "Description courte",
                 version: "1.0.0", ruleset: "standard-v1");
+            return ComputerGames.Register(context.ModId, context.ModRootPath, definition);
+        }
     }
 }
 ```
 
-`MyGame` est le composant à créer à l'étape suivante. La classe de base enregistre le jeu au chargement et retire son inscription au déchargement. Choisir un identifiant stable, en minuscules, avec namespace. Les doublons sont refusés ; `vanilla:brick-breaker` est réservé au jeu natif.
+`MyGame` est le composant à créer à l'étape suivante. Le type ciblé par `RegisterModClass` dépend uniquement de `BAModAPI` dans ses métadonnées ; le helper résout MCG pendant `OnLoadAsync`, puis l'inscription est retirée au déchargement. Cette séparation est nécessaire pour les éléments Workshop distincts : Mono peut décoder l'attribut avant d'avoir lié la DLL MCG. Choisir un identifiant stable, en minuscules, avec namespace. Les doublons sont refusés ; `vanilla:brick-breaker` est réservé au jeu natif.
 
 ## 3. Implémenter le gameplay
 

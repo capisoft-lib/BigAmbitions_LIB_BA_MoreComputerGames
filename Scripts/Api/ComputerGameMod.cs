@@ -5,7 +5,9 @@ using UnityEngine;
 
 namespace Capisoft.Lib.BaComputerGames
 {
-    // The concrete mod still declares RegisterModClass + ModEntryOnCityLoad, per the official SDK.
+    // Compatibility helper for consumers loaded from the same resolution context. Separate Workshop
+    // mods should keep the RegisterModClass target BAModAPI-only and call ComputerGames.Register from
+    // OnLoadAsync; Mono may resolve a registered base type before the dependency assembly is bound.
     public abstract class ComputerGameMod<TGame> : IModBigAmbitions where TGame : MonoBehaviour, IComputerGame
     {
         private ComputerGameRegistration _registration;
